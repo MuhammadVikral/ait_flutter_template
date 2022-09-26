@@ -1,0 +1,62 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "flutter build web --web-renderer html --release -t 'lib/main_dev.dart'",
+            "problemMatcher": []
+        },
+        {
+            "label": "commit",
+            "type": "shell",
+            "command": "git commit --m '${input:comit}'",
+            "problemMatcher": []
+        },
+        {
+            "label": "commit bugfix",
+            "type": "shell",
+            "command": "git commit --m 'bugfix : ${input:comit}'",
+            "problemMatcher": []
+        },
+        {
+            "label": "commit feature",
+            "type": "shell",
+            "command": "git commit --m 'feature : ${input:comit}'",
+            "problemMatcher": []
+        },
+        {
+            "label": "addall",
+            "type": "shell",
+            "command": "git add .",
+            "problemMatcher": []
+        },
+        {
+            "label": "profile mode",
+            "type": "shell",
+            "command": "flutter run --web-renderer html -t 'lib/main_dev.dart' --profile",
+            "problemMatcher": []
+        },
+        {
+            "label": "watch build",
+            "type": "shell",
+            "command": "flutter packages pub run build_runner watch --delete-conflicting-outputs",
+            "problemMatcher": []
+        },
+        {
+            "label": "runner build",
+            "type": "shell",
+            "command": "flutter packages pub run build_runner build --delete-conflicting-outputs",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "comit",
+            "description": "adding comment into commit",
+            "type": "promptString"
+        }
+    ]
+}
