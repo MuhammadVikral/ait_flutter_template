@@ -22,7 +22,10 @@ class ColorList extends StatelessWidget {
               itemCount: colors.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
-                return ColorPlaceHolder(color: colors[index]);
+                return ColorPlaceHolder(
+                  color: colors[index],
+                  colorName: colors[index].toString(),
+                );
               },
               separatorBuilder: (BuildContext context, int index) {
                 return SizedBox(width: 20.w);

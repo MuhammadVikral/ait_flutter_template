@@ -11,6 +11,7 @@ class ColorGlosariumPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(BoxColors.primaryBase);
     return Column(
       children: [
         ColorList(colors: primaryList),
