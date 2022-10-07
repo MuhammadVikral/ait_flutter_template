@@ -1,3 +1,4 @@
+import 'package:ait_flutter_template/feature/glosarium/presentation/pages/color_glosarium/color_glosarium.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -7,28 +8,30 @@ class GlosariumPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     var _tabController = useTabController(initialLength: 3, initialIndex: 0);
-    print('rebuild scaffold');
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(200),
-        child: ColoredBox(
-          color: Colors.blue,
-          child: TabBar(
-            controller: _tabController,
-            indicatorColor: Colors.purple,
-            tabs: [
-              _MetaTabBar(title: 'Color'),
-              _MetaTabBar(title: 'TextSize'),
-              _MetaTabBar(title: 'Button'),
-            ],
-          ),
-        ),
+      appBar: _buildAppbar(_tabController),
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          ColorGlosariumPage(),
+          Container(),
+          Container(),
+        ],
       ),
-      body: const Center(
-        child: Text(
-          'GlosariumPage is working',
-          style: TextStyle(fontSize: 20),
-        ),
+    );
+  }
+
+  AppBar _buildAppbar(TabController _tabController) {
+    return AppBar(
+      centerTitle: true,
+      title: TabBar(
+        controller: _tabController,
+        indicatorColor: Colors.transparent,
+        tabs: [
+          _MetaTabBar(title: 'Color'),
+          _MetaTabBar(title: 'TextSize'),
+          _MetaTabBar(title: 'Button'),
+        ],
       ),
     );
   }

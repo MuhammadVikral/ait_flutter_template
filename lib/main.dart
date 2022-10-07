@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'feature/glosarium/presentation/glosarium_page.dart';
 
@@ -11,13 +12,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: GlosariumPage(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 667),
+      minTextAdapt: true,
+      builder: (context, child) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: GlosariumPage(),
+        );
+      },
     );
   }
 }

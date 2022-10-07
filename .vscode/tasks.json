@@ -50,6 +50,12 @@
             "type": "shell",
             "command": "flutter packages pub run build_runner build --delete-conflicting-outputs",
             "problemMatcher": []
+        },
+        {
+            "label": "push origin main",
+            "type": "shell",
+            "command": "git push origin main",
+            "problemMatcher": []
         }
     ],
     "inputs": [
