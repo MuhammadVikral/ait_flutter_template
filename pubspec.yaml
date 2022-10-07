@@ -9,6 +9,8 @@ environment:
   sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
+  ait_const:
+    path : 'packages/ait_const'
   flutter:
     sdk: flutter
 
