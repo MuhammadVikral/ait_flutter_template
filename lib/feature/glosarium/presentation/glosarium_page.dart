@@ -7,7 +7,8 @@ class GlosariumPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _tabController = useTabController(initialLength: 3, initialIndex: 0);
+    TabController _tabController =
+        useTabController(initialLength: 3, initialIndex: 0);
     return Scaffold(
       appBar: _buildAppbar(_tabController),
       body: TabBarView(
