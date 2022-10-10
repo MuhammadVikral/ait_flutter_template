@@ -12,8 +12,10 @@ List<Color> get primaryList => [
 
 List<Option<Color>> get colorOption => List<Option<Color>>.generate(
       primaryList.length,
-      (index) => Option(
-        label: primaryList[index].toString(),
-        value: primaryList[index],
-      ),
+      (index) {
+        return Option(
+          label: primaryList[index].colorName(),
+          value: primaryList[index],
+        );
+      },
     );

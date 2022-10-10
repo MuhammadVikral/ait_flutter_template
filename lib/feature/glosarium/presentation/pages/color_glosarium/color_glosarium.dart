@@ -1,4 +1,4 @@
-library colorGlosarium;
+library color_glosarium;
 
 import 'package:ait_const/ait_const.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +21,4 @@ class ColorGlosariumPage extends StatelessWidget {
 
 List<Color> get primaryList => [
       DesignColors.primaryLight2,
-      DesignColors.primaryLight1,
-      DesignColors.primaryBase,
-      DesignColors.primaryDark1,
-      DesignColors.primaryDark2,
     ];

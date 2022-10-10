@@ -1,11 +1,17 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
-class DesignColors {
+class DesignColors extends Equatable {
   const DesignColors._();
-  static const Color primaryLight2 = Color(0xFFEFF6FF);
-  static const Color primaryLight1 = Color(0xFFBFDBFE);
-  static const Color primaryBase = Color(0xFF1D4ED8);
-  static const Color primaryDark1 = Color(0xFF173EAB);
-  static const Color primaryDark2 = Color(0xFF112D7E);
+  static final Color primaryLight2 = HexColor('#EFF6FF');
+  static final Color primaryLight1 = HexColor('#BFDBFE');
+  static final Color primaryBase = HexColor('#1D4ED8');
+  static final Color primaryDark1 = HexColor('#173EAB');
+  static final Color primaryDark2 = HexColor('#112D7E');
+
+  @override
+  List<Object?> get props =>
+      [primaryLight1, primaryLight2, primaryBase, primaryDark2, primaryDark2];
 }

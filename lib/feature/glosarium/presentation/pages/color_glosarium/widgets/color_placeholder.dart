@@ -1,4 +1,4 @@
-part of colorGlosarium;
+part of color_glosarium;
 
 class ColorPlaceHolder extends StatelessWidget {
   const ColorPlaceHolder(

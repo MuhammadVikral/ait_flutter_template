@@ -7,14 +7,14 @@ class GlosariumPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    TabController _tabController =
+    TabController tabController =
         useTabController(initialLength: 3, initialIndex: 0);
     return Scaffold(
-      appBar: _buildAppbar(_tabController),
+      appBar: _buildAppbar(tabController),
       body: TabBarView(
-        controller: _tabController,
+        controller: tabController,
         children: [
-          ColorGlosariumPage(),
+          const ColorGlosariumPage(),
           Container(),
           Container(),
         ],
@@ -22,13 +22,13 @@ class GlosariumPage extends HookWidget {
     );
   }
 
-  AppBar _buildAppbar(TabController _tabController) {
+  AppBar _buildAppbar(TabController tabController) {
     return AppBar(
       centerTitle: true,
       title: TabBar(
-        controller: _tabController,
+        controller: tabController,
         indicatorColor: Colors.transparent,
-        tabs: [
+        tabs: const [
           _MetaTabBar(title: 'Color'),
           _MetaTabBar(title: 'TextSize'),
           _MetaTabBar(title: 'Button'),

@@ -6,21 +6,22 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=2.17.6 <3.0.0"
 
 dependencies:
   ait_const:
     path : 'packages/ait_const'
+  build_runner: ^2.2.1
   flutter:
     sdk: flutter
   flutter_hooks: ^0.18.5+1
   flutter_screenutil: ^5.5.4
+  hexcolor: ^2.0.7
   widgetbook: ^2.4.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  test: any
 
 flutter:
   uses-material-design: true

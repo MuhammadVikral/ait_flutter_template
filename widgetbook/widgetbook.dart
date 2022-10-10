@@ -21,7 +21,7 @@ class WidgetbookHotReload extends StatelessWidget {
                 WidgetbookUseCase(
                   name: 'Icon',
                   builder: (context) {
-                    return GlosariumPage();
+                    return const GlosariumPage();
                   },
                 ),
                 WidgetbookUseCase(

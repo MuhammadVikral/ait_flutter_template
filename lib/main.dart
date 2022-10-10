@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (context, child) {
         return MaterialApp(
-          scrollBehavior: MaterialScrollBehavior().copyWith(
+          scrollBehavior: const MaterialScrollBehavior().copyWith(
             dragDevices: {
               PointerDeviceKind.mouse,
               PointerDeviceKind.touch,
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: GlosariumPage(),
+          home: const GlosariumPage(),
         );
       },
     );

@@ -1,4 +1,4 @@
-part of colorGlosarium;
+part of color_glosarium;
 
 class ColorList extends StatelessWidget {
   const ColorList({
@@ -9,13 +9,12 @@ class ColorList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ;
     return SizedBox(
       height: 80.h,
       width: double.infinity,
       child: Row(
         children: [
-          Text('Primary'),
+          const Text('Primary'),
           SizedBox(width: 20.w),
           Expanded(
             child: ListView.separated(
