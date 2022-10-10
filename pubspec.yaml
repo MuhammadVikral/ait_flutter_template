@@ -26,30 +26,30 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  fonts:
-    - family: Satoshi
-      fonts:
-        - asset: fonts:Satoshi-Black.ttf
-        - asset: fonts:Satoshi-BlackItalic.ttf
-          style: italic
-        - asset: fonts:Satoshi-Bold.ttf
-          weight: 700
-        - asset: fonts:Satoshi-BoldItalic.ttf
-          weight: 700
-          style: italic
-        - asset: fonts:Satoshi-Italic.ttf
-          style: italic
-        - asset: fonts:Satoshi-Light.ttf
-          weight: 200
-        - asset: fonts:Satoshi-LightItalic.ttf
-          weight: 200
-          style: italic
-        - asset: fonts:Satoshi-Medium.ttf
-          weight: 600
-        - asset: fonts:Satoshi-MediumItalic.ttf
-          weight: 600
-          style: italic
-        - asset: fonts:Satoshi-Regular.ttf
-          weight: 400
-        - asset: fonts:Satoshi-Variable.ttf
-        - asset: fonts:Satoshi-VariableItalic.ttf
+  # fonts:
+  #   - family: Satoshi
+  #     fonts:
+  #       - asset: fonts:Satoshi-Black.ttf
+  #       - asset: fonts:Satoshi-BlackItalic.ttf
+  #         style: italic
+  #       - asset: fonts:Satoshi-Bold.ttf
+  #         weight: 700
+  #       - asset: fonts:Satoshi-BoldItalic.ttf
+  #         weight: 700
+  #         style: italic
+  #       - asset: fonts:Satoshi-Italic.ttf
+  #         style: italic
+  #       - asset: fonts:Satoshi-Light.ttf
+  #         weight: 200
+  #       - asset: fonts:Satoshi-LightItalic.ttf
+  #         weight: 200
+  #         style: italic
+  #       - asset: fonts:Satoshi-Medium.ttf
+  #         weight: 600
+  #       - asset: fonts:Satoshi-MediumItalic.ttf
+  #         weight: 600
+  #         style: italic
+  #       - asset: fonts:Satoshi-Regular.ttf
+  #         weight: 400
+  #       - asset: fonts:Satoshi-Variable.ttf
+  #       - asset: fonts:Satoshi-VariableItalic.ttf
