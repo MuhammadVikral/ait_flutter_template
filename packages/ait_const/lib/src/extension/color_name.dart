@@ -13,3 +13,5 @@ extension ColorName on Color {
     return colorNames[this] ?? toString();
   }
 }
+
+extension DesignColorName on DesignColors {}
