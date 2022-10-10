@@ -6,13 +6,17 @@ import 'package:flutter/material.dart';
 class DesignText extends StatelessWidget {
   final String text;
   final TextStyle style;
-  DesignText.h1(
-      {required this.text, FontWeight? fontWeight = FontWeight.w400, Key? key})
-      : style = DesignTextStyle.h1Style.copyWith(fontWeight: fontWeight);
+  DesignText.h1({
+    this.text = 'Text h1',
+    FontWeight? fontWeight = FontWeight.w400,
+    Key? key,
+  }) : style = DesignTextStyle.h1Style.copyWith(fontWeight: fontWeight);
 
-  DesignText.body1(
-      {required this.text, FontWeight? fontWeight = FontWeight.w400, Key? key})
-      : style = DesignTextStyle.body1.copyWith(fontWeight: fontWeight);
+  DesignText.body1({
+    this.text = 'Text body 1',
+    FontWeight? fontWeight = FontWeight.w400,
+    Key? key,
+  }) : style = DesignTextStyle.body1.copyWith(fontWeight: fontWeight);
 
   @override
   Widget build(BuildContext context) {
