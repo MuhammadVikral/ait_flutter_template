@@ -1,6 +1,5 @@
-import 'package:ait_flutter_template/feature/glosarium/presentation/glosarium_page.dart';
-import 'package:ait_flutter_template/feature/glosarium/presentation/pages/color_glosarium/color_glosarium.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import 'options/color_option.dart';
@@ -19,20 +18,17 @@ class WidgetbookHotReload extends StatelessWidget {
               name: 'FAB',
               useCases: [
                 WidgetbookUseCase(
-                  name: 'Icon',
-                  builder: (context) {
-                    return const GlosariumPage();
-                  },
-                ),
-                WidgetbookUseCase(
                   name: 'placeholder',
                   builder: (context) {
-                    return ColorPlaceHolder(
-                      color: context.knobs.options(
-                        label: 'color',
-                        options: colorOption,
+                    return Card(
+                      elevation: 10,
+                      child: Container(
+                        margin: EdgeInsets.all(20.r),
+                        color: context.knobs.options(
+                          label: 'color',
+                          options: colorOption,
+                        ),
                       ),
-                      colorName: 'test',
                     );
                   },
                 )
