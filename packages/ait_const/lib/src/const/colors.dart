@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-class BoxColors {
-  BoxColors._();
-
-  ///Primary
+class DesignColors {
+  const DesignColors._();
   static const Color primaryLight2 = Color(0xFFEFF6FF);
   static const Color primaryLight1 = Color(0xFFBFDBFE);
   static const Color primaryBase = Color(0xFF1D4ED8);

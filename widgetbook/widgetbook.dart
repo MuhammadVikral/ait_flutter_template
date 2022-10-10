@@ -1,8 +1,9 @@
-import 'package:ait_const/ait_const.dart';
 import 'package:ait_flutter_template/feature/glosarium/presentation/glosarium_page.dart';
 import 'package:ait_flutter_template/feature/glosarium/presentation/pages/color_glosarium/color_glosarium.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
+
+import 'options/color_option.dart';
 
 class WidgetbookHotReload extends StatelessWidget {
   const WidgetbookHotReload({Key? key}) : super(key: key);
@@ -27,16 +28,10 @@ class WidgetbookHotReload extends StatelessWidget {
                   name: 'placeholder',
                   builder: (context) {
                     return ColorPlaceHolder(
-                      color: context.knobs.options(label: 'color', options: [
-                        Option(
-                          label: 'primary Light 2',
-                          value: BoxColors.primaryLight2,
-                        ),
-                        Option(
-                          label: 'primary Light 1',
-                          value: BoxColors.primaryLight1,
-                        ),
-                      ]),
+                      color: context.knobs.options(
+                        label: 'color',
+                        options: colorOption,
+                      ),
                       colorName: 'test',
                     );
                   },

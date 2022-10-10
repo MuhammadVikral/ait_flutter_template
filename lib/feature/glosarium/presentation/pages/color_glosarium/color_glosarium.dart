@@ -20,9 +20,9 @@ class ColorGlosariumPage extends StatelessWidget {
 }
 
 List<Color> get primaryList => [
-      BoxColors.primaryLight2,
-      BoxColors.primaryLight1,
-      BoxColors.primaryBase,
-      BoxColors.primaryDark1,
-      BoxColors.primaryDark2,
+      DesignColors.primaryLight2,
+      DesignColors.primaryLight1,
+      DesignColors.primaryBase,
+      DesignColors.primaryDark1,
+      DesignColors.primaryDark2,
     ];
