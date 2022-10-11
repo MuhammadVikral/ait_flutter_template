@@ -9,17 +9,31 @@ class DesignText extends StatelessWidget {
   DesignText.h1({
     this.text = 'Text h1',
     FontWeight? fontWeight = FontWeight.w400,
+    Color? color = Colors.black,
     Key? key,
-  }) : style = DesignTextStyle.h1Style.copyWith(fontWeight: fontWeight);
+  }) : style = DesignTextStyle.h1Style
+            .copyWith(fontWeight: fontWeight, color: color);
 
   DesignText.body1({
     this.text = 'Text body 1',
+    Color? color = Colors.black,
     FontWeight? fontWeight = FontWeight.w400,
     Key? key,
-  }) : style = DesignTextStyle.body1.copyWith(fontWeight: fontWeight);
-  static List<DesignText> get listTypography => [
-        DesignText.h1(),
-        DesignText.body1(),
+  }) : style = DesignTextStyle.body1.copyWith(
+          fontWeight: fontWeight,
+          color: color,
+        );
+  static List<DesignText> listTypography(
+          {FontWeight? fontWeight, Color? color}) =>
+      [
+        DesignText.h1(
+          fontWeight: fontWeight,
+          color: color,
+        ),
+        DesignText.body1(
+          fontWeight: fontWeight,
+          color: color,
+        ),
       ];
   @override
   Widget build(BuildContext context) {

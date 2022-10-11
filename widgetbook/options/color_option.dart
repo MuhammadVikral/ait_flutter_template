@@ -12,12 +12,16 @@ List<Option<Color>> get colorOption => List<Option<Color>>.generate(
       },
     );
 
-List<Option<Widget>> get typographyOption => List<Option<Widget>>.generate(
-      DesignText.listTypography.length,
-      (index) {
-        return Option(
-          label: DesignText.listTypography[index].text,
-          value: DesignText.listTypography[index],
-        );
-      },
-    );
+List<Option<Widget>> typographyOption(
+    {FontWeight? fontWeight, DesignColors? color}) {
+  final List<DesignText> typographys = DesignText.listTypography();
+  return List<Option<Widget>>.generate(
+    typographys.length,
+    (index) {
+      return Option(
+        label: typographys[index].text,
+        value: typographys[index],
+      );
+    },
+  );
+}

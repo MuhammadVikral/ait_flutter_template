@@ -2,6 +2,8 @@ import 'package:ait_const/ait_const.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
+import '../../../options/color_option.dart';
+
 class TypograhyUseCase extends WidgetbookUseCase {
   TypograhyUseCase(BuildContext context)
       : super(
@@ -9,16 +11,16 @@ class TypograhyUseCase extends WidgetbookUseCase {
           builder: (context) {
             return Container(
               alignment: Alignment.center,
-              child: Column(
-                children: [
-                  DesignText.h1(),
-                  DesignText.body1(),
-                ],
+              child: ListView(
+                shrinkWrap: true,
+                children: DesignText.listTypography(
+                  color: context.knobs.options(
+                    label: 'Text Color',
+                    options: colorOption,
+                  ),
+                ),
               ),
             );
           },
         );
-  Widget _buildTextList() {
-    return ListView();
-  }
 }
