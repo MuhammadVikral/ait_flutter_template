@@ -20,6 +20,16 @@ extension ColorName on Color {
     DesignColors.successBase: 'Success Base ',
     DesignColors.successDark1: 'Success Dark 1',
     DesignColors.successDark2: 'Success Dark 2',
+    DesignColors.warningLight2: 'Warning Light 2',
+    DesignColors.warningLight1: 'Warning Light 1',
+    DesignColors.warningBase: 'Warning Base ',
+    DesignColors.warningDark1: 'Warning Dark 1',
+    DesignColors.warningDark2: 'Warning Dark 2',
+    DesignColors.infoLight2: 'Info Light 2',
+    DesignColors.infoLight1: 'Info Light 1',
+    DesignColors.infoBase: 'Info Base ',
+    DesignColors.infoDark1: 'Info Dark 1',
+    DesignColors.infoDark2: 'Info Dark 2',
   };
   String colorName() {
     return colorNames[this] ?? toString();
