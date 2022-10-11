@@ -16,13 +16,17 @@ class TypograhyUseCase extends WidgetbookUseCase {
                 shrinkWrap: true,
                 children: DesignText.listTypography(
                   args: DesignTextStyleArgs(
+                    color: context.knobs.options(
+                      label: 'Text Color',
+                      options: colorOption,
+                    ),
                     fontWeight: context.knobs.options(
                       label: 'Font Weight',
                       options: fontWeightOption,
                     ),
-                    color: context.knobs.options(
-                      label: 'Text Color',
-                      options: colorOption,
+                    fontStyle: context.knobs.options(
+                      label: 'Font Style',
+                      options: fontStyleOption,
                     ),
                   ),
                 ),

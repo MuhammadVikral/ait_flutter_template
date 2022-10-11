@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 const FontWeight normalFont = FontWeight.w400;
 const FontWeight mediumFont = FontWeight.w600;
 const FontWeight boldFont = FontWeight.w700;
+const FontStyle normalStyle = FontStyle.normal;
+const FontStyle italicStyle = FontStyle.italic;
 
 class DesignTextStyle extends TextStyle {
   const DesignTextStyle._();
@@ -18,21 +20,36 @@ class DesignTextStyle extends TextStyle {
   static const TextStyle caption = TextStyle(fontFamily: satoshi, fontSize: 12);
 }
 
-/// used for font type option in story book
-class DFontWeight {
+/// used for font weight option in story book
+class OFontWeight {
   final String fontName;
   final FontWeight fontWeight;
 
-  const DFontWeight.normal(
+  const OFontWeight.normal(
       {this.fontName = 'Normal Font', this.fontWeight = FontWeight.w400});
-  const DFontWeight.medium(
+  const OFontWeight.medium(
       {this.fontName = 'Medium Font', this.fontWeight = FontWeight.w600});
-  const DFontWeight.bold(
+  const OFontWeight.bold(
       {this.fontName = 'Bold Font', this.fontWeight = FontWeight.w700});
 
-  static List<DFontWeight> get fontWeightList => const [
-        DFontWeight.normal(),
-        DFontWeight.medium(),
-        DFontWeight.bold(),
+  static List<OFontWeight> get fontWeightList => const [
+        OFontWeight.normal(),
+        OFontWeight.medium(),
+        OFontWeight.bold(),
+      ];
+}
+
+class OFontStyle {
+  final String styleName;
+  final FontStyle fontStyle;
+
+  const OFontStyle.normal(
+      {this.styleName = 'Normal Style', this.fontStyle = FontStyle.normal});
+  const OFontStyle.italic(
+      {this.styleName = 'Italic Style', this.fontStyle = FontStyle.italic});
+
+  static List<OFontStyle> get fontStyleList => const [
+        OFontStyle.normal(),
+        OFontStyle.italic(),
       ];
 }

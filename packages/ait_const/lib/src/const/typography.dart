@@ -90,19 +90,23 @@ class DesignText extends StatelessWidget {
 }
 
 class DesignTextStyleArgs {
-  final FontWeight fontWeight;
-  final Color color;
+  final Color? color;
+  final FontWeight? fontWeight;
+  final FontStyle? fontStyle;
+
   DesignTextStyleArgs({
-    required this.fontWeight,
-    required this.color,
+    this.color,
+    this.fontWeight,
+    this.fontStyle,
   });
 }
 
 extension TextStyleCopyWith on TextStyle {
   copyWithArgs(DesignTextStyleArgs? args) {
     return copyWith(
-      fontWeight: args?.fontWeight,
       color: args?.color,
+      fontWeight: args?.fontWeight,
+      fontStyle: args?.fontStyle,
     );
   }
 }

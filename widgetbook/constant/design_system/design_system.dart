@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import 'use_cases/color_palet.dart';
-import 'use_cases/typography.dart';
+import 'use_cases/typography_usecase.dart';
 
 class DesignSystem extends WidgetbookComponent {
   DesignSystem(BuildContext context)

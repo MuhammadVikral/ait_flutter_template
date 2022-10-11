@@ -17,13 +17,26 @@ List<Option<Widget>> typographyOption(
 }
 
 List<Option<FontWeight>> get fontWeightOption {
-  final List<DFontWeight> fontWeight = DFontWeight.fontWeightList;
+  final List<OFontWeight> fontWeight = OFontWeight.fontWeightList;
   return List<Option<FontWeight>>.generate(
     fontWeight.length,
     (index) {
       return Option(
         label: fontWeight[index].fontName,
         value: fontWeight[index].fontWeight,
+      );
+    },
+  );
+}
+
+List<Option<FontStyle>> get fontStyleOption {
+  final List<OFontStyle> fontStyle = OFontStyle.fontStyleList;
+  return List<Option<FontStyle>>.generate(
+    fontStyle.length,
+    (index) {
+      return Option(
+        label: fontStyle[index].styleName,
+        value: fontStyle[index].fontStyle,
       );
     },
   );
