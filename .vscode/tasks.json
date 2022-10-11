@@ -24,7 +24,13 @@
         {
             "label": "commit feature",
             "type": "shell",
-            "command": "git commit --m '${input:comit feature} : ${input:comit}'",
+            "command": "git commit --m 'feature(${input:comit feature}) : ${input:comit}'",
+            "problemMatcher": []
+        },
+        {
+            "label": "commit refactor",
+            "type": "shell",
+            "command": "git commit --m 'refactor(${input:comit feature}) : ${input:comit}'",
             "problemMatcher": []
         },
         {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import '../../../options/color_option.dart';
+import '../../../options/typography_options.dart';
 
 class TypograhyUseCase extends WidgetbookUseCase {
   TypograhyUseCase(BuildContext context)

@@ -100,6 +100,9 @@ class DesignTextStyleArgs {
 
 extension TextStyleCopyWith on TextStyle {
   copyWithArgs(DesignTextStyleArgs? args) {
-    return copyWith(fontWeight: args?.fontWeight, color: args?.color);
+    return copyWith(
+      fontWeight: args?.fontWeight,
+      color: args?.color,
+    );
   }
 }
