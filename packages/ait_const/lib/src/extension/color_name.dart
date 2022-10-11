@@ -5,11 +5,16 @@ extension ColorName on Color {
   static final colorNames = {
     DesignColors.white: 'white',
     DesignColors.black: 'black',
-    DesignColors.primaryLight2: 'primary Light 1',
-    DesignColors.primaryLight1: 'primary Light 2',
-    DesignColors.primaryBase: 'primary base',
-    DesignColors.primaryDark1: 'primary Dark 1',
-    DesignColors.primaryDark2: 'primary Dark 2',
+    DesignColors.primaryLight2: 'Primary Light 1',
+    DesignColors.primaryLight1: 'Primary Light 2',
+    DesignColors.primaryBase: 'Primary base',
+    DesignColors.primaryDark1: 'Primary Dark 1',
+    DesignColors.primaryDark2: 'Primary Dark 2',
+    DesignColors.dangerLight2: 'Danger Light 2',
+    DesignColors.dangerLight1: 'Danger Light 1',
+    DesignColors.dangerBase: 'Danger Base ',
+    DesignColors.dangerDark1: 'Danger Dark 1',
+    DesignColors.dangerDark2: 'Danger Dark 2',
   };
   String colorName() {
     return colorNames[this] ?? toString();
