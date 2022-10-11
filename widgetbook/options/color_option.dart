@@ -11,3 +11,13 @@ List<Option<Color>> get colorOption => List<Option<Color>>.generate(
         );
       },
     );
+
+List<Option<Widget>> get typographyOption => List<Option<Widget>>.generate(
+      DesignText.listTypography.length,
+      (index) {
+        return Option(
+          label: DesignText.listTypography[index].text,
+          value: DesignText.listTypography[index],
+        );
+      },
+    );

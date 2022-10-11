@@ -17,7 +17,10 @@ class DesignText extends StatelessWidget {
     FontWeight? fontWeight = FontWeight.w400,
     Key? key,
   }) : style = DesignTextStyle.body1.copyWith(fontWeight: fontWeight);
-
+  static List<DesignText> get listTypography => [
+        DesignText.h1(),
+        DesignText.body1(),
+      ];
   @override
   Widget build(BuildContext context) {
     return Text(
