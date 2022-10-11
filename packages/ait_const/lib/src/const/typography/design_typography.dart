@@ -7,63 +7,63 @@ class DesignText extends StatelessWidget {
 
   DesignText.h1({
     Key? key,
-    this.text = 'Text h1',
+    this.text = 'H1/60px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.h1.copyWithArgs(args),
         super(key: key);
 
   DesignText.h2({
     Key? key,
-    this.text = 'Text h2',
+    this.text = 'H2/48px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.h2.copyWithArgs(args),
         super(key: key);
 
   DesignText.h3({
     Key? key,
-    this.text = 'Text h3',
+    this.text = 'H3/34px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.h3.copyWithArgs(args),
         super(key: key);
 
   DesignText.h4({
     Key? key,
-    this.text = 'Text h4',
+    this.text = 'H4/28px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.h4.copyWithArgs(args),
         super(key: key);
 
   DesignText.h5({
     Key? key,
-    this.text = 'Text h5',
+    this.text = 'H5/24px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.h5.copyWithArgs(args),
         super(key: key);
 
   DesignText.h6({
     Key? key,
-    this.text = 'Text h6',
+    this.text = 'H6/20px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.h6.copyWithArgs(args),
         super(key: key);
 
   DesignText.body1({
     Key? key,
-    this.text = 'Text body 1',
+    this.text = 'Body 1/16px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.body1.copyWithArgs(args),
         super(key: key);
 
   DesignText.body2({
     Key? key,
-    this.text = 'Text body2',
+    this.text = 'Body 2/14px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.body2.copyWithArgs(args),
         super(key: key);
 
   DesignText.caption({
     Key? key,
-    this.text = 'Text caption',
+    this.text = 'Caption/12px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.caption.copyWithArgs(args),
         super(key: key);
