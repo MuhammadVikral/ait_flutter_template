@@ -31,7 +31,7 @@ extension ColorName on Color {
     DesignColors.infoDark1: 'Info Dark 1',
     DesignColors.infoDark2: 'Info Dark 2',
   };
-  String colorName() {
+  String get colorName {
     return colorNames[this] ?? toString();
   }
 }
