@@ -1,12 +1,10 @@
-// ignore_for_file: use_key_in_widget_constructors
-
 import 'package:ait_const/src/const/const.dart';
 import 'package:flutter/material.dart';
 
-class DesignTextArgs {
+class DesignTextStyleArgs {
   final FontWeight fontWeight;
   final Color color;
-  DesignTextArgs({
+  DesignTextStyleArgs({
     required this.fontWeight,
     required this.color,
   });
@@ -17,16 +15,20 @@ class DesignText extends StatelessWidget {
   final TextStyle style;
 
   DesignText.h1({
+    Key? key,
     this.text = 'Text h1',
-    DesignTextArgs? args,
-  }) : style = DesignTextStyle.h1Style.copyWithArgs(args);
+    DesignTextStyleArgs? args,
+  })  : style = DesignTextStyle.h1Style.copyWithArgs(args),
+        super(key: key);
 
   DesignText.body1({
+    Key? key,
     this.text = 'Text body 1',
-    DesignTextArgs? args,
-  }) : style = DesignTextStyle.body1.copyWithArgs(args);
+    DesignTextStyleArgs? args,
+  })  : style = DesignTextStyle.body1.copyWithArgs(args),
+        super(key: key);
 
-  static List<DesignText> listTypography({DesignTextArgs? args}) => [
+  static List<DesignText> listTypography({DesignTextStyleArgs? args}) => [
         DesignText.h1(args: args),
         DesignText.body1(args: args),
       ];
@@ -41,7 +43,7 @@ class DesignText extends StatelessWidget {
 }
 
 extension TextStyleCopyWith on TextStyle {
-  copyWithArgs(DesignTextArgs? args) {
-    copyWith(fontWeight: args?.fontWeight, color: args?.color);
+  copyWithArgs(DesignTextStyleArgs? args) {
+    return copyWith(fontWeight: args?.fontWeight, color: args?.color);
   }
 }

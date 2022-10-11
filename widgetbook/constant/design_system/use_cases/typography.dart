@@ -14,7 +14,7 @@ class TypograhyUseCase extends WidgetbookUseCase {
               child: ListView(
                 shrinkWrap: true,
                 children: DesignText.listTypography(
-                  args: DesignTextArgs(
+                  args: DesignTextStyleArgs(
                     fontWeight: FontWeight.w700,
                     color: context.knobs.options(
                       label: 'Text Color',
