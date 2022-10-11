@@ -7,14 +7,15 @@ const FontWeight boldFont = FontWeight.w700;
 class DesignTextStyle extends TextStyle {
   const DesignTextStyle._();
   static const String satoshi = 'Satoshi';
-  static const TextStyle h1Style = TextStyle(
-    fontFamily: satoshi,
-    fontSize: 60,
-  );
-  static const TextStyle body1 = TextStyle(
-    fontFamily: satoshi,
-    fontSize: 16,
-  );
+  static const TextStyle h1 = TextStyle(fontFamily: satoshi, fontSize: 60);
+  static const TextStyle h2 = TextStyle(fontFamily: satoshi, fontSize: 48);
+  static const TextStyle h3 = TextStyle(fontFamily: satoshi, fontSize: 34);
+  static const TextStyle h4 = TextStyle(fontFamily: satoshi, fontSize: 28);
+  static const TextStyle h5 = TextStyle(fontFamily: satoshi, fontSize: 24);
+  static const TextStyle h6 = TextStyle(fontFamily: satoshi, fontSize: 20);
+  static const TextStyle body1 = TextStyle(fontFamily: satoshi, fontSize: 16);
+  static const TextStyle body2 = TextStyle(fontFamily: satoshi, fontSize: 14);
+  static const TextStyle caption = TextStyle(fontFamily: satoshi, fontSize: 12);
 }
 
 /// used for font type option in story book
