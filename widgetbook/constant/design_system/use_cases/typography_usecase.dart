@@ -1,5 +1,6 @@
 import 'package:ait_const/ait_const.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import '../../../options/color_option.dart';
@@ -12,24 +13,37 @@ class TypograhyUseCase extends WidgetbookUseCase {
           builder: (context) {
             return Container(
               alignment: Alignment.center,
-              child: ListView(
-                shrinkWrap: true,
-                children: DesignText.listTypography(
-                  args: DesignTextStyleArgs(
-                    color: context.knobs.options(
-                      label: 'Text Color',
-                      options: colorOption,
+              padding: EdgeInsets.all(32.0.r),
+              color: context.knobs.options(
+                label: 'Background Color',
+                options: colorOption,
+              ),
+              child: ListView.separated(
+                itemCount: DesignText.listTypography().length,
+                physics: const ScrollPhysics(),
+                separatorBuilder: (BuildContext context, int index) {
+                  return Container(
+                    height: 24.h,
+                  );
+                },
+                itemBuilder: (BuildContext context, int index) {
+                  return DesignText.listTypography(
+                    args: DesignTextStyleArgs(
+                      color: context.knobs.options(
+                        label: 'Text Color',
+                        options: colorOption,
+                      ),
+                      fontWeight: context.knobs.options(
+                        label: 'Font Weight',
+                        options: fontWeightOption,
+                      ),
+                      fontStyle: context.knobs.options(
+                        label: 'Font Style',
+                        options: fontStyleOption,
+                      ),
                     ),
-                    fontWeight: context.knobs.options(
-                      label: 'Font Weight',
-                      options: fontWeightOption,
-                    ),
-                    fontStyle: context.knobs.options(
-                      label: 'Font Style',
-                      options: fontStyleOption,
-                    ),
-                  ),
-                ),
+                  )[index];
+                },
               ),
             );
           },

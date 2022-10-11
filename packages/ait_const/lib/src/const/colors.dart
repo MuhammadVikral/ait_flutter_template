@@ -3,6 +3,7 @@ import 'package:hexcolor/hexcolor.dart';
 
 class DesignColors {
   const DesignColors._();
+  static const Color white = Colors.white;
   static const Color black = Colors.black;
   static final Color primaryLight2 = HexColor('#EFF6FF');
   static final Color primaryLight1 = HexColor('#BFDBFE');
@@ -10,6 +11,7 @@ class DesignColors {
   static final Color primaryDark1 = HexColor('#173EAB');
   static final Color primaryDark2 = HexColor('#112D7E');
   static List<Color> get colorList => [
+        white,
         black,
         primaryLight2,
         primaryLight1,

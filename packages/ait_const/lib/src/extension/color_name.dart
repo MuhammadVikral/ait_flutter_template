@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 extension ColorName on Color {
   static final colorNames = {
+    DesignColors.white: 'white',
     DesignColors.black: 'black',
     DesignColors.primaryLight2: 'primary Light 1',
     DesignColors.primaryLight1: 'primary Light 2',
