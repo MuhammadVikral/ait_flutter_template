@@ -25,3 +25,16 @@ List<Option<Widget>> typographyOption(
     },
   );
 }
+
+List<Option<FontWeight>> get fontWeightOption {
+  final List<DFontWeight> fontWeight = DFontWeight.fontWeightList;
+  return List<Option<FontWeight>>.generate(
+    fontWeight.length,
+    (index) {
+      return Option(
+        label: fontWeight[index].fontName,
+        value: fontWeight[index].fontWeight,
+      );
+    },
+  );
+}

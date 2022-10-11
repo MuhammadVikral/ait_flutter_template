@@ -24,13 +24,19 @@
         {
             "label": "commit feature",
             "type": "shell",
-            "command": "git commit --m 'feature : ${input:comit}'",
+            "command": "git commit --m '${input:comit feature} : ${input:comit}'",
             "problemMatcher": []
         },
         {
             "label": "addall",
             "type": "shell",
             "command": "git add .",
+            "problemMatcher": []
+        },
+        {
+            "label": "push origin main",
+            "type": "shell",
+            "command": "git push origin main",
             "problemMatcher": []
         },
         {
@@ -51,17 +57,16 @@
             "command": "flutter packages pub run build_runner build --delete-conflicting-outputs",
             "problemMatcher": []
         },
-        {
-            "label": "push origin main",
-            "type": "shell",
-            "command": "git push origin main",
-            "problemMatcher": []
-        }
     ],
     "inputs": [
         {
             "id": "comit",
             "description": "adding comment into commit",
+            "type": "promptString"
+        },
+        {
+            "id": "comit feature",
+            "description": "adding feature into commit",
             "type": "promptString"
         }
     ]
