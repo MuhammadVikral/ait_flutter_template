@@ -3,38 +3,42 @@
 import 'package:ait_const/src/const/const.dart';
 import 'package:flutter/material.dart';
 
+class DesignTextArgs {
+  final FontWeight fontWeight;
+  final Color color;
+  DesignTextArgs({
+    required this.fontWeight,
+    required this.color,
+  });
+}
+
 class DesignText extends StatelessWidget {
   final String text;
   final TextStyle style;
   DesignText.h1({
     this.text = 'Text h1',
-    FontWeight? fontWeight = FontWeight.w400,
-    Color? color = Colors.black,
+    DesignTextArgs? args,
     Key? key,
   }) : style = DesignTextStyle.h1Style
-            .copyWith(fontWeight: fontWeight, color: color);
+            .copyWith(fontWeight: args?.fontWeight, color: args?.color);
 
   DesignText.body1({
     this.text = 'Text body 1',
-    Color? color = Colors.black,
-    FontWeight? fontWeight = FontWeight.w400,
+    DesignTextArgs? args,
     Key? key,
   }) : style = DesignTextStyle.body1.copyWith(
-          fontWeight: fontWeight,
-          color: color,
+          fontWeight: args?.fontWeight,
+          color: args?.color,
         );
-  static List<DesignText> listTypography(
-          {FontWeight? fontWeight, Color? color}) =>
-      [
+  static List<DesignText> listTypography({DesignTextArgs? args}) => [
         DesignText.h1(
-          fontWeight: fontWeight,
-          color: color,
+          args: args,
         ),
         DesignText.body1(
-          fontWeight: fontWeight,
-          color: color,
+          args: args,
         ),
       ];
+
   @override
   Widget build(BuildContext context) {
     return Text(
