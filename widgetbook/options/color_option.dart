@@ -11,3 +11,13 @@ List<Option<Color>> get colorOption => List<Option<Color>>.generate(
         );
       },
     );
+
+List<Option<Color>> get backGroundColorOption => List<Option<Color>>.generate(
+      DesignColors.colorListBG.length,
+      (index) {
+        return Option(
+          label: DesignColors.colorListBG[index].colorName(),
+          value: DesignColors.colorListBG[index],
+        );
+      },
+    );

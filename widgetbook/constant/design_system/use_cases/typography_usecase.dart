@@ -16,7 +16,7 @@ class TypograhyUseCase extends WidgetbookUseCase {
               padding: EdgeInsets.all(32.0.r),
               color: context.knobs.options(
                 label: 'Background Color',
-                options: colorOption,
+                options: backGroundColorOption,
               ),
               child: ListView.separated(
                 itemCount: DesignText.listTypography().length,

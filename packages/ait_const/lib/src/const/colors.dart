@@ -11,12 +11,16 @@ class DesignColors {
   static final Color primaryDark1 = HexColor('#173EAB');
   static final Color primaryDark2 = HexColor('#112D7E');
   static List<Color> get colorList => [
-        white,
         black,
+        white,
         primaryLight2,
         primaryLight1,
         primaryBase,
         primaryDark1,
         primaryDark2,
+      ];
+  static List<Color> get colorListBG => [
+        white,
+        black,
       ];
 }
