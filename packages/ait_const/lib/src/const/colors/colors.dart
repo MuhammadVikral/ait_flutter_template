@@ -20,6 +20,13 @@ class DesignColors {
   static final Color dangerDark1 = HexColor('#D10026');
   static final Color dangerDark2 = HexColor('#B02132');
 
+  ///Success Colors
+  static final Color successLight2 = HexColor('#CFF6E8');
+  static final Color successLight1 = HexColor('#5EE1B2');
+  static final Color successBase = HexColor('#09C380');
+  static final Color successDark1 = HexColor('#069D66');
+  static final Color successDark2 = HexColor('#098C5D');
+
   ///Color Option for StoryBook
   static List<Color> get colorList => [
         black,
@@ -34,6 +41,11 @@ class DesignColors {
         dangerBase,
         dangerDark1,
         dangerDark2,
+        successLight2,
+        successLight1,
+        successBase,
+        successDark1,
+        successDark2,
       ];
   static List<Color> get colorListBG => [
         white,

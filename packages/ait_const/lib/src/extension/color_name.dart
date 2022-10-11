@@ -15,6 +15,11 @@ extension ColorName on Color {
     DesignColors.dangerBase: 'Danger Base ',
     DesignColors.dangerDark1: 'Danger Dark 1',
     DesignColors.dangerDark2: 'Danger Dark 2',
+    DesignColors.successLight2: 'Success Light 2',
+    DesignColors.successLight1: 'Success Light 1',
+    DesignColors.successBase: 'Success Base ',
+    DesignColors.successDark1: 'Success Dark 1',
+    DesignColors.successDark2: 'Success Dark 2',
   };
   String colorName() {
     return colorNames[this] ?? toString();
