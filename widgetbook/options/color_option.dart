@@ -15,7 +15,12 @@ List<Option<Color>> get backGroundColorOption {
 }
 
 List<Option<Color>> get textColorOption {
-  List<Color> items = DesignColors.colorList.reversed.toList();
+  List<Color> items = [DesignColors.black, DesignColors.white];
+  for (var element in DesignColors.colorList) {
+    if (element != DesignColors.black && element != DesignColors.white) {
+      items.add(element);
+    }
+  }
   return List<Option<Color>>.generate(
     items.length,
     (index) {
