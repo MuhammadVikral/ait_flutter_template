@@ -12,9 +12,10 @@ class DesignButton extends StatelessWidget {
     Key? key,
     this.height = 34,
     double? width,
+    Color? backgroundColor,
     required this.child,
     this.leading = const SizedBox(),
-  })  : backgroundColor = DesignColors.primaryBase,
+  })  : backgroundColor = backgroundColor ?? DesignColors.primaryBase,
         width = width ?? double.infinity,
         super(key: key);
 

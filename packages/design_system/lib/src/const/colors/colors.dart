@@ -43,11 +43,9 @@ class DesignColors {
 
   ///Color Option for StoryBook
   static List<Color> get colorList => [
-        black,
-        white,
+        primaryBase,
         primaryLight2,
         primaryLight1,
-        primaryBase,
         primaryDark1,
         primaryDark2,
         dangerLight2,
@@ -70,9 +68,7 @@ class DesignColors {
         infoBase,
         infoDark1,
         infoDark2,
-      ];
-  static List<Color> get colorListBG => [
-        white,
         black,
+        white,
       ];
 }

@@ -4,13 +4,16 @@ import './color_option.dart';
 import './typography_options.dart';
 
 extension KnobOptions on BuildContext {
-  Color knobColorOption(String label) {
-    return knobs.options(label: label, options: colorOption);
-  }
-
   Color get knobBackgroundColorOption {
     return knobs.options(
         label: 'Background Color', options: backGroundColorOption);
+  }
+
+  Color get knobTextColorOption {
+    return knobs.options(
+      label: 'Text Color',
+      options: textColorOption,
+    );
   }
 
   FontWeight get knobFontWeightOption {

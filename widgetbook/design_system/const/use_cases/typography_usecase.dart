@@ -25,7 +25,7 @@ class TypograhyUseCase extends WidgetbookUseCase {
                 itemBuilder: (BuildContext context, int index) {
                   return DesignText.listTypography(
                     args: DesignTextStyleArgs(
-                      color: context.knobColorOption('Text Color'),
+                      color: context.knobTextColorOption,
                       fontWeight: context.knobFontWeightOption,
                       fontStyle: context.knobFontStyleOption,
                     ),
