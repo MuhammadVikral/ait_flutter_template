@@ -5,79 +5,79 @@ class DesignText extends StatelessWidget {
   final String text;
   final TextStyle style;
 
-  DesignText.h1({
+  DesignText.h1(
+    this.text, {
     Key? key,
-    this.text = 'H1/60px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.h1.copyWithArgs(args),
         super(key: key);
 
-  DesignText.h2({
+  DesignText.h2(
+    this.text, {
     Key? key,
-    this.text = 'H2/48px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.h2.copyWithArgs(args),
         super(key: key);
 
-  DesignText.h3({
+  DesignText.h3(
+    this.text, {
     Key? key,
-    this.text = 'H3/34px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.h3.copyWithArgs(args),
         super(key: key);
 
-  DesignText.h4({
+  DesignText.h4(
+    this.text, {
     Key? key,
-    this.text = 'H4/28px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.h4.copyWithArgs(args),
         super(key: key);
 
-  DesignText.h5({
+  DesignText.h5(
+    this.text, {
     Key? key,
-    this.text = 'H5/24px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.h5.copyWithArgs(args),
         super(key: key);
 
-  DesignText.h6({
+  DesignText.h6(
+    this.text, {
     Key? key,
-    this.text = 'H6/20px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.h6.copyWithArgs(args),
         super(key: key);
 
-  DesignText.body1({
+  DesignText.body1(
+    this.text, {
     Key? key,
-    this.text = 'Body 1/16px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.body1.copyWithArgs(args),
         super(key: key);
 
-  DesignText.body2({
+  DesignText.body2(
+    this.text, {
     Key? key,
-    this.text = 'Body 2/14px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.body2.copyWithArgs(args),
         super(key: key);
 
-  DesignText.caption({
+  DesignText.caption(
+    this.text, {
     Key? key,
-    this.text = 'Caption/12px',
     DesignTextStyleArgs? args,
   })  : style = DesignTextStyle.caption.copyWithArgs(args),
         super(key: key);
 
   static List<DesignText> listTypography({DesignTextStyleArgs? args}) => [
-        DesignText.h1(args: args),
-        DesignText.h2(args: args),
-        DesignText.h3(args: args),
-        DesignText.h4(args: args),
-        DesignText.h5(args: args),
-        DesignText.h6(args: args),
-        DesignText.body1(args: args),
-        DesignText.body2(args: args),
-        DesignText.caption(args: args),
+        DesignText.h1('H2/60px', args: args),
+        DesignText.h2('H2/60px', args: args),
+        DesignText.h3('H2/60px', args: args),
+        DesignText.h4('H2/60px', args: args),
+        DesignText.h5('H2/60px', args: args),
+        DesignText.h6('H2/60px', args: args),
+        DesignText.body1('H2/60px', args: args),
+        DesignText.body2('H2/60px', args: args),
+        DesignText.caption('H2/60px', args: args),
       ];
 
   @override

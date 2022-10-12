@@ -7,9 +7,12 @@ class DesignButtonStory extends WidgetbookUseCase {
       : super(
           name: 'Design Button',
           builder: (context) {
-            return DesignButton.filled(
-              args: DesignButtonArgs(
-                child: DesignText.body2(),
+            return DesignButton(
+              child: DesignText.body2(
+                'Button',
+                args: DesignTextStyleArgs(
+                  color: DesignColors.white,
+                ),
               ),
             );
           },
