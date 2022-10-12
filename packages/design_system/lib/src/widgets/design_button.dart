@@ -6,7 +6,8 @@ class DesignButton extends StatelessWidget {
   final double? width;
   final Color backgroundColor;
   final DesignText child;
-  final Widget leading;
+  final Widget? leading;
+  final Widget? trailing;
   final bool enabled;
 
   const DesignButton({
@@ -15,7 +16,8 @@ class DesignButton extends StatelessWidget {
     double? width,
     Color? backgroundColor,
     required this.child,
-    this.leading = const SizedBox(),
+    this.leading,
+    this.trailing,
     this.enabled = true,
   })  : backgroundColor = enabled
             ? backgroundColor ?? DesignColors.primaryBase
@@ -41,12 +43,27 @@ class DesignButton extends StatelessWidget {
             horizontal: 16,
           ),
           alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              leading,
-              enabled ? child : child.overideColor(DesignColors.disabledText),
-            ],
+          child: FittedBox(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Visibility(
+                  visible: leading != null,
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 8),
+                    child: leading,
+                  ),
+                ),
+                enabled ? child : child.overideColor(DesignColors.disabledText),
+                Visibility(
+                  visible: trailing != null,
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 8),
+                    child: trailing,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
