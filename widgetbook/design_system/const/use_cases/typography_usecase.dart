@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:widgetbook/widgetbook.dart';
 
-import '../../../options/color_option.dart';
 import '../../../options/knob_options.dart';
 
 class TypograhyUseCase extends WidgetbookUseCase {
@@ -36,11 +35,4 @@ class TypograhyUseCase extends WidgetbookUseCase {
             );
           },
         );
-
-  static Color? colorOptions(BuildContext context) {
-    return context.knobs.options(
-      label: 'Text Color',
-      options: colorOption,
-    );
-  }
 }

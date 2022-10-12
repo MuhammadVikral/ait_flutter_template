@@ -7,7 +7,11 @@ class DesignButtonStory extends WidgetbookUseCase {
       : super(
           name: 'Design Button',
           builder: (context) {
-            return DesignButton();
+            return DesignButton.filled(
+              args: DesignButtonArgs(
+                child: DesignText.body2(),
+              ),
+            );
           },
         );
 }
