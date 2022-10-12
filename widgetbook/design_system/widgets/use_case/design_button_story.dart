@@ -8,12 +8,26 @@ class DesignButtonStory extends WidgetbookUseCase {
       : super(
           name: 'Design Button',
           builder: (context) {
-            return DesignButton(
-              backgroundColor: context.knobBackgroundColorOption,
-              child: DesignText.body2(
-                'Button',
-                args: DesignTextStyleArgs(
-                  color: context.knobTextColorOption,
+            return Center(
+              child: DesignButton(
+                backgroundColor: context.knobBackgroundColorOption,
+                height: context.knobs
+                    .number(
+                      label: 'Button Height',
+                      initialValue: 32,
+                    )
+                    .toDouble(),
+                width: context.knobs
+                    .number(
+                      label: 'Button Width',
+                      initialValue: 200,
+                    )
+                    .toDouble(),
+                child: DesignText.body2(
+                  context.knobs.text(label: 'Text', initialValue: 'Button'),
+                  args: DesignTextStyleArgs(
+                    color: context.knobTextColorOption,
+                  ),
                 ),
               ),
             );
