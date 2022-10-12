@@ -5,6 +5,7 @@ class DesignButton extends StatelessWidget {
   final double? height;
   final double? width;
   final Color backgroundColor;
+  final DesignButtonType? buttonType;
   final DesignText child;
   final Widget? leading;
   final Widget? trailing;
@@ -19,6 +20,7 @@ class DesignButton extends StatelessWidget {
     this.leading,
     this.trailing,
     this.enabled = true,
+    this.buttonType = DesignButtonType.filled,
   })  : backgroundColor = enabled
             ? backgroundColor ?? DesignColors.primaryBase
             : DesignColors.disabled,
@@ -27,6 +29,7 @@ class DesignButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isOutlinedType = buttonType == DesignButtonType.outlined;
     return SizedBox(
       width: width,
       height: height,
@@ -35,8 +38,11 @@ class DesignButton extends StatelessWidget {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           decoration: BoxDecoration(
-            color: backgroundColor,
+            color: isOutlinedType ? Colors.transparent : backgroundColor,
             borderRadius: BorderRadius.circular(6),
+            border: isOutlinedType
+                ? Border.all(color: backgroundColor, width: 1)
+                : null,
           ),
           padding: const EdgeInsets.symmetric(
             vertical: 6,
@@ -70,3 +76,5 @@ class DesignButton extends StatelessWidget {
     );
   }
 }
+
+enum DesignButtonType { filled, outlined, text }

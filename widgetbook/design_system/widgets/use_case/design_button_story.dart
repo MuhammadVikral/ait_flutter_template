@@ -20,6 +20,7 @@ class DesignButtonStory extends WidgetbookUseCase {
               label: 'With Trailing',
               initialValue: false,
             );
+            Color color = context.knobTextColorOption;
 
             return Center(
               child: DesignButton(
@@ -41,20 +42,19 @@ class DesignButtonStory extends WidgetbookUseCase {
                     ? Icon(
                         Icons.bookmark,
                         size: 12.0,
-                        color: buttonEnabled
-                            ? DesignColors.white
-                            : DesignColors.disabledText,
+                        color:
+                            buttonEnabled ? color : DesignColors.disabledText,
                       )
                     : null,
                 trailing: withTraling
                     ? Icon(
                         Icons.bookmark,
                         size: 12.0,
-                        color: buttonEnabled
-                            ? DesignColors.white
-                            : DesignColors.disabledText,
+                        color:
+                            buttonEnabled ? color : DesignColors.disabledText,
                       )
                     : null,
+                buttonType: context.knobButtonTypeOption,
                 child: DesignText.body2(
                   context.knobs.text(
                     label: 'Text',
@@ -62,7 +62,7 @@ class DesignButtonStory extends WidgetbookUseCase {
                     description: 'Use this to change the text inside button',
                   ),
                   args: DesignTextStyleArgs(
-                    color: context.knobTextColorOption,
+                    color: color,
                     fontWeight: context.knobFontWeightOption,
                   ),
                 ),
