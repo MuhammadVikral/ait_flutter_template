@@ -1,4 +1,4 @@
-import 'package:ait_const/ait_const.dart';
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 

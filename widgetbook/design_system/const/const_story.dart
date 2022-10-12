@@ -3,10 +3,10 @@ import 'package:widgetbook/widgetbook.dart';
 
 import 'use_cases/typography_usecase.dart';
 
-class DesignSystem extends WidgetbookComponent {
-  DesignSystem(BuildContext context)
+class ConstStory extends WidgetbookComponent {
+  ConstStory(BuildContext context)
       : super(
-          name: 'design System',
+          name: 'const Story',
           useCases: [TypograhyUseCase(context)],
         );
 }

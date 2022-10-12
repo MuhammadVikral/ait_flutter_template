@@ -1,4 +1,4 @@
-import 'package:ait_const/src/const/const.dart';
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 class DesignText extends StatelessWidget {

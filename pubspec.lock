@@ -8,13 +8,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "49.0.0"
-  ait_const:
-    dependency: "direct main"
-    description:
-      path: "packages/ait_const"
-      relative: true
-    source: path
-    version: "0.0.1"
   analyzer:
     dependency: transitive
     description:
@@ -162,6 +155,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.4"
+  design_system:
+    dependency: "direct main"
+    description:
+      path: "packages/design_system"
+      relative: true
+    source: path
+    version: "0.0.1"
   device_frame:
     dependency: transitive
     description:
