@@ -10,17 +10,19 @@ class DesignButton extends StatelessWidget {
   final Widget? leading;
   final Widget? trailing;
   final bool enabled;
+  final Function() onTap;
 
   const DesignButton({
     Key? key,
     this.height = 34,
     double? width,
     Color? backgroundColor,
-    required this.child,
     this.leading,
     this.trailing,
     this.enabled = true,
     this.buttonType = DesignButtonType.filled,
+    required this.child,
+    required this.onTap,
   })  : backgroundColor = enabled
             ? backgroundColor ?? DesignColors.primaryBase
             : DesignColors.disabled,
@@ -30,15 +32,16 @@ class DesignButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isOutlinedType = buttonType == DesignButtonType.outlined;
+    bool isFilledType = buttonType == DesignButtonType.filled;
     return SizedBox(
       width: width,
       height: height,
       child: GestureDetector(
-        onTap: () {},
+        onTap: onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           decoration: BoxDecoration(
-            color: isOutlinedType ? Colors.transparent : backgroundColor,
+            color: !isFilledType ? Colors.transparent : backgroundColor,
             borderRadius: BorderRadius.circular(6),
             border: isOutlinedType
                 ? Border.all(color: backgroundColor, width: 1)

@@ -56,6 +56,7 @@ class DesignButtonStory extends WidgetbookUseCase {
                       )
                     : null,
                 buttonType: buttonType,
+                onTap: () {},
                 child: DesignText.body2(
                   context.knobs.text(
                     label: 'Text',
