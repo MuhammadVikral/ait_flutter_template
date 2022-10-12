@@ -33,6 +33,7 @@ class DesignButtonStory extends WidgetbookUseCase {
                   ),
                   args: DesignTextStyleArgs(
                     color: context.knobTextColorOption,
+                    fontWeight: context.knobFontWeightOption,
                   ),
                 ),
               ),

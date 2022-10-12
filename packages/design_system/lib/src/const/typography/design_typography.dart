@@ -117,7 +117,13 @@ extension OverideDesignTextColor on DesignText {
   DesignText overideColor(Color overideColor) {
     return DesignText(
       text,
-      style: style.copyWith(color: overideColor),
+      style: style.copyWithArgs(
+        DesignTextStyleArgs(
+          color: overideColor,
+          fontWeight: style.fontWeight,
+          fontStyle: style.fontStyle,
+        ),
+      ),
     );
   }
 }
