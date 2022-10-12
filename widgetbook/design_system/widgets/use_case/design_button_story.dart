@@ -8,6 +8,7 @@ class DesignButtonStory extends WidgetbookUseCase {
       : super(
           name: 'Design Button',
           builder: (context) {
+            DesignButtonType buttonType = context.knobButtonTypeOption;
             bool buttonEnabled = context.knobs.boolean(
               label: 'Enabled',
               initialValue: true,
@@ -54,7 +55,7 @@ class DesignButtonStory extends WidgetbookUseCase {
                             buttonEnabled ? color : DesignColors.disabledText,
                       )
                     : null,
-                buttonType: context.knobButtonTypeOption,
+                buttonType: buttonType,
                 child: DesignText.body2(
                   context.knobs.text(
                     label: 'Text',

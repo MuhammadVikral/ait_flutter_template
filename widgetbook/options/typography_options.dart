@@ -2,10 +2,10 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
-List<Option<Widget>> typographyOption(
+List<Option<DesignText>> typographyOption(
     {FontWeight? fontWeight, DesignColors? color}) {
   final List<DesignText> typographys = DesignText.listTypography();
-  return List<Option<Widget>>.generate(
+  return List<Option<DesignText>>.generate(
     typographys.length,
     (index) {
       return Option(

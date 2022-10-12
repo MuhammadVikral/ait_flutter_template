@@ -71,15 +71,15 @@ class DesignText extends StatelessWidget {
         super(key: key);
 
   static List<DesignText> listTypography({DesignTextStyleArgs? args}) => [
-        DesignText.h1('H2/60px', args: args),
-        DesignText.h2('H2/60px', args: args),
-        DesignText.h3('H2/60px', args: args),
-        DesignText.h4('H2/60px', args: args),
-        DesignText.h5('H2/60px', args: args),
-        DesignText.h6('H2/60px', args: args),
-        DesignText.body1('H2/60px', args: args),
-        DesignText.body2('H2/60px', args: args),
-        DesignText.caption('H2/60px', args: args),
+        DesignText.h1('H1/60px', args: args),
+        DesignText.h2('H2/48px', args: args),
+        DesignText.h3('H3/34px', args: args),
+        DesignText.h4('H4/28px', args: args),
+        DesignText.h5('H5/24px', args: args),
+        DesignText.h6('H6/20px', args: args),
+        DesignText.body1('Body 1/16px', args: args),
+        DesignText.body2('Body 2/14px', args: args),
+        DesignText.caption('Caption/12px', args: args),
       ];
 
   @override
