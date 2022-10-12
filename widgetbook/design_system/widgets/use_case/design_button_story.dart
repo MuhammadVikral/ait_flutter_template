@@ -24,7 +24,11 @@ class DesignButtonStory extends WidgetbookUseCase {
                     )
                     .toDouble(),
                 child: DesignText.body2(
-                  context.knobs.text(label: 'Text', initialValue: 'Button'),
+                  context.knobs.text(
+                    label: 'Text',
+                    initialValue: 'Button',
+                    description: 'Use this to change the text inside button',
+                  ),
                   args: DesignTextStyleArgs(
                     color: context.knobTextColorOption,
                   ),

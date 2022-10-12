@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 class DesignColors {
   const DesignColors._();
@@ -7,42 +6,42 @@ class DesignColors {
   static const Color black = Colors.black;
 
   ///Primary Colors
-  static final Color primaryLight2 = HexColor('#EFF6FF');
-  static final Color primaryLight1 = HexColor('#BFDBFE');
-  static final Color primaryBase = HexColor('#1D4ED8');
-  static final Color primaryDark1 = HexColor('#173EAB');
-  static final Color primaryDark2 = HexColor('#112D7E');
+  static const Color primaryLight2 = Color(0xFFEFF6FF);
+  static const Color primaryLight1 = Color(0xFFBFDBFE);
+  static const Color primaryBase = Color(0xFF1D4ED8);
+  static const Color primaryDark1 = Color(0xFF173EAB);
+  static const Color primaryDark2 = Color(0xFF112D7E);
 
   ///Danger Colors
-  static final Color dangerLight2 = HexColor('#FFE6E9');
-  static final Color dangerLight1 = HexColor('#FA9FAA');
-  static final Color dangerBase = HexColor('#E91639');
-  static final Color dangerDark1 = HexColor('#D10026');
-  static final Color dangerDark2 = HexColor('#B02132');
+  static const Color dangerLight2 = Color(0xFFFFE6E9);
+  static const Color dangerLight1 = Color(0xFFFA9FAA);
+  static const Color dangerBase = Color(0xFFE91639);
+  static const Color dangerDark1 = Color(0xFFD10026);
+  static const Color dangerDark2 = Color(0xFFB02132);
 
   ///Success Colors
-  static final Color successLight2 = HexColor('#CFF6E8');
-  static final Color successLight1 = HexColor('#5EE1B2');
-  static final Color successBase = HexColor('#09C380');
-  static final Color successDark1 = HexColor('#069D66');
-  static final Color successDark2 = HexColor('#098C5D');
+  static const Color successLight2 = Color(0xFFCFF6E8);
+  static const Color successLight1 = Color(0xFF5EE1B2);
+  static const Color successBase = Color(0xFF09C380);
+  static const Color successDark1 = Color(0xFF069D66);
+  static const Color successDark2 = Color(0xFF098C5D);
 
   ///Warning Colors
-  static final Color warningLight2 = HexColor('#FFEEDA');
-  static final Color warningLight1 = HexColor('#FFD5A3');
-  static final Color warningBase = HexColor('#FFA338');
-  static final Color warningDark1 = HexColor('#DC7B09');
-  static final Color warningDark2 = HexColor('#A76416');
+  static const Color warningLight2 = Color(0xFFFFEEDA);
+  static const Color warningLight1 = Color(0xFFFFD5A3);
+  static const Color warningBase = Color(0xFFFFA338);
+  static const Color warningDark1 = Color(0xFFDC7B09);
+  static const Color warningDark2 = Color(0xFFA76416);
 
   ///Info Colors
-  static final Color infoLight2 = HexColor('#E5DFFF');
-  static final Color infoLight1 = HexColor('#BDB0FF');
-  static final Color infoBase = HexColor('#7257FF');
-  static final Color infoDark1 = HexColor('#5B44D5');
-  static final Color infoDark2 = HexColor('#4C38B2');
+  static const Color infoLight2 = Color(0xFFE5DFFF);
+  static const Color infoLight1 = Color(0xFFBDB0FF);
+  static const Color infoBase = Color(0xFF7257FF);
+  static const Color infoDark1 = Color(0xFF5B44D5);
+  static const Color infoDark2 = Color(0xFF4C38B2);
 
   ///Color Option for StoryBook
-  static List<Color> get colorList => [
+  static List<Color> get colorList => const [
         primaryBase,
         primaryLight2,
         primaryLight1,

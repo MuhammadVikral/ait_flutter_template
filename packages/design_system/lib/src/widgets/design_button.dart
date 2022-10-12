@@ -8,15 +8,14 @@ class DesignButton extends StatelessWidget {
   final Widget child;
   final Widget leading;
 
-  DesignButton({
+  const DesignButton({
     Key? key,
     this.height = 34,
     double? width,
-    Color? backgroundColor,
+    this.backgroundColor = DesignColors.primaryBase,
     required this.child,
     this.leading = const SizedBox(),
-  })  : backgroundColor = backgroundColor ?? DesignColors.primaryBase,
-        width = width ?? double.infinity,
+  })  : width = width ?? double.infinity,
         super(key: key);
 
   @override
