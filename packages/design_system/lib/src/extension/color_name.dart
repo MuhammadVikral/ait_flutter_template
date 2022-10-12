@@ -30,6 +30,7 @@ extension ColorName on Color {
     DesignColors.infoBase: 'Info Base ',
     DesignColors.infoDark1: 'Info Dark 1',
     DesignColors.infoDark2: 'Info Dark 2',
+    DesignColors.disabled: 'Disabled'
   };
   String get colorName {
     return colorNames[this] ?? toString();

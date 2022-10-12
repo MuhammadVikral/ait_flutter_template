@@ -4,18 +4,23 @@ import 'package:flutter/material.dart';
 class DesignButton extends StatelessWidget {
   final double? height;
   final double? width;
-  final Color? backgroundColor;
-  final Widget child;
+  final Color backgroundColor;
+  final DesignText child;
   final Widget leading;
+  final bool enabled;
 
   const DesignButton({
     Key? key,
     this.height = 34,
     double? width,
-    this.backgroundColor = DesignColors.primaryBase,
+    Color? backgroundColor,
     required this.child,
     this.leading = const SizedBox(),
-  })  : width = width ?? double.infinity,
+    this.enabled = true,
+  })  : backgroundColor = enabled
+            ? backgroundColor ?? DesignColors.primaryBase
+            : DesignColors.disabled,
+        width = width ?? double.infinity,
         super(key: key);
 
   @override
@@ -40,7 +45,7 @@ class DesignButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               leading,
-              child,
+              enabled ? child : child.overideColor(DesignColors.disabledText),
             ],
           ),
         ),

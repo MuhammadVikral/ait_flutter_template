@@ -11,6 +11,8 @@ class DesignButtonStory extends WidgetbookUseCase {
             return Center(
               child: DesignButton(
                 backgroundColor: context.knobBackgroundColorOption,
+                enabled:
+                    context.knobs.boolean(label: 'Enabled', initialValue: true),
                 height: context.knobs
                     .number(
                       label: 'Button Height',

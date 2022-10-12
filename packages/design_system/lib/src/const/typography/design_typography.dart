@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class DesignText extends StatelessWidget {
   final String text;
   final TextStyle style;
+  const DesignText(this.text, {Key? key, required this.style})
+      : super(key: key);
 
   DesignText.h1(
     this.text, {
@@ -107,6 +109,15 @@ extension TextStyleCopyWith on TextStyle {
       color: args?.color,
       fontWeight: args?.fontWeight,
       fontStyle: args?.fontStyle,
+    );
+  }
+}
+
+extension OverideDesignTextColor on DesignText {
+  DesignText overideColor(Color overideColor) {
+    return DesignText(
+      text,
+      style: style.copyWith(color: overideColor),
     );
   }
 }

@@ -4,6 +4,8 @@ class DesignColors {
   const DesignColors._();
   static const Color white = Colors.white;
   static const Color black = Colors.black;
+  static const Color disabled = Color(0xFFE9ECEF);
+  static const Color disabledText = Color(0xFFADB5BD);
 
   ///Primary Colors
   static const Color primaryLight2 = Color(0xFFEFF6FF);
@@ -67,6 +69,7 @@ class DesignColors {
         infoBase,
         infoDark1,
         infoDark2,
+        disabled,
         black,
         white,
       ];
