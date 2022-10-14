@@ -26,6 +26,7 @@ class DesignTextInputStory extends StatelessWidget {
       padding: const EdgeInsets.all(32.0),
       alignment: Alignment.center,
       child: DesignTextInput(
+        hint: 'input text from knobs',
         initialText: initialText,
         errorText: initialText.isEmpty ? errorMessage : null,
         suffixIcon: suffixIcon,
