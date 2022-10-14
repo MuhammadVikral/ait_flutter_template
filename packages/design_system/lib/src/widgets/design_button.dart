@@ -33,6 +33,7 @@ class DesignButton extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isOutlinedType = buttonType == DesignButtonType.outlined;
     bool isFilledType = buttonType == DesignButtonType.filled;
+    debugPrint('');
     return SizedBox(
       width: width,
       height: height,
@@ -44,7 +45,10 @@ class DesignButton extends StatelessWidget {
             color: !isFilledType ? Colors.transparent : backgroundColor,
             borderRadius: BorderRadius.circular(6),
             border: isOutlinedType
-                ? Border.all(color: backgroundColor, width: 1)
+                ? Border.all(
+                    color: backgroundColor,
+                    width: 1,
+                  )
                 : null,
           ),
           padding: const EdgeInsets.symmetric(

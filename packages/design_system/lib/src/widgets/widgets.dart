@@ -1,1 +1,2 @@
 export 'design_button.dart';
+export 'design_text_input.dart';
