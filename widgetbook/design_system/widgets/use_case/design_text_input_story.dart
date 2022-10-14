@@ -11,13 +11,16 @@ class DesignTextInputStory extends StatelessWidget {
       label: 'Input Text',
       initialValue: '',
     );
+    String hintText = context.knobs.text(
+      label: 'Hint Text',
+      initialValue: 'Input Text via Knobs',
+    );
     String errorMessage = context.knobs.text(
       label: 'Error Message',
       initialValue: 'Tidak boleh kosong',
     );
-    Function() deleteText = () {
-      initialText = '';
-    };
+    bool disabled = context.knobs.boolean(label: 'disabled');
+    bool showErrorMessage = context.knobs.boolean(label: 'Show Error Message');
     Widget? suffixIcon = context.knobs.options(
       label: 'suffix Icon',
       options: suffixOptions,
@@ -26,10 +29,16 @@ class DesignTextInputStory extends StatelessWidget {
       padding: const EdgeInsets.all(32.0),
       alignment: Alignment.center,
       child: DesignTextInput(
-        hint: 'input text from knobs',
+        hint: hintText,
         initialText: initialText,
-        errorText: initialText.isEmpty ? errorMessage : null,
+        errorText: !showErrorMessage
+            ? null
+            : initialText.isEmpty
+                ? errorMessage
+                : null,
+        disabled: disabled,
         suffixIcon: suffixIcon,
+        onChanged: (value) {},
       ),
     );
   }
