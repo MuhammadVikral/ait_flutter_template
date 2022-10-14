@@ -43,7 +43,7 @@ List<Option<Widget?>> get suffixOptions {
       value: IconButton(
         onPressed: () {},
         icon: const Icon(Icons.close),
-        color: DesignColors.disabledText,
+        color: DesignColors.neutral60,
       ),
     ),
   ];

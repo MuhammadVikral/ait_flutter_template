@@ -25,7 +25,7 @@ class DesignButton extends StatelessWidget {
     required this.onTap,
   })  : backgroundColor = enabled
             ? backgroundColor ?? DesignColors.primaryBase
-            : DesignColors.disabled,
+            : DesignColors.neutral30,
         width = width ?? double.infinity,
         super(key: key);
 
@@ -67,7 +67,7 @@ class DesignButton extends StatelessWidget {
                     child: leading,
                   ),
                 ),
-                enabled ? child : child.overideColor(DesignColors.disabledText),
+                enabled ? child : child.overideColor(DesignColors.neutral60),
                 Visibility(
                   visible: trailing != null,
                   child: Container(

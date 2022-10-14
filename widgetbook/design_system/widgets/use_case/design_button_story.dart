@@ -44,16 +44,14 @@ class DesignButtonStory extends WidgetbookUseCase {
                     ? Icon(
                         Icons.bookmark,
                         size: 12.0,
-                        color:
-                            buttonEnabled ? color : DesignColors.disabledText,
+                        color: buttonEnabled ? color : DesignColors.neutral60,
                       )
                     : null,
                 trailing: withTraling
                     ? Icon(
                         Icons.bookmark,
                         size: 12.0,
-                        color:
-                            buttonEnabled ? color : DesignColors.disabledText,
+                        color: buttonEnabled ? color : DesignColors.neutral60,
                       )
                     : null,
                 buttonType: buttonType,

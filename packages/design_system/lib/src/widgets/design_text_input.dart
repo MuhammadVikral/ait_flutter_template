@@ -46,7 +46,7 @@ class DesignTextInput extends StatelessWidget {
             ),
             hintText: hint,
             hintStyle: DesignTextStyle.body1.copyWith(
-              color: DesignColors.disabledText,
+              color: DesignColors.neutral60,
             ),
             suffixIcon: suffixIcon,
           ),

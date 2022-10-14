@@ -30,7 +30,15 @@ extension ColorName on Color {
     DesignColors.infoBase: 'Info Base ',
     DesignColors.infoDark1: 'Info Dark 1',
     DesignColors.infoDark2: 'Info Dark 2',
-    DesignColors.disabled: 'Disabled'
+    DesignColors.neutral10: 'Neutral 10',
+    DesignColors.neutral20: 'Neutral 20',
+    DesignColors.neutral30: 'Neutral 30',
+    DesignColors.neutral40: 'Neutral 40',
+    DesignColors.neutral50: 'Neutral 50',
+    DesignColors.neutral60: 'Neutral 60',
+    DesignColors.neutral70: 'Neutral 70',
+    DesignColors.neutral80: 'Neutral 80',
+    DesignColors.neutral90: 'Neutral 90',
   };
   String get colorName {
     return colorNames[this] ?? toString();

@@ -2,10 +2,20 @@ import 'package:flutter/material.dart';
 
 class DesignColors {
   const DesignColors._();
-  static const Color white = Colors.white;
-  static const Color black = Colors.black;
-  static const Color disabled = Color(0xFFE9ECEF);
-  static const Color disabledText = Color(0xFFADB5BD);
+
+  ///Neutral Colors
+
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color neutral10 = Color(0xFFF5F7F9);
+  static const Color neutral20 = Color(0xFFF1F3F5);
+  static const Color neutral30 = Color(0xFFE9ECEF);
+  static const Color neutral40 = Color(0xFFDEE2E6);
+  static const Color neutral50 = Color(0xFCED4DAF);
+  static const Color neutral60 = Color(0xFFADB5BD);
+  static const Color neutral70 = Color(0xFF868E96);
+  static const Color neutral80 = Color(0xFF495057);
+  static const Color neutral90 = Color(0xFF343A40);
+  static const Color black = Color(0xFF212529);
 
   ///Primary Colors
   static const Color primaryLight2 = Color(0xFFEFF6FF);
@@ -69,7 +79,15 @@ class DesignColors {
         infoBase,
         infoDark1,
         infoDark2,
-        disabled,
+        neutral10,
+        neutral20,
+        neutral30,
+        neutral40,
+        neutral50,
+        neutral60,
+        neutral70,
+        neutral80,
+        neutral90,
         black,
         white,
       ];
