@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
+import 'auth/auth_category.dart';
 import 'design_system/design_system_category.dart';
 
 class WidgetbookHotReload extends StatelessWidget {
@@ -11,6 +12,7 @@ class WidgetbookHotReload extends StatelessWidget {
     return Widgetbook.material(
       categories: [
         DesignSystemCategory(context),
+        AuthCategory(context),
       ],
       appInfo: AppInfo(name: 'ait fltter template'),
       themes: [
