@@ -126,4 +126,30 @@ extension OverideDesignTextColor on DesignText {
       ),
     );
   }
+
+  DesignText get bold {
+    return DesignText(
+      text,
+      style: style.copyWithArgs(
+        DesignTextStyleArgs(
+          color: style.color,
+          fontWeight: boldFont,
+          fontStyle: style.fontStyle,
+        ),
+      ),
+    );
+  }
+
+  DesignText get medium {
+    return DesignText(
+      text,
+      style: style.copyWithArgs(
+        DesignTextStyleArgs(
+          color: style.color,
+          fontWeight: mediumFont,
+          fontStyle: style.fontStyle,
+        ),
+      ),
+    );
+  }
 }
