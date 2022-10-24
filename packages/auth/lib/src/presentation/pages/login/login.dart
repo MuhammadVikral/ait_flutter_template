@@ -43,6 +43,29 @@ class Login extends StatelessWidget {
                   DesignColors.white,
                 ),
           ),
+          const SizedBox(height: 16),
+          Center(
+            child: RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Don’t have an account?   ',
+                    style: DesignTextStyle.body2.copyWith(
+                      color: DesignColors.neutral70,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'Register here',
+                    style: DesignTextStyle.body2.copyWith(
+                      color: DesignColors.primaryBase,
+                      fontWeight: boldFont,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const Spacer()
         ],
       ),
     );
