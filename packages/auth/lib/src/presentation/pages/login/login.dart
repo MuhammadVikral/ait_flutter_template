@@ -30,9 +30,19 @@ class Login extends StatelessWidget {
             suffixLabel: DesignText.body2('Forgot Password?')
                 .bold
                 .overideColor(DesignColors.primaryBase),
+            suffixIcon: const Icon(Icons.remove_red_eye),
             alwaysShowLabel: true,
             initialText: '',
-          )
+          ),
+          const SizedBox(height: 40),
+          DesignButton(
+            onTap: () {},
+            height: 40,
+            enabled: false,
+            child: DesignText.body1('Login').bold.overideColor(
+                  DesignColors.white,
+                ),
+          ),
         ],
       ),
     );
