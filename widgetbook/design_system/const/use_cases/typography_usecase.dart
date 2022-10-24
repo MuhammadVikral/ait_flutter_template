@@ -1,6 +1,5 @@
-import 'package:design_system/design_system.dart';
+import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 import '../../../options/knob_options.dart';

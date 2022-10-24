@@ -1,4 +1,4 @@
-import 'package:design_system/design_system.dart';
+import 'package:common_dependency/common_dependency.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 List<Option<DesignButtonType>> get buttonTypeOption {
