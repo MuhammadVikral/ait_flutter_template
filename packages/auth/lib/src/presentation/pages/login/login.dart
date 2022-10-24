@@ -13,17 +13,16 @@ class Login extends StatelessWidget {
         children: [
           DesignText.h3(
             'Login',
-          ).bold,
-          const SizedBox(height: 12),
-          DesignText.body2('Welcome back! Let\'s login to your account').bold,
-          const SizedBox(height: 32),
+          ).bold.bottomMargin(12),
+          DesignText.body2('Welcome back! Let\'s login to your account')
+              .bold
+              .bottomMargin(32),
           const DesignTextInput(
             hint: 'Username / Email / Phone No.',
             showHint: false,
             alwaysShowLabel: true,
             initialText: '',
-          ),
-          const SizedBox(height: 24),
+          ).bottomMargin(24),
           DesignTextInput(
             hint: 'Password',
             showHint: false,
@@ -33,8 +32,7 @@ class Login extends StatelessWidget {
             suffixIcon: const Icon(Icons.remove_red_eye),
             alwaysShowLabel: true,
             initialText: '',
-          ),
-          const SizedBox(height: 40),
+          ).bottomMargin(40),
           DesignButton(
             onTap: () {},
             height: 40,
@@ -42,8 +40,7 @@ class Login extends StatelessWidget {
             child: DesignText.body1('Login').bold.overideColor(
                   DesignColors.white,
                 ),
-          ),
-          const SizedBox(height: 16),
+          ).bottomMargin(16),
           Center(
             child: RichText(
               text: TextSpan(
@@ -65,7 +62,6 @@ class Login extends StatelessWidget {
               ),
             ),
           ),
-          const Spacer()
         ],
       ),
     );
