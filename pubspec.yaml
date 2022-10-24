@@ -11,6 +11,8 @@ environment:
 dependencies:
   design_system:
     path: "packages/design_system"
+  auth:
+    path: "packages/auth"
   build_runner: ^2.2.1
   flutter:
     sdk: flutter
