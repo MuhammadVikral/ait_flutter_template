@@ -19,6 +19,18 @@ class Login extends StatelessWidget {
           const SizedBox(height: 32),
           const DesignTextInput(
             hint: 'Username / Email / Phone No.',
+            showHint: false,
+            alwaysShowLabel: true,
+            initialText: '',
+          ),
+          const SizedBox(height: 24),
+          DesignTextInput(
+            hint: 'Password',
+            showHint: false,
+            suffixLabel: DesignText.body2('Forgot Password?')
+                .bold
+                .overideColor(DesignColors.primaryBase),
+            alwaysShowLabel: true,
             initialText: '',
           )
         ],

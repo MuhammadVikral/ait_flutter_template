@@ -10,13 +10,19 @@ class DesignTextInput extends StatelessWidget {
     this.suffixIcon,
     required this.hint,
     this.disabled = false,
+    this.alwaysShowLabel = false,
+    this.showHint = true,
     this.onChanged,
+    this.suffixLabel,
   });
   final String hint;
   final String? errorText;
   final String? initialText;
   final Widget? suffixIcon;
+  final Widget? suffixLabel;
   final bool disabled;
+  final bool showHint;
+  final bool alwaysShowLabel;
   final Function(String?)? onChanged;
 
   @override
@@ -26,10 +32,16 @@ class DesignTextInput extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Visibility(
-          visible: textInput.isNotEmpty,
-          child: DesignText.body1(
-            hint,
-            args: DesignTextStyleArgs(fontWeight: mediumFont),
+          visible: alwaysShowLabel ? true : textInput.isNotEmpty,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              DesignText.body2(
+                hint,
+              ).medium,
+              suffixLabel ?? const SizedBox()
+            ],
           ),
         ),
         const SizedBox(height: 4),
@@ -56,7 +68,7 @@ class DesignTextInput extends StatelessWidget {
               vertical: 8.0,
               horizontal: 16.0,
             ),
-            hintText: hint,
+            hintText: showHint ? hint : null,
             hintStyle: DesignTextStyle.body1.copyWithArgs(
               DesignTextStyleArgs(
                 color: DesignColors.neutral60,
