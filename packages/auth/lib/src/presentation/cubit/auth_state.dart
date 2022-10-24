@@ -1,10 +1,13 @@
 part of 'auth_cubit.dart';
 
-abstract class AuthState extends Equatable {
-  const AuthState();
-
-  @override
-  List<Object> get props => [];
+@freezed
+class AuthState with _$AuthState {
+  factory AuthState({
+    required LoginInput loginInput,
+    required PasswordInput passwordInput,
+  }) = _AuthState;
+  factory AuthState.initial() => AuthState(
+        loginInput: LoginInput.pure(),
+        passwordInput: PasswordInput.pure(),
+      );
 }
-
-class AuthInitial extends AuthState {}
