@@ -1,4 +1,4 @@
-import 'package:design_system/design_system.dart';
+import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {

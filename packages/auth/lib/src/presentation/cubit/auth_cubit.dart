@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:common_dependency/common_dependency.dart';
 
 part 'auth_state.dart';
 
