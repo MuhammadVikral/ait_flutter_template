@@ -30,7 +30,7 @@
         {
             "label": "commit refactor",
             "type": "shell",
-            "command": "git commit --m 'refactor(${input:comit feature}) : ${input:comit}'",
+            "command": "git commit --m 'refactou(${input:comit feature}) : ${input:comit}'",
             "problemMatcher": []
         },
         {

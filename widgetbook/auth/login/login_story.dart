@@ -13,6 +13,12 @@ class LoginStory extends WidgetbookComponent {
                 return const Login();
               },
             ),
+            WidgetbookUseCase(
+              name: 'Login Button',
+              builder: (context) {
+                return const LoginButton();
+              },
+            )
           ],
         );
 }

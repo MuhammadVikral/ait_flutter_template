@@ -1,3 +1,4 @@
+import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
@@ -14,6 +15,13 @@ class WidgetbookHotReload extends StatelessWidget {
         DesignSystemCategory(context),
         AuthCategory(context),
       ],
+      
+      useCaseBuilder: (context, child) {
+        return BlocProvider(
+          create: (context) => AuthCubit(),
+          child: Center(child: child),
+        );
+      },
       appInfo: AppInfo(name: 'ait fltter template'),
       themes: [
         WidgetbookTheme(

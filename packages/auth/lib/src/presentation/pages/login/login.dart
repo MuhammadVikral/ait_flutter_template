@@ -1,8 +1,28 @@
+library login;
+
+import 'package:auth/src/presentation/cubit/auth_cubit.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
 
+part './widgets/username_input.dart';
+part './widgets/login_button.dart';
+
 class Login extends StatelessWidget {
   const Login({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => AuthCubit(),
+      child: const LoginPage(),
+    );
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +37,7 @@ class Login extends StatelessWidget {
           DesignText.body2('Welcome back! Let\'s login to your account')
               .bold
               .bottomMargin(32),
-          const DesignTextInput(
-            hint: 'Username / Email / Phone No.',
-            showHint: false,
-            alwaysShowLabel: true,
-            initialText: '',
-          ).bottomMargin(24),
+          const LoginUsernameInput().bottomMargin(24),
           DesignTextInput(
             hint: 'Password',
             showHint: false,
@@ -33,14 +48,7 @@ class Login extends StatelessWidget {
             alwaysShowLabel: true,
             initialText: '',
           ).bottomMargin(40),
-          DesignButton(
-            onTap: () {},
-            height: 40,
-            enabled: false,
-            child: DesignText.body1('Login').bold.overideColor(
-                  DesignColors.white,
-                ),
-          ).bottomMargin(16),
+          const LoginButton().bottomMargin(16),
           Center(
             child: RichText(
               text: TextSpan(
