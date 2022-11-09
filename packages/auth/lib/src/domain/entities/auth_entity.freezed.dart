@@ -16,10 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AuthEntity {
-  @JsonKey(name: 'email')
-  String? get email => throw _privateConstructorUsedError;
-  @JsonKey(name: 'password')
-  String? get password => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthEntityCopyWith<AuthEntity> get copyWith =>
@@ -32,9 +30,7 @@ abstract class $AuthEntityCopyWith<$Res> {
           AuthEntity value, $Res Function(AuthEntity) then) =
       _$AuthEntityCopyWithImpl<$Res, AuthEntity>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'email') String? email,
-      @JsonKey(name: 'password') String? password});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -50,18 +46,18 @@ class _$AuthEntityCopyWithImpl<$Res, $Val extends AuthEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = freezed,
-    Object? password = freezed,
+    Object? email = null,
+    Object? password = null,
   }) {
     return _then(_value.copyWith(
-      email: freezed == email
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: freezed == password
+              as String,
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -74,9 +70,7 @@ abstract class _$$_AuthEntityCopyWith<$Res>
       __$$_AuthEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'email') String? email,
-      @JsonKey(name: 'password') String? password});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -90,18 +84,18 @@ class __$$_AuthEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = freezed,
-    Object? password = freezed,
+    Object? email = null,
+    Object? password = null,
   }) {
     return _then(_$_AuthEntity(
-      freezed == email
+      null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == password
+              as String,
+      null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -109,15 +103,12 @@ class __$$_AuthEntityCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AuthEntity implements _AuthEntity {
-  _$_AuthEntity(@JsonKey(name: 'email') this.email,
-      @JsonKey(name: 'password') this.password);
+  _$_AuthEntity(this.email, this.password);
 
   @override
-  @JsonKey(name: 'email')
-  final String? email;
+  final String email;
   @override
-  @JsonKey(name: 'password')
-  final String? password;
+  final String password;
 
   @override
   String toString() {
@@ -145,15 +136,13 @@ class _$_AuthEntity implements _AuthEntity {
 }
 
 abstract class _AuthEntity implements AuthEntity {
-  factory _AuthEntity(@JsonKey(name: 'email') final String? email,
-      @JsonKey(name: 'password') final String? password) = _$_AuthEntity;
+  factory _AuthEntity(final String email, final String password) =
+      _$_AuthEntity;
 
   @override
-  @JsonKey(name: 'email')
-  String? get email;
+  String get email;
   @override
-  @JsonKey(name: 'password')
-  String? get password;
+  String get password;
   @override
   @JsonKey(ignore: true)
   _$$_AuthEntityCopyWith<_$_AuthEntity> get copyWith =>

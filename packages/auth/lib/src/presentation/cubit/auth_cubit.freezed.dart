@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthState {
   LoginInput get loginInput => throw _privateConstructorUsedError;
   PasswordInput get passwordInput => throw _privateConstructorUsedError;
+  FormzStatus get formStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -29,7 +30,10 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({LoginInput loginInput, PasswordInput passwordInput});
+  $Res call(
+      {LoginInput loginInput,
+      PasswordInput passwordInput,
+      FormzStatus formStatus});
 }
 
 /// @nodoc
@@ -47,6 +51,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   $Res call({
     Object? loginInput = null,
     Object? passwordInput = null,
+    Object? formStatus = null,
   }) {
     return _then(_value.copyWith(
       loginInput: null == loginInput
@@ -57,6 +62,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.passwordInput
           : passwordInput // ignore: cast_nullable_to_non_nullable
               as PasswordInput,
+      formStatus: null == formStatus
+          ? _value.formStatus
+          : formStatus // ignore: cast_nullable_to_non_nullable
+              as FormzStatus,
     ) as $Val);
   }
 }
@@ -68,7 +77,10 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       __$$_AuthStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({LoginInput loginInput, PasswordInput passwordInput});
+  $Res call(
+      {LoginInput loginInput,
+      PasswordInput passwordInput,
+      FormzStatus formStatus});
 }
 
 /// @nodoc
@@ -84,6 +96,7 @@ class __$$_AuthStateCopyWithImpl<$Res>
   $Res call({
     Object? loginInput = null,
     Object? passwordInput = null,
+    Object? formStatus = null,
   }) {
     return _then(_$_AuthState(
       loginInput: null == loginInput
@@ -94,6 +107,10 @@ class __$$_AuthStateCopyWithImpl<$Res>
           ? _value.passwordInput
           : passwordInput // ignore: cast_nullable_to_non_nullable
               as PasswordInput,
+      formStatus: null == formStatus
+          ? _value.formStatus
+          : formStatus // ignore: cast_nullable_to_non_nullable
+              as FormzStatus,
     ));
   }
 }
@@ -101,16 +118,21 @@ class __$$_AuthStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AuthState implements _AuthState {
-  _$_AuthState({required this.loginInput, required this.passwordInput});
+  _$_AuthState(
+      {required this.loginInput,
+      required this.passwordInput,
+      required this.formStatus});
 
   @override
   final LoginInput loginInput;
   @override
   final PasswordInput passwordInput;
+  @override
+  final FormzStatus formStatus;
 
   @override
   String toString() {
-    return 'AuthState(loginInput: $loginInput, passwordInput: $passwordInput)';
+    return 'AuthState(loginInput: $loginInput, passwordInput: $passwordInput, formStatus: $formStatus)';
   }
 
   @override
@@ -121,11 +143,14 @@ class _$_AuthState implements _AuthState {
             (identical(other.loginInput, loginInput) ||
                 other.loginInput == loginInput) &&
             (identical(other.passwordInput, passwordInput) ||
-                other.passwordInput == passwordInput));
+                other.passwordInput == passwordInput) &&
+            (identical(other.formStatus, formStatus) ||
+                other.formStatus == formStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loginInput, passwordInput);
+  int get hashCode =>
+      Object.hash(runtimeType, loginInput, passwordInput, formStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -137,12 +162,15 @@ class _$_AuthState implements _AuthState {
 abstract class _AuthState implements AuthState {
   factory _AuthState(
       {required final LoginInput loginInput,
-      required final PasswordInput passwordInput}) = _$_AuthState;
+      required final PasswordInput passwordInput,
+      required final FormzStatus formStatus}) = _$_AuthState;
 
   @override
   LoginInput get loginInput;
   @override
   PasswordInput get passwordInput;
+  @override
+  FormzStatus get formStatus;
   @override
   @JsonKey(ignore: true)
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>

@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: auth,common_dependency
+dependency_overrides:
+  auth:
+    path: ..\\auth
+  common_dependency:
+    path: ..\\common_dependency
