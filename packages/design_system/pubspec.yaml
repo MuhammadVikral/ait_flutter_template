@@ -12,7 +12,6 @@ dependencies:
     sdk: flutter
   common_dependency:
     path: "../common_dependency"
-  build_runner: ^2.3.2
 
 dev_dependencies:
   flutter_test:
