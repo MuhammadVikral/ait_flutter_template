@@ -13,3 +13,11 @@ scripts:
     description: Run a build_runner build in the ODM example app.
     select-package:
       scope: "*auth*"
+  test:
+    run: |
+      melos exec -c 6 --fail-fast -- \
+        "flutter test --no-pub"
+    description: Run `flutter test` for a specific package.
+    select-package:
+      dir-exists:
+        - test
