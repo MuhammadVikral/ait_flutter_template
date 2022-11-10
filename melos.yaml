@@ -6,13 +6,13 @@ command:
   bootstrap:
     usePubspecOverrides: true
 scripts:
-  build_runner:auth:
+  build_runner:
     run: |
-      melos exec -- \
+      melos exec -c 6 --fail-fast -- \
         "flutter pub run build_runner build --delete-conflicting-outputs"
     description: Run a build_runner build in the ODM example app.
     select-package:
-      scope: "*auth*"
+      depends-on: "freezed"
   test:
     run: |
       melos exec -c 6 --fail-fast -- \

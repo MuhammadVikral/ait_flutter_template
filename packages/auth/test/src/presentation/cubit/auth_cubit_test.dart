@@ -2,15 +2,15 @@ import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
+  late AuthCubit authCubit;
+  setUp(
+    () {
+      authCubit = AuthCubit();
+    },
+  );
   group(
     'input username & password invalid',
     () {
-      late AuthCubit authCubit;
-      setUp(
-        () {
-          authCubit = AuthCubit();
-        },
-      );
       test(
         'should change loginInput state into "tidak boleh kosong" when inputed username is empty',
         () {
@@ -44,12 +44,6 @@ void main() {
   group(
     'input username valid',
     () {
-      late AuthCubit authCubit;
-      setUp(
-        () {
-          authCubit = AuthCubit();
-        },
-      );
       test(
         'should change loginInput state into valid when inputed username is email ',
         () {
