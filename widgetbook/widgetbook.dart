@@ -15,10 +15,9 @@ class WidgetbookHotReload extends StatelessWidget {
         DesignSystemCategory(context),
         AuthCategory(context),
       ],
-      
       useCaseBuilder: (context, child) {
         return BlocProvider(
-          create: (context) => AuthCubit(),
+          create: (context) => LoginCubit(),
           child: Center(child: child),
         );
       },

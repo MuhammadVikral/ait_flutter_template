@@ -7,7 +7,7 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<AuthCubit, AuthState, LoginInput>(
+    return BlocSelector<LoginCubit, LoginState, LoginInput>(
       selector: (state) {
         return state.loginInput;
       },

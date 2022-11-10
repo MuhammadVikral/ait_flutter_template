@@ -2,6 +2,7 @@ library login;
 
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
+export './cubit/login_cubit.dart';
 
 part './widgets/username_input.dart';
 part './widgets/login_button.dart';
@@ -13,7 +14,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthCubit(),
+      create: (context) => LoginCubit(),
       child: const LoginPage(),
     );
   }

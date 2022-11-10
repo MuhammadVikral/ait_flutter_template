@@ -7,7 +7,7 @@ class LoginUsernameInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<AuthCubit, AuthState, LoginInput>(
+    return BlocSelector<LoginCubit, LoginState, LoginInput>(
       selector: (state) {
         return state.loginInput;
       },
@@ -18,7 +18,7 @@ class LoginUsernameInput extends StatelessWidget {
           alwaysShowLabel: true,
           initialText: '',
           onChanged: (value) {
-            context.read<AuthCubit>().onChangeLogin(value ?? '');
+            context.read<LoginCubit>().onChangeLogin(value ?? '');
           },
         );
       },

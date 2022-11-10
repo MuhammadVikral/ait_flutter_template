@@ -11,8 +11,8 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: BlocProvider(
-            create: (context) => AuthCubit(),
-            child: BlocListener<AuthCubit, AuthState>(
+            create: (context) => LoginCubit(),
+            child: BlocListener<LoginCubit, LoginState>(
               listener: (context, state) {
                 inputValue = state.passwordInput.value;
               },
@@ -28,7 +28,7 @@ void main() {
     },
   );
   testWidgets(
-    'input password should show password minimal 8 character',
+    'input password should show password minimal 8 character when inputted character is less than 8',
     (tester) async {
       await tester.pumpWidget(const MaterialApp(home: Login()));
       await tester.enterText(passwordInput, '088');
@@ -44,6 +44,19 @@ void main() {
       await tester.enterText(passwordInput, '12345678');
       await tester.pump();
 
+      expect(find.text('password minimal 8 character'), findsNothing);
+    },
+  );
+  testWidgets(
+    'input password should show error message when inputed uncorrectly and then not show error message when inputted correctly',
+    (tester) async {
+      await tester.pumpWidget(const MaterialApp(home: Login()));
+      await tester.enterText(passwordInput, '088');
+      await tester.pump();
+      expect(find.text('password minimal 8 character'), findsOneWidget);
+
+      await tester.enterText(passwordInput, '12345678');
+      await tester.pump();
       expect(find.text('password minimal 8 character'), findsNothing);
     },
   );

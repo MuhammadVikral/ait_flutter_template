@@ -1,11 +1,11 @@
 import 'package:common_dependency/common_dependency.dart';
 
-part 'auth_state.dart';
+part 'login_state.dart';
 
-part 'auth_cubit.freezed.dart';
+part 'login_cubit.freezed.dart';
 
-class AuthCubit extends Cubit<AuthState> {
-  AuthCubit() : super(AuthState.initial());
+class LoginCubit extends Cubit<LoginState> {
+  LoginCubit() : super(LoginState.initial());
 
   void onChangeLogin(String value) {
     var input = LoginInput.dirty(value);

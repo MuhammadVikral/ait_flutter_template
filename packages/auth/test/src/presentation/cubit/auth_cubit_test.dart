@@ -2,10 +2,10 @@ import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  late AuthCubit authCubit;
+  late LoginCubit authCubit;
   setUp(
     () {
-      authCubit = AuthCubit();
+      authCubit = LoginCubit();
     },
   );
   group(
