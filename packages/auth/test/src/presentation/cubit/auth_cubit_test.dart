@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group(
-    'input username invalid',
+    'input username & password invalid',
     () {
       late AuthCubit authCubit;
       setUp(
@@ -30,6 +30,13 @@ void main() {
         () {
           authCubit.onChangeLogin('08');
           expect(authCubit.state.loginInput.invalid, true);
+        },
+      );
+      test(
+        'should change loginInput state into "password minimal  character" when inputed password is invalid',
+        () {
+          authCubit.onChangePassword('08');
+          expect(authCubit.state.passwordInput.invalid, true);
         },
       );
     },
@@ -62,6 +69,13 @@ void main() {
         () {
           authCubit.onChangeLogin('skypea');
           expect(authCubit.state.loginInput.valid, true);
+        },
+      );
+      test(
+        'should change loginInput state into valid when inputed password is valid',
+        () {
+          authCubit.onChangePassword('12345678');
+          expect(authCubit.state.passwordInput.valid, true);
         },
       );
     },

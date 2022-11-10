@@ -13,4 +13,11 @@ class AuthCubit extends Cubit<AuthState> {
       state.copyWith(loginInput: input),
     );
   }
+
+  void onChangePassword(String value) {
+    var input = PasswordInput.dirty(value);
+    emit(
+      state.copyWith(passwordInput: input),
+    );
+  }
 }
