@@ -14,6 +14,7 @@ class LoginUsernameInput extends StatelessWidget {
       builder: (context, state) {
         return DesignTextInput(
           hint: 'Username / Email / Phone No.',
+          key: const Key('username input'),
           showHint: false,
           alwaysShowLabel: true,
           initialText: '',

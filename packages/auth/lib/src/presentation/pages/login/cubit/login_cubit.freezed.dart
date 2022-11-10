@@ -119,11 +119,12 @@ class __$$_LoginStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoginState implements _LoginState {
+class _$_LoginState extends _LoginState {
   _$_LoginState(
       {required this.loginInput,
       required this.passwordInput,
-      required this.formStatus});
+      required this.formStatus})
+      : super._();
 
   @override
   final LoginInput loginInput;
@@ -161,11 +162,12 @@ class _$_LoginState implements _LoginState {
       __$$_LoginStateCopyWithImpl<_$_LoginState>(this, _$identity);
 }
 
-abstract class _LoginState implements LoginState {
+abstract class _LoginState extends LoginState {
   factory _LoginState(
       {required final LoginInput loginInput,
       required final PasswordInput passwordInput,
       required final FormzStatus formStatus}) = _$_LoginState;
+  _LoginState._() : super._();
 
   @override
   LoginInput get loginInput;

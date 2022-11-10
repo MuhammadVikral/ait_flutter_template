@@ -7,15 +7,16 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<LoginCubit, LoginState, LoginInput>(
+    return BlocSelector<LoginCubit, LoginState, bool>(
       selector: (state) {
-        return state.loginInput;
+        return state.buttonEnabled;
       },
       builder: (context, state) {
         return DesignButton(
+          key: const Key('login button'),
           onTap: () {},
           height: 40,
-          enabled: state.valid,
+          enabled: state,
           child: DesignText.body1('Login').bold.overideColor(
                 DesignColors.white,
               ),
