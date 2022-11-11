@@ -10,6 +10,7 @@ class DesignButton extends StatelessWidget {
   final Widget? leading;
   final Widget? trailing;
   final bool enabled;
+  final bool isLoading;
   final Function() onTap;
 
   const DesignButton({
@@ -21,6 +22,7 @@ class DesignButton extends StatelessWidget {
     this.trailing,
     this.enabled = true,
     this.buttonType = DesignButtonType.filled,
+    this.isLoading = false,
     required this.child,
     required this.onTap,
   })  : backgroundColor = enabled
@@ -57,26 +59,30 @@ class DesignButton extends StatelessWidget {
           ),
           alignment: Alignment.center,
           child: FittedBox(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Visibility(
-                  visible: leading != null,
-                  child: Container(
-                    margin: const EdgeInsets.only(right: 8),
-                    child: leading,
+            child: isLoading
+                ? CircularProgressIndicator()
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Visibility(
+                        visible: leading != null,
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 8),
+                          child: leading,
+                        ),
+                      ),
+                      enabled
+                          ? child
+                          : child.overideColor(DesignColors.neutral60),
+                      Visibility(
+                        visible: trailing != null,
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 8),
+                          child: trailing,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                enabled ? child : child.overideColor(DesignColors.neutral60),
-                Visibility(
-                  visible: trailing != null,
-                  child: Container(
-                    margin: const EdgeInsets.only(left: 8),
-                    child: trailing,
-                  ),
-                ),
-              ],
-            ),
           ),
         ),
       ),

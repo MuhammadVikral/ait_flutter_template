@@ -7,7 +7,7 @@ void main() {
   final passwordInput = find.byKey(const ValueKey('password input'));
   final usernameInput = find.byKey(const ValueKey('username input'));
   group(
-    'wether button is enabled or nor',
+    'wether button is enabled or not',
     () {
       testWidgets(
         'login button should not enabled when first rendered',
@@ -46,6 +46,23 @@ void main() {
           await tester.pump();
           expect(
               (tester.firstWidget(loginButton) as DesignButton).enabled, true);
+        },
+      );
+    },
+  );
+  group(
+    'login button clicked',
+    () {
+      testWidgets(
+        'should show circular loading when pressed',
+        (WidgetTester tester) async {
+          await tester.pumpWidget(const MaterialApp(home: Login()));
+          await tester.enterText(usernameInput, 'skypea');
+          await tester.enterText(passwordInput, '12345678');
+          await tester.tap(loginButton);
+          await tester.pump();
+          expect((tester.firstWidget(loginButton) as DesignButton).isLoading,
+              true);
         },
       );
     },

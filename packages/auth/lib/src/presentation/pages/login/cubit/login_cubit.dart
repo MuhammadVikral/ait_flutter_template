@@ -41,5 +41,7 @@ class LoginCubit extends Cubit<LoginState> {
     );
   }
 
-  void onTappedButon() {}
+  void onTappedButon() {
+    emit(state.copyWith(formStatus: FormzStatus.submissionInProgress));
+  }
 }
