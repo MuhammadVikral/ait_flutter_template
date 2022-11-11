@@ -22,6 +22,8 @@ class DesignButtonStory extends WidgetbookUseCase {
               label: 'With Trailing',
               initialValue: false,
             );
+            bool isLoading =
+                context.knobs.boolean(label: 'is Loading', initialValue: false);
             Color color = context.knobTextColorOption;
 
             return Center(
@@ -55,6 +57,7 @@ class DesignButtonStory extends WidgetbookUseCase {
                       )
                     : null,
                 buttonType: buttonType,
+                isLoading: isLoading,
                 onTap: () {},
                 child: DesignText.body2(
                   context.knobs.text(
