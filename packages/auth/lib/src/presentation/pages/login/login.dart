@@ -21,9 +21,7 @@ class Login extends StatelessWidget {
 }
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({
-    Key? key,
-  }) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +37,7 @@ class LoginPage extends StatelessWidget {
             DesignText.body2('Welcome back! Let\'s login to your account')
                 .bold
                 .bottomMargin(32),
-            const LoginUsernameInput().bottomMargin(24),
-            const LoginPasswordInput().bottomMargin(40),
+            const LoginPageForms(),
             const LoginButton().bottomMargin(16),
             Center(
               child: RichText(
@@ -66,6 +63,43 @@ class LoginPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class LoginPageForms extends StatefulWidget {
+  const LoginPageForms({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<LoginPageForms> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPageForms> {
+  final usernameFocusNode = FocusNode();
+  @override
+  void initState() {
+    usernameFocusNode.addListener(
+      () {
+        if (!usernameFocusNode.hasFocus) {
+          context.read<LoginCubit>().onUsernameLoseFocus();
+        }
+      },
+    );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        LoginUsernameInput(
+          focusNode: usernameFocusNode,
+        ).bottomMargin(24),
+        const LoginPasswordInput().bottomMargin(40),
+      ],
     );
   }
 }

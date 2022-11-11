@@ -14,16 +14,20 @@ class DesignTextInput extends StatelessWidget {
     this.showHint = true,
     this.onChanged,
     this.suffixLabel,
+    this.ontap,
+    this.focusNode,
   });
   final String hint;
   final String? errorText;
   final String? initialText;
   final Widget? suffixIcon;
   final Widget? suffixLabel;
+  final FocusNode? focusNode;
   final bool disabled;
   final bool showHint;
   final bool alwaysShowLabel;
   final Function(String?)? onChanged;
+  final Function()? ontap;
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +51,14 @@ class DesignTextInput extends StatelessWidget {
         const SizedBox(height: 4),
         TextFormField(
           key: Key(textInput),
+          focusNode: focusNode,
           initialValue: textInput,
           style: DesignTextStyle.body1.copyWithArgs(
             DesignTextStyleArgs(
               fontWeight: FontWeight.w500,
             ),
           ),
+          onTap: ontap,
           enabled: !disabled,
           onChanged: onChanged,
           decoration: InputDecoration(

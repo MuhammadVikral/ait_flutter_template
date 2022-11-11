@@ -19,6 +19,7 @@ mixin _$LoginState {
   LoginInput get loginInput => throw _privateConstructorUsedError;
   PasswordInput get passwordInput => throw _privateConstructorUsedError;
   FormzStatus get formStatus => throw _privateConstructorUsedError;
+  bool get showErrorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LoginStateCopyWith<LoginState> get copyWith =>
@@ -34,7 +35,8 @@ abstract class $LoginStateCopyWith<$Res> {
   $Res call(
       {LoginInput loginInput,
       PasswordInput passwordInput,
-      FormzStatus formStatus});
+      FormzStatus formStatus,
+      bool showErrorMessage});
 }
 
 /// @nodoc
@@ -53,6 +55,7 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
     Object? loginInput = null,
     Object? passwordInput = null,
     Object? formStatus = null,
+    Object? showErrorMessage = null,
   }) {
     return _then(_value.copyWith(
       loginInput: null == loginInput
@@ -67,6 +70,10 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.formStatus
           : formStatus // ignore: cast_nullable_to_non_nullable
               as FormzStatus,
+      showErrorMessage: null == showErrorMessage
+          ? _value.showErrorMessage
+          : showErrorMessage // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -82,7 +89,8 @@ abstract class _$$_LoginStateCopyWith<$Res>
   $Res call(
       {LoginInput loginInput,
       PasswordInput passwordInput,
-      FormzStatus formStatus});
+      FormzStatus formStatus,
+      bool showErrorMessage});
 }
 
 /// @nodoc
@@ -99,6 +107,7 @@ class __$$_LoginStateCopyWithImpl<$Res>
     Object? loginInput = null,
     Object? passwordInput = null,
     Object? formStatus = null,
+    Object? showErrorMessage = null,
   }) {
     return _then(_$_LoginState(
       loginInput: null == loginInput
@@ -113,6 +122,10 @@ class __$$_LoginStateCopyWithImpl<$Res>
           ? _value.formStatus
           : formStatus // ignore: cast_nullable_to_non_nullable
               as FormzStatus,
+      showErrorMessage: null == showErrorMessage
+          ? _value.showErrorMessage
+          : showErrorMessage // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -123,7 +136,8 @@ class _$_LoginState extends _LoginState {
   _$_LoginState(
       {required this.loginInput,
       required this.passwordInput,
-      required this.formStatus})
+      required this.formStatus,
+      required this.showErrorMessage})
       : super._();
 
   @override
@@ -132,10 +146,12 @@ class _$_LoginState extends _LoginState {
   final PasswordInput passwordInput;
   @override
   final FormzStatus formStatus;
+  @override
+  final bool showErrorMessage;
 
   @override
   String toString() {
-    return 'LoginState(loginInput: $loginInput, passwordInput: $passwordInput, formStatus: $formStatus)';
+    return 'LoginState(loginInput: $loginInput, passwordInput: $passwordInput, formStatus: $formStatus, showErrorMessage: $showErrorMessage)';
   }
 
   @override
@@ -148,12 +164,14 @@ class _$_LoginState extends _LoginState {
             (identical(other.passwordInput, passwordInput) ||
                 other.passwordInput == passwordInput) &&
             (identical(other.formStatus, formStatus) ||
-                other.formStatus == formStatus));
+                other.formStatus == formStatus) &&
+            (identical(other.showErrorMessage, showErrorMessage) ||
+                other.showErrorMessage == showErrorMessage));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, loginInput, passwordInput, formStatus);
+  int get hashCode => Object.hash(
+      runtimeType, loginInput, passwordInput, formStatus, showErrorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -166,7 +184,8 @@ abstract class _LoginState extends LoginState {
   factory _LoginState(
       {required final LoginInput loginInput,
       required final PasswordInput passwordInput,
-      required final FormzStatus formStatus}) = _$_LoginState;
+      required final FormzStatus formStatus,
+      required final bool showErrorMessage}) = _$_LoginState;
   _LoginState._() : super._();
 
   @override
@@ -175,6 +194,8 @@ abstract class _LoginState extends LoginState {
   PasswordInput get passwordInput;
   @override
   FormzStatus get formStatus;
+  @override
+  bool get showErrorMessage;
   @override
   @JsonKey(ignore: true)
   _$$_LoginStateCopyWith<_$_LoginState> get copyWith =>

@@ -14,7 +14,9 @@ class LoginButton extends StatelessWidget {
       builder: (context, state) {
         return DesignButton(
           key: const Key('login button'),
-          onTap: () {},
+          onTap: () {
+            context.read<LoginCubit>().onTappedButon();
+          },
           height: 40,
           enabled: state,
           child: DesignText.body1('Login').bold.overideColor(

@@ -7,10 +7,20 @@ part 'login_cubit.freezed.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginState.initial());
 
-  void onChangeLogin(String value) {
+  void onChangeUsername(String value) {
     var input = LoginInput.dirty(value);
     emit(
       state.copyWith(loginInput: input),
+    );
+  }
+
+  void onUsernameLoseFocus() {
+    var input = LoginInput.dirty(state.loginInput.value);
+    emit(
+      state.copyWith(
+        loginInput: input,
+        showErrorMessage: true,
+      ),
     );
   }
 
@@ -19,5 +29,9 @@ class LoginCubit extends Cubit<LoginState> {
     emit(
       state.copyWith(passwordInput: input),
     );
+  }
+
+  void onTappedButon() {
+    emit(state.copyWith(showErrorMessage: true));
   }
 }
