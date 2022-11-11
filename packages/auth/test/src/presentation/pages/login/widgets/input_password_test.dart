@@ -28,6 +28,23 @@ void main() {
     },
   );
   testWidgets(
+    'input password should not show error message on start',
+    (tester) async {
+      await tester.pumpWidget(const MaterialApp(home: Login()));
+      expect(find.text('password minimal 8 character'), findsNothing);
+    },
+  );
+  testWidgets(
+    'input password should show error message when has foccused Node',
+    (tester) async {
+      await tester.pumpWidget(const MaterialApp(home: Login()));
+      await tester.tap(passwordInput);
+
+      await tester.pump();
+      expect(find.text('password minimal 8 character'), findsOneWidget);
+    },
+  );
+  testWidgets(
     'input password should show password minimal 8 character when inputted character is less than 8',
     (tester) async {
       await tester.pumpWidget(const MaterialApp(home: Login()));

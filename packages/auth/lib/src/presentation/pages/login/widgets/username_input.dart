@@ -13,8 +13,9 @@ class LoginUsernameInput extends StatelessWidget {
         return state.loginInput;
       },
       builder: (context, state) {
-        bool showErrorMessage =
-            context.select((LoginCubit bloc) => bloc.state.showErrorMessage);
+        bool showErrorMessage = context.select(
+          (LoginCubit bloc) => bloc.state.showErrorMessageUsername,
+        );
         return DesignTextInput(
           hint: 'Username / Email / Phone No.',
           key: const Key('username input'),

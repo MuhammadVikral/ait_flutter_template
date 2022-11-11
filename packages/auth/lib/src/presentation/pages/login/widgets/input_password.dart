@@ -3,7 +3,9 @@ part of login;
 class LoginPasswordInput extends StatelessWidget {
   const LoginPasswordInput({
     Key? key,
+    required this.focusNode,
   }) : super(key: key);
+  final FocusNode focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +14,13 @@ class LoginPasswordInput extends StatelessWidget {
         return state.passwordInput;
       },
       builder: (context, state) {
+        bool showErrorMessage = context
+            .select((LoginCubit bloc) => bloc.state.showErrorMessagePassword);
         return DesignTextInput(
           key: const Key('password input'),
           hint: 'Password',
-          errorText: state.error,
+          focusNode: focusNode,
+          errorText: showErrorMessage ? state.error : null,
           showHint: false,
           suffixLabel: DesignText.body2('Forgot Password?')
               .bold

@@ -78,12 +78,20 @@ class LoginPageForms extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPageForms> {
   final usernameFocusNode = FocusNode();
+  final passwordFocusNode = FocusNode();
   @override
   void initState() {
     usernameFocusNode.addListener(
       () {
         if (!usernameFocusNode.hasFocus) {
           context.read<LoginCubit>().onUsernameLoseFocus();
+        }
+      },
+    );
+    passwordFocusNode.addListener(
+      () {
+        if (passwordFocusNode.hasFocus) {
+          context.read<LoginCubit>().onPasswordGainFocus();
         }
       },
     );
@@ -98,7 +106,9 @@ class _LoginPageState extends State<LoginPageForms> {
         LoginUsernameInput(
           focusNode: usernameFocusNode,
         ).bottomMargin(24),
-        const LoginPasswordInput().bottomMargin(40),
+        LoginPasswordInput(
+          focusNode: passwordFocusNode,
+        ).bottomMargin(40),
       ],
     );
   }

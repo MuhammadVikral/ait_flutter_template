@@ -76,14 +76,6 @@ void main() {
   );
   group(
     'on Tapped Login',
-    () {
-      test(
-        'should change show error message to true',
-        () {
-          authCubit.onTappedButon();
-          expect(authCubit.state.showErrorMessage, true);
-        },
-      );
-    },
+    () {},
   );
 }

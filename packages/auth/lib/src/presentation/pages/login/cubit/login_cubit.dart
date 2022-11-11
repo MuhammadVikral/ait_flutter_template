@@ -19,7 +19,17 @@ class LoginCubit extends Cubit<LoginState> {
     emit(
       state.copyWith(
         loginInput: input,
-        showErrorMessage: true,
+        showErrorMessageUsername: true,
+      ),
+    );
+  }
+
+  void onPasswordGainFocus() {
+    var input = PasswordInput.dirty(state.passwordInput.value);
+    emit(
+      state.copyWith(
+        passwordInput: input,
+        showErrorMessagePassword: true,
       ),
     );
   }
@@ -31,7 +41,5 @@ class LoginCubit extends Cubit<LoginState> {
     );
   }
 
-  void onTappedButon() {
-    emit(state.copyWith(showErrorMessage: true));
-  }
+  void onTappedButon() {}
 }

@@ -16,7 +16,7 @@ void main() {
             create: (context) => LoginCubit(),
             child: BlocListener<LoginCubit, LoginState>(
               listener: (context, state) {
-                showErrorMessage = state.showErrorMessage;
+                showErrorMessage = state.showErrorMessageUsername;
               },
               child: const LoginPage(),
             ),
