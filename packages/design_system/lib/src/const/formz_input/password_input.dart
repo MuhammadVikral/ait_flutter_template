@@ -15,7 +15,7 @@ class LoginInput extends FormzInput<String, String> {
             ? validatingEmail(value)
             : regExp.hasMatch(value)
                 ? validatingPhoneNumber(value)
-                : null;
+                : validatingUsername(value);
   }
 
   String? validatingEmail(value) {
@@ -26,6 +26,10 @@ class LoginInput extends FormzInput<String, String> {
     const pattern = r'^(?:[0][8])[0-9]{7,11}$';
     var regExp = RegExp(pattern);
     return regExp.hasMatch(value) ? null : 'format phone number tidak sesuai';
+  }
+
+  String? validatingUsername(String value) {
+    return value.length < 3 ? 'Please enter at least 3 characters.' : null;
   }
 }
 

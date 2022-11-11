@@ -39,7 +39,6 @@ void main() {
     (tester) async {
       await tester.pumpWidget(const MaterialApp(home: Login()));
       await tester.tap(passwordInput);
-
       await tester.pump();
       expect(find.text('password minimal 8 character'), findsOneWidget);
     },

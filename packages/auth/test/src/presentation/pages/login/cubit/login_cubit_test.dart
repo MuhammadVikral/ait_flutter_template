@@ -39,6 +39,13 @@ void main() {
           expect(authCubit.state.passwordInput.invalid, true);
         },
       );
+      test(
+        'should change loginInput state into "Please enter at least 3 characters." when inputed username is invalid',
+        () {
+          authCubit.onChangeUsername('sk');
+          expect(authCubit.state.loginInput.invalid, true);
+        },
+      );
     },
   );
   group(
