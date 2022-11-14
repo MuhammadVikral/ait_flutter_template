@@ -1,0 +1,6 @@
+import 'package:auth/src/domain/entities/login_entity.dart';
+import 'package:common_dependency/common_dependency.dart';
+
+abstract class AuthRepositories {
+  Future<Either<Failure, Unit>> login(LoginEntity body);
+}

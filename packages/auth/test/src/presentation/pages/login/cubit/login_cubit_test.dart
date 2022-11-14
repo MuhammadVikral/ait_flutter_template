@@ -76,13 +76,21 @@ void main() {
         'should change loginInput state into valid when inputed password is valid',
         () {
           authCubit.onChangePassword('12345678');
-          expect(authCubit.state.passwordInput.valid, true);
+          expect(authCubit.state.passwordInput.invalid, true);
         },
       );
     },
   );
   group(
     'on Tapped Login',
-    () {},
+    () {
+      test(
+        "should change form status into form status submission on prosses",
+        () {
+          authCubit.onTappedButon();
+          expect(authCubit.state.formStatus, FormzStatus.submissionInProgress);
+        },
+      );
+    },
   );
 }
