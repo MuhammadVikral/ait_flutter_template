@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   final usernameInput = find.byKey(const ValueKey('username input'));
   final passwordInput = find.byKey(const ValueKey('password input'));
-  late FocusNode test;
   bool showErrorMessage = false;
   testWidgets(
     'username input focus node has focus on tap text input',

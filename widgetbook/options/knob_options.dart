@@ -1,4 +1,4 @@
-import 'package:common_dependency/common_dependency.dart';
+import 'package:common_dependency/common_dependency.dart' hide Option;
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'color_option.dart';
