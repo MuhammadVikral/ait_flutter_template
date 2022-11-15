@@ -15,7 +15,9 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetIt.I<LoginCubit>(),
-      child: const LoginPage(),
+      child: const LoginPage(
+        key: Key('login page'),
+      ),
     );
   }
 }
@@ -26,13 +28,21 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
-      // listenWhen: (previous, current) =>
-      // previous.formStatus == FormzStatus.submissionInProgress,
+      listenWhen: (previous, current) =>
+          previous.formStatus == FormzStatus.submissionInProgress,
       listener: (context, state) {
         if (state.formStatus == FormzStatus.submissionSuccess) {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => const Scaffold(),
+            ),
+          );
+        }
+        if (state.formStatus == FormzStatus.submissionFailure) {
+          showDialog(
+            context: context,
+            builder: (context) => const Dialog(
+              key: Key('error dialog login'),
             ),
           );
         }

@@ -134,6 +134,10 @@ void main() {
             true,
           );
           await tester.pump(const Duration(seconds: 1));
+          expect(
+            (tester.firstWidget(loginButton) as DesignButton).isLoading,
+            false,
+          );
           await tester.pumpAndSettle();
           expect(loginButton, findsNothing);
         },
