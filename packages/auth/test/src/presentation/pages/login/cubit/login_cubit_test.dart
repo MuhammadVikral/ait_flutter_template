@@ -1,3 +1,4 @@
+import 'package:auth/src/domain/entities/login_entity.dart';
 import 'package:auth/src/domain/use_case/login_use_case.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -5,11 +6,28 @@ import 'package:mocktail/mocktail.dart';
 
 class MockLoginUsecase extends Mock implements LoginUseCase {}
 
+class MockLoginEntity extends Mock implements LoginEntity {}
+
+class MockLoginInput extends Mock implements LoginInput {}
+
+class MockPasswordInput extends Mock implements PasswordInput {}
+
 void main() {
   late LoginCubit authCubit;
+  late LoginUseCase mockUseCase;
+  var username = LoginInput.dirty('test');
+  var password = PasswordInput.dirty('12345678');
+  setUpAll(
+    () {
+      registerFallbackValue(MockLoginInput());
+      registerFallbackValue(MockPasswordInput());
+    },
+  );
   setUp(
     () {
-      authCubit = LoginCubit(loginClient: MockLoginUsecase());
+      mockUseCase = MockLoginUsecase();
+
+      authCubit = LoginCubit(loginClient: mockUseCase);
     },
   );
   group(
@@ -91,10 +109,38 @@ void main() {
       test(
         "should change form status into form status submission on prosses",
         () {
+          _calledUseCaseWithValidValue(mockUseCase)
+              .thenAnswer((_) async => Future.value(Left(DomainFailure())));
           authCubit.onTappedButon();
           expect(authCubit.state.formStatus, FormzStatus.submissionInProgress);
         },
       );
+      test(
+        'should change form status into form status submission failed when failed',
+        () async {
+          _calledUseCaseWithValidValue(mockUseCase)
+              .thenAnswer((_) async => Future.value(Left(DomainFailure())));
+          await authCubit.onTappedButon();
+          expect(authCubit.state.formStatus, FormzStatus.submissionFailure);
+        },
+      );
+      test(
+        'should change form status into form status submission success when failed',
+        () async {
+          _calledUseCaseWithValidValue(mockUseCase)
+              .thenAnswer((_) async => Future.value(const Right(unit)));
+          await authCubit.onTappedButon();
+          expect(authCubit.state.formStatus, FormzStatus.submissionSuccess);
+        },
+      );
     },
+  );
+}
+
+When<Future<Either<Failure, Unit>>> _calledUseCaseWithValidValue(
+    LoginUseCase mockUseCase) {
+  return when(
+    () => mockUseCase(
+        username: any(named: 'username'), password: any(named: 'password')),
   );
 }

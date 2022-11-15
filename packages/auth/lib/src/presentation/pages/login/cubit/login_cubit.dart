@@ -43,7 +43,13 @@ class LoginCubit extends Cubit<LoginState> {
     );
   }
 
-  void onTappedButon() {
+  Future<void> onTappedButon() async {
     emit(state.copyWith(formStatus: FormzStatus.submissionInProgress));
+    final _response = await loginClient(
+        username: state.loginInput, password: state.passwordInput);
+
+    _response.fold(
+        (l) => emit(state.copyWith(formStatus: FormzStatus.submissionFailure)),
+        (r) => emit(state.copyWith(formStatus: FormzStatus.submissionSuccess)));
   }
 }

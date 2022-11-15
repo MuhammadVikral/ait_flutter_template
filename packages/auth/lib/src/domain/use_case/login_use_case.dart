@@ -11,6 +11,7 @@ class LoginUseCase {
     required PasswordInput password,
   }) async {
     bool isValid = Formz.validate([username, password]).isValid;
+    print(username.value);
     if (!isValid) {
       return Left(UseCaseFailure());
     } else {
