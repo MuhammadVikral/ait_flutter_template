@@ -15,8 +15,6 @@ class MockPasswordInput extends Mock implements PasswordInput {}
 void main() {
   late LoginCubit authCubit;
   late LoginUseCase mockUseCase;
-  var username = LoginInput.dirty('test');
-  var password = PasswordInput.dirty('12345678');
   setUpAll(
     () {
       registerFallbackValue(MockLoginInput());

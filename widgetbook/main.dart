@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'widgetbook.dart';
 
-void main() {
+void main() async {
+  AuthModule.init();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     ScreenUtilInit(

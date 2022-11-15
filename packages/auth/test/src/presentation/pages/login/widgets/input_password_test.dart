@@ -1,4 +1,3 @@
-import 'package:auth/auth_module.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
