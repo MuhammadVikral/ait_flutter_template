@@ -1,3 +1,4 @@
+import 'package:auth/auth_module.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -6,6 +7,11 @@ void main() {
   final loginButton = find.byKey(const ValueKey('login button'));
   final passwordInput = find.byKey(const ValueKey('password input'));
   final usernameInput = find.byKey(const ValueKey('username input'));
+  setUpAll(
+    () async {
+      await AuthModule.init();
+    },
+  );
   group(
     'wether button is enabled or not',
     () {

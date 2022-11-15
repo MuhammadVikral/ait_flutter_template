@@ -1,3 +1,4 @@
+import 'package:auth/auth_module.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -6,13 +7,18 @@ void main() {
   final usernameInput = find.byKey(const ValueKey('username input'));
   final passwordInput = find.byKey(const ValueKey('password input'));
   bool showErrorMessage = false;
+  setUpAll(
+    () async {
+      await AuthModule.init();
+    },
+  );
   testWidgets(
     'username input focus node has focus on tap text input',
     (tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: BlocProvider(
-            create: (context) => LoginCubit(),
+            create: (context) => GetIt.I<LoginCubit>(),
             child: BlocListener<LoginCubit, LoginState>(
               listener: (context, state) {
                 showErrorMessage = state.showErrorMessageUsername;

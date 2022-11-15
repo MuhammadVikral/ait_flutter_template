@@ -1,9 +1,16 @@
+import 'package:auth/auth_module.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   final passwordInput = find.byKey(const ValueKey('password input'));
+  setUpAll(
+    () async {
+      await AuthModule.init();
+    },
+  );
+
   testWidgets(
     'input password should change password input state',
     (tester) async {
@@ -11,7 +18,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: BlocProvider(
-            create: (context) => LoginCubit(),
+            create: (context) => GetIt.I<LoginCubit>(),
             child: BlocListener<LoginCubit, LoginState>(
               listener: (context, state) {
                 inputValue = state.passwordInput.value;

@@ -1,11 +1,15 @@
+import 'package:auth/src/domain/use_case/login_use_case.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+
+class MockLoginUsecase extends Mock implements LoginUseCase {}
 
 void main() {
   late LoginCubit authCubit;
   setUp(
     () {
-      authCubit = LoginCubit();
+      authCubit = LoginCubit(loginClient: MockLoginUsecase());
     },
   );
   group(
@@ -76,7 +80,7 @@ void main() {
         'should change loginInput state into valid when inputed password is valid',
         () {
           authCubit.onChangePassword('12345678');
-          expect(authCubit.state.passwordInput.invalid, true);
+          expect(authCubit.state.passwordInput.valid, true);
         },
       );
     },

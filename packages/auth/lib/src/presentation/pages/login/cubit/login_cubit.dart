@@ -1,3 +1,4 @@
+import 'package:auth/src/domain/use_case/login_use_case.dart';
 import 'package:common_dependency/common_dependency.dart';
 
 part 'login_state.dart';
@@ -5,8 +6,9 @@ part 'login_state.dart';
 part 'login_cubit.freezed.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(LoginState.initial());
+  LoginCubit({required this.loginClient}) : super(LoginState.initial());
 
+  final LoginUseCase loginClient;
   void onChangeUsername(String value) {
     var input = LoginInput.dirty(value);
     emit(
