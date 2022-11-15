@@ -20,9 +20,13 @@ void main() {
     () {
       registerFallbackValue(MockLoginInput());
       registerFallbackValue(MockPasswordInput());
+      sl.registerFactory(() => loginCubit);
+    },
+  );
+  setUp(
+    () {
       mockUseCase = MockLoginUsecase();
       loginCubit = LoginCubit(loginClient: mockUseCase);
-      sl.registerFactory(() => loginCubit);
     },
   );
   testWidgets(
