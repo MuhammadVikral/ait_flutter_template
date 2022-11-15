@@ -25,42 +25,55 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            DesignText.h3(
-              'Login',
-            ).bold.bottomMargin(12),
-            DesignText.body2('Welcome back! Let\'s login to your account')
-                .bold
-                .bottomMargin(32),
-            const LoginPageForms(),
-            const LoginButton().bottomMargin(16),
-            Center(
-              child: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'Don’t have an account?   ',
-                      style: DesignTextStyle.body2.copyWith(
-                        color: DesignColors.neutral70,
+    return BlocListener<LoginCubit, LoginState>(
+      // listenWhen: (previous, current) =>
+      // previous.formStatus == FormzStatus.submissionInProgress,
+      listener: (context, state) {
+        if (state.formStatus == FormzStatus.submissionSuccess) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const Scaffold(),
+            ),
+          );
+        }
+      },
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              DesignText.h3(
+                'Login',
+              ).bold.bottomMargin(12),
+              DesignText.body2('Welcome back! Let\'s login to your account')
+                  .bold
+                  .bottomMargin(32),
+              const LoginPageForms(),
+              const LoginButton().bottomMargin(16),
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Don’t have an account?   ',
+                        style: DesignTextStyle.body2.copyWith(
+                          color: DesignColors.neutral70,
+                        ),
                       ),
-                    ),
-                    TextSpan(
-                      text: 'Register here',
-                      style: DesignTextStyle.body2.copyWith(
-                        color: DesignColors.primaryBase,
-                        fontWeight: boldFont,
+                      TextSpan(
+                        text: 'Register here',
+                        style: DesignTextStyle.body2.copyWith(
+                          color: DesignColors.primaryBase,
+                          fontWeight: boldFont,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

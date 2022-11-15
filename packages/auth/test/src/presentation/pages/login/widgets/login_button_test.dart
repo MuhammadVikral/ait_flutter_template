@@ -117,6 +117,27 @@ void main() {
           await tester.pumpAndSettle();
         },
       );
+      testWidgets(
+        'should go to next page when success',
+        (WidgetTester tester) async {
+          _calledUseCaseWithValidValue(mockUseCase).thenAnswer((_) async {
+            await Future.delayed(const Duration(seconds: 1));
+            return Future.value(const Right(unit));
+          });
+          await tester.pumpWidget(const MaterialApp(home: Login()));
+          await tester.enterText(usernameInput, 'skypea');
+          await tester.enterText(passwordInput, '12345678');
+          await tester.tap(loginButton);
+          await tester.pump(const Duration(milliseconds: 500));
+          expect(
+            (tester.firstWidget(loginButton) as DesignButton).isLoading,
+            true,
+          );
+          await tester.pump(const Duration(seconds: 1));
+          await tester.pumpAndSettle();
+          expect(loginButton, findsNothing);
+        },
+      );
     },
   );
 }
