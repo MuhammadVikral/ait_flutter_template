@@ -3,6 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 
 import 'use_case/design_button_story.dart';
 import 'use_case/design_dialog_story.dart';
+import 'use_case/design_image_story.dart';
 import 'use_case/design_text_input_story.dart';
 
 class WidgetsStory extends WidgetbookComponent {
@@ -18,8 +19,12 @@ class WidgetsStory extends WidgetbookComponent {
               },
             ),
             WidgetbookUseCase.center(
-              name: 'Dialog',
+              name: 'Design Dialog',
               child: DesignDialogStory(),
+            ),
+            WidgetbookUseCase.center(
+              name: 'Design Image',
+              child: DesignImageStory(),
             ),
           ],
         );
