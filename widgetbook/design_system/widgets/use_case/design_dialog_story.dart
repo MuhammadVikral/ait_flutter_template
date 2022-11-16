@@ -19,7 +19,13 @@ class DesignDialogStory extends StatelessWidget {
     return DesignDialog(
       onNegative: negativeButton == true ? () {} : null,
       onPositive: possitiveButton == true ? () {} : null,
-      image: withImage ? DesignImage(AImage.exclamation) : null,
+      image: withImage
+          ? DesignImage(
+              AImage.exclamation,
+              height: 56,
+              width: 56,
+            )
+          : null,
       title: title,
       body: body,
     );
