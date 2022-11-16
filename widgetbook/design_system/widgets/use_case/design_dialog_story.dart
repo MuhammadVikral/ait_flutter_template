@@ -11,11 +11,15 @@ class DesignDialogStory extends StatelessWidget {
         .boolean(label: 'with negative button', initialValue: false);
     bool possitiveButton = context.knobs
         .boolean(label: 'with positive button', initialValue: false);
+    bool withImage =
+        context.knobs.boolean(label: 'with image', initialValue: false);
     String title = context.knobs.text(label: 'title', initialValue: 'Title');
     String body = context.knobs.text(label: 'body', initialValue: 'Body');
+
     return DesignDialog(
       onNegative: negativeButton == true ? () {} : null,
       onPositive: possitiveButton == true ? () {} : null,
+      image: withImage ? DesignImage(AImage.exclamation) : null,
       title: title,
       body: body,
     );

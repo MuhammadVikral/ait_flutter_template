@@ -6,6 +6,8 @@ class DesignImageStory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DesignImage();
+    return DesignImage(
+      AImage.exclamation,
+    );
   }
 }
