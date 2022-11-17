@@ -10,9 +10,13 @@ class DesignDialog extends StatelessWidget {
     this.title = '',
     this.body = '',
     this.image,
+    this.negativeButtonTitle = 'batal',
+    this.positiveButtonTitle = 'oke',
   });
   final String title;
   final String body;
+  final String negativeButtonTitle;
+  final String positiveButtonTitle;
   final DesignImage? image;
   final Function()? onPositive;
   final Function()? onNegative;
@@ -33,6 +37,8 @@ class DesignDialog extends StatelessWidget {
           _DialogButtons(
             onNegative: onNegative,
             onPositive: onPositive,
+            onNegativetitle: negativeButtonTitle,
+            onPositiveTitle: positiveButtonTitle,
           )
         ],
       ),
@@ -85,8 +91,11 @@ class _DialogButtons extends StatelessWidget {
     Key? key,
     required this.onPositive,
     required this.onNegative,
+    required this.onNegativetitle,
+    required this.onPositiveTitle,
   }) : super(key: key);
-
+  final String onNegativetitle;
+  final String onPositiveTitle;
   final Function()? onPositive;
   final Function()? onNegative;
 
@@ -104,7 +113,7 @@ class _DialogButtons extends StatelessWidget {
               child: Expanded(
                 child: DesignButton(
                   backgroundColor: DesignColors.primaryLight2,
-                  child: DesignText.body1('Button 1')
+                  child: DesignText.body1(onNegativetitle)
                       .bold
                       .overideColor(DesignColors.primaryBase),
                   onTap: () {},
@@ -119,7 +128,7 @@ class _DialogButtons extends StatelessWidget {
                     left: onNegative == null ? 0 : 12,
                   ),
                   child: DesignButton(
-                    child: DesignText.body1('Button 1')
+                    child: DesignText.body1(onPositiveTitle)
                         .bold
                         .overideColor(DesignColors.white),
                     onTap: () {},

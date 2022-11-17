@@ -10,8 +10,8 @@ class DesignImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ExtendedImage.asset(
       AImage.exclamation,
-      height: height,
-      width: width,
+      height: height ?? 56,
+      width: width ?? 56,
     );
   }
 }

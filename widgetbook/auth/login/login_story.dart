@@ -13,6 +13,12 @@ class LoginStory extends WidgetbookComponent {
                 return const Login();
               },
             ),
+            WidgetbookUseCase(
+              name: 'Login Page Dialog Error',
+              builder: (context) {
+                return const LoginDialogError();
+              },
+            )
           ],
         );
 }

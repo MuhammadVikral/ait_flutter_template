@@ -7,6 +7,7 @@ export './cubit/login_cubit.dart';
 part './widgets/username_input.dart';
 part './widgets/login_button.dart';
 part './widgets/input_password.dart';
+part './widgets/login_error_dialog.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -41,7 +42,7 @@ class LoginPage extends StatelessWidget {
         if (state.formStatus == FormzStatus.submissionFailure) {
           showDialog(
             context: context,
-            builder: (context) => const Dialog(
+            builder: (context) => const LoginDialogError(
               key: Key('error dialog login'),
             ),
           );
