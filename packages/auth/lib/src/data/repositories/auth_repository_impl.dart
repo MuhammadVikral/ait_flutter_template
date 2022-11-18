@@ -4,6 +4,11 @@ import 'package:common_dependency/common_dependency.dart';
 
 class AuthRepositoriesImpl extends AuthRepositories {
   @override
+  Future<Either<Failure, Unit>> getInitialToken() {
+    throw UnimplementedError();
+  }
+
+  @override
   Future<Either<Failure, Unit>> login(LoginEntity body) async {
     return Left(NetworkFailure());
   }
