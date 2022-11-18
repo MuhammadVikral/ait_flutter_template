@@ -48,6 +48,22 @@ void main() {
           verify(() => service.getInitialToken()).called(1);
         },
       );
+      testWidgets(
+        'should return cache failure if caching is failed',
+        (tester) async {
+          _haveInternetConnection(networkInfo);
+          when(
+            () => memory.setTokens(),
+          ).thenAnswer((_) async => Left(CacheFailure()));
+          when(
+            () => service.getInitialToken(),
+          ).thenAnswer((_) async => const Right(unit));
+          final res = await sut.getInitialToken();
+          verify(() => service.getInitialToken()).called(1);
+          verify(() => memory.setTokens()).called(1);
+          expect(res, equals(Left(CacheFailure())));
+        },
+      );
     },
   );
 }
