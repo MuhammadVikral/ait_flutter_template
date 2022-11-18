@@ -40,6 +40,14 @@ void main() {
           expect(res, equals(Left(NetworkFailure())));
         },
       );
+      testWidgets(
+        'should call remote data source when having internet connection',
+        (tester) async {
+          _haveInternetConnection(networkInfo);
+          await sut.getInitialToken();
+          verify(() => service.getInitialToken()).called(1);
+        },
+      );
     },
   );
 }

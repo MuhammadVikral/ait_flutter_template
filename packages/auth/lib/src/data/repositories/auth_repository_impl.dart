@@ -17,7 +17,12 @@ class AuthRepositoriesImpl implements AuthRepositories {
   @override
   Future<Either<Failure, Unit>> getInitialToken() async {
     if (await networkInfo.isConnected) {
-      return const Right(unit);
+      try {
+        final res = await service.getInitialToken();
+        return res.fold((l) => Left(l), (r) => const Right(unit));
+      } catch (e) {
+        return Left(NetworkFailure());
+      }
     } else {
       return Left(NetworkFailure());
     }
