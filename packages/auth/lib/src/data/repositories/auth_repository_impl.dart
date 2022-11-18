@@ -15,8 +15,12 @@ class AuthRepositoriesImpl implements AuthRepositories {
     required this.service,
   });
   @override
-  Future<Either<Failure, Unit>> getInitialToken() {
-    throw UnimplementedError();
+  Future<Either<Failure, Unit>> getInitialToken() async {
+    if (await networkInfo.isConnected) {
+      return const Right(unit);
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 
   @override

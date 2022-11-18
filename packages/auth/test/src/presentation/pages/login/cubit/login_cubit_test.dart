@@ -6,8 +6,6 @@ import 'package:mocktail/mocktail.dart';
 
 class MockLoginUsecase extends Mock implements LoginUseCase {}
 
-class MockLoginEntity extends Mock implements LoginEntity {}
-
 class MockLoginInput extends Mock implements LoginInput {}
 
 class MockPasswordInput extends Mock implements PasswordInput {}
