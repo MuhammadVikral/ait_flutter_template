@@ -26,7 +26,7 @@ class DesignDialog extends StatelessWidget {
     return Dialog(
       elevation: 5,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.r),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: CustomBoxy(
         delegate: DesignDialogBoxy(),

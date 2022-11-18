@@ -6,7 +6,7 @@ void main() {
   final passwordInput = find.byKey(const ValueKey('password input'));
   setUpAll(
     () async {
-      await AuthModule.init();
+      await AuthModule.initTest();
     },
   );
 

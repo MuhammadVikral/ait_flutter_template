@@ -1,5 +1,4 @@
 import 'package:common_dependency/common_dependency.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 final sl = GetIt.instance;
 

@@ -8,7 +8,7 @@ void main() {
   bool showErrorMessage = false;
   setUpAll(
     () async {
-      await AuthModule.init();
+      await AuthModule.initTest();
     },
   );
   testWidgets(

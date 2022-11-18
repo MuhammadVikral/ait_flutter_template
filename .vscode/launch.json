@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "test",
+            "request": "launch",
+            "type": "dart",
+            "program": "tests/",
+            "args": [
+                "--no-test-assets"
+            ]
+        },
+        {
             "name": "ait_flutter_template",
             "request": "launch",
             "type": "dart"

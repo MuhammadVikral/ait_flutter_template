@@ -1,8 +1,19 @@
+import 'package:auth/src/data/datasources/auth_local_ds.dart';
+import 'package:auth/src/data/datasources/auth_remote_ds.dart';
 import 'package:auth/src/domain/entities/login_entity.dart';
 import 'package:auth/src/domain/repositories/auth_repositories.dart';
 import 'package:common_dependency/common_dependency.dart';
 
-class AuthRepositoriesImpl extends AuthRepositories {
+class AuthRepositoriesImpl implements AuthRepositories {
+  final NetworkInfo networkInfo;
+  final AuthLocalDataSource memory;
+  final AuthRemoteDataSource service;
+
+  AuthRepositoriesImpl({
+    required this.networkInfo,
+    required this.memory,
+    required this.service,
+  });
   @override
   Future<Either<Failure, Unit>> getInitialToken() {
     throw UnimplementedError();

@@ -11,6 +11,7 @@ class MockLoginInput extends Mock implements LoginInput {}
 class MockPasswordInput extends Mock implements PasswordInput {}
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
   late MockLoginUsecase mockUseCase;
   late LoginCubit loginCubit;
   final errorDialog = find.byKey(const ValueKey('error dialog login'));
