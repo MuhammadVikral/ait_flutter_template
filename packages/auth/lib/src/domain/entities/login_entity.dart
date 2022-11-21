@@ -1,4 +1,4 @@
-import 'package:common_dependency/common_dependency.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'login_entity.freezed.dart';
 

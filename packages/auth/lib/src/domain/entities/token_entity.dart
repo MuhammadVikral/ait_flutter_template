@@ -1,10 +1,9 @@
-import 'package:common_dependency/common_dependency.dart';
-part 'token_entity.freezed.dart';
+class TokenEntity {
+  final String? accessToken;
+  final String? refreshToken;
 
-@freezed
-class TokenEntity with _$TokenEntity {
-  factory TokenEntity({
-    required String accessToken,
-    required String refreshTOken,
-  }) = _TokenEntity;
+  TokenEntity({
+    this.accessToken,
+    this.refreshToken,
+  });
 }
