@@ -1,4 +1,3 @@
-import 'package:auth/src/domain/entities/login_entity.dart';
 import 'package:auth/src/domain/use_case/login_use_case.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter_test/flutter_test.dart';

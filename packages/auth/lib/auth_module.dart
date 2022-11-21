@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:auth/src/data/datasources/auth_local_ds.dart';
 import 'package:auth/src/data/datasources/auth_remote_ds.dart';
 import 'package:auth/src/data/repositories/auth_repository_impl.dart';

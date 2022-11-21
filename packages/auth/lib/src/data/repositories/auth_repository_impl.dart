@@ -1,6 +1,5 @@
 import 'package:auth/src/data/datasources/auth_local_ds.dart';
 import 'package:auth/src/data/datasources/auth_remote_ds.dart';
-import 'package:auth/src/domain/entities/login_entity.dart';
 import 'package:auth/src/domain/repositories/auth_repositories.dart';
 import 'package:common_dependency/common_dependency.dart';
 
