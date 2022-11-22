@@ -1,11 +1,15 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: constant_identifier_names, library_private_types_in_public_api
+import 'package:common_dependency/common_dependency.dart';
 import 'package:dio/dio.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
 /// An enum that holds names for our custom exceptions.
 enum _ExceptionType {
   /// The exception for an expired bearer token.
   TokenExpiredException,
+  Unauthorized,
 
   /// The exception for a prematurely cancelled request.
   CancelException,
@@ -39,7 +43,7 @@ enum _ExceptionType {
   SerializationException,
 }
 
-class CustomException implements Exception {
+class CustomException extends Equatable implements Exception {
   final String name, message;
   final String? code;
   final int? statusCode;
@@ -97,19 +101,26 @@ class CustomException implements Exception {
                 message: error.response?.statusMessage ?? 'Unknown',
               );
             }
-            final name = error.response?.data['meta']['code'] as String;
+            final name = error.response?.data['meta']['code'] as int;
             final message = error.response?.data['meta']['message'] as String;
-            if (name == _ExceptionType.TokenExpiredException.name) {
+            if (message == _ExceptionType.TokenExpiredException.name) {
               return CustomException(
                 exceptionType: _ExceptionType.TokenExpiredException,
-                code: name,
+                code: name.toString(),
                 statusCode: error.response?.statusCode,
                 message: message,
               );
             }
+            if (message == 'Unauthorized.') {
+              return CustomException(
+                exceptionType: _ExceptionType.Unauthorized,
+                statusCode: error.response?.statusCode,
+                message: 'Unauthorized user',
+              );
+            }
             return CustomException(
               message: message,
-              code: name,
+              code: name.toString(),
               statusCode: error.response?.statusCode,
             );
         }
@@ -140,4 +151,11 @@ class CustomException implements Exception {
       message: 'Failed to parse network response to model or vice versa',
     );
   }
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [exceptionType, message];
+
+  @override
+  bool get stringify => true;
 }

@@ -28,7 +28,6 @@ class ApiService {
     } on Exception catch (ex) {
       throw CustomException.fromDioException(ex);
     }
-
     try {
       // Returning the serialized object
       return converter(response);

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:common_dependency/common_dependency.dart';
-import 'package:design_system/src/api/model/response_model.dart';
 import 'package:dio/dio.dart';
 
 class DioService {
@@ -18,10 +17,8 @@ class DioService {
   DioService({
     required Dio dioClient,
     Iterable<Interceptor>? interceptors,
-    HttpClientAdapter? httpClientAdapter,
   }) : _dio = dioClient {
     if (interceptors != null) _dio.interceptors.addAll(interceptors);
-    if (httpClientAdapter != null) _dio.httpClientAdapter = httpClientAdapter;
   }
 
   Future<ResponseModel> post<R>({
