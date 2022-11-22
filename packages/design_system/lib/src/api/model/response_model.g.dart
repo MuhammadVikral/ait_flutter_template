@@ -9,7 +9,7 @@ part of 'response_model.dart';
 _$_ResponseModel _$$_ResponseModelFromJson(Map<String, dynamic> json) =>
     _$_ResponseModel(
       meta: MetaModel.fromJson(json['meta'] as Map<String, dynamic>),
-      data: json['data'] as Map<String, dynamic>,
+      data: json['data'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$$_ResponseModelToJson(_$_ResponseModel instance) =>

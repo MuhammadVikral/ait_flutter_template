@@ -8,7 +8,7 @@ part 'response_model.g.dart';
 class ResponseModel with _$ResponseModel {
   factory ResponseModel({
     @JsonKey(name: 'meta') required MetaModel meta,
-    @JsonKey(name: 'data') required JSON data,
+    @JsonKey(name: 'data') JSON? data,
   }) = _ResponseModel;
 
   factory ResponseModel.fromJson(JSON json) => _$ResponseModelFromJson(json);

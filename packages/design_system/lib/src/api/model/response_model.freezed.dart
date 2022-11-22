@@ -23,7 +23,7 @@ mixin _$ResponseModel {
   @JsonKey(name: 'meta')
   MetaModel get meta => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
-  Map<String, dynamic> get data => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,7 +39,7 @@ abstract class $ResponseModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'meta') MetaModel meta,
-      @JsonKey(name: 'data') Map<String, dynamic> data});
+      @JsonKey(name: 'data') Map<String, dynamic>? data});
 
   $MetaModelCopyWith<$Res> get meta;
 }
@@ -58,17 +58,17 @@ class _$ResponseModelCopyWithImpl<$Res, $Val extends ResponseModel>
   @override
   $Res call({
     Object? meta = null,
-    Object? data = null,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
       meta: null == meta
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
               as MetaModel,
-      data: null == data
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as Map<String, dynamic>?,
     ) as $Val);
   }
 
@@ -91,7 +91,7 @@ abstract class _$$_ResponseModelCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'meta') MetaModel meta,
-      @JsonKey(name: 'data') Map<String, dynamic> data});
+      @JsonKey(name: 'data') Map<String, dynamic>? data});
 
   @override
   $MetaModelCopyWith<$Res> get meta;
@@ -109,17 +109,17 @@ class __$$_ResponseModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? meta = null,
-    Object? data = null,
+    Object? data = freezed,
   }) {
     return _then(_$_ResponseModel(
       meta: null == meta
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
               as MetaModel,
-      data: null == data
+      data: freezed == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as Map<String, dynamic>?,
     ));
   }
 }
@@ -129,7 +129,7 @@ class __$$_ResponseModelCopyWithImpl<$Res>
 class _$_ResponseModel implements _ResponseModel {
   _$_ResponseModel(
       {@JsonKey(name: 'meta') required this.meta,
-      @JsonKey(name: 'data') required final Map<String, dynamic> data})
+      @JsonKey(name: 'data') final Map<String, dynamic>? data})
       : _data = data;
 
   factory _$_ResponseModel.fromJson(Map<String, dynamic> json) =>
@@ -138,12 +138,14 @@ class _$_ResponseModel implements _ResponseModel {
   @override
   @JsonKey(name: 'meta')
   final MetaModel meta;
-  final Map<String, dynamic> _data;
+  final Map<String, dynamic>? _data;
   @override
   @JsonKey(name: 'data')
-  Map<String, dynamic> get data {
+  Map<String, dynamic>? get data {
+    final value = _data;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_data);
+    return EqualUnmodifiableMapView(value);
   }
 
   @override
@@ -182,7 +184,7 @@ class _$_ResponseModel implements _ResponseModel {
 abstract class _ResponseModel implements ResponseModel {
   factory _ResponseModel(
           {@JsonKey(name: 'meta') required final MetaModel meta,
-          @JsonKey(name: 'data') required final Map<String, dynamic> data}) =
+          @JsonKey(name: 'data') final Map<String, dynamic>? data}) =
       _$_ResponseModel;
 
   factory _ResponseModel.fromJson(Map<String, dynamic> json) =
@@ -193,7 +195,7 @@ abstract class _ResponseModel implements ResponseModel {
   MetaModel get meta;
   @override
   @JsonKey(name: 'data')
-  Map<String, dynamic> get data;
+  Map<String, dynamic>? get data;
   @override
   @JsonKey(ignore: true)
   _$$_ResponseModelCopyWith<_$_ResponseModel> get copyWith =>
