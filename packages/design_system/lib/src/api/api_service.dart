@@ -9,7 +9,7 @@ class ApiService {
   Future<T> setData<T>({
     required String endpoint,
     required JSON data,
-    bool requiresAuthToken = true,
+    bool requiresAuthToken = false,
     required T Function(ResponseModel response) converter,
   }) async {
     ResponseModel response;
