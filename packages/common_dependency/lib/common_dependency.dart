@@ -11,3 +11,4 @@ export 'package:get_it/get_it.dart';
 export 'package:extended_image/extended_image.dart';
 export 'package:boxy/boxy.dart';
 export 'package:internet_connection_checker/internet_connection_checker.dart';
+export 'package:dio/dio.dart' hide MultipartFile;

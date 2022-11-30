@@ -21,13 +21,11 @@ class AuthModule {
       ),
     );
 
-    sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
     sl.registerLazySingleton<AuthRemoteDataSource>(
-      () => AuthRemoteDataSourceImpl(ApiService(sl())),
+      () => AuthRemoteDataSourceImpl(sl()),
     );
     sl.registerLazySingleton<AuthLocalDataSource>(
       () => AuthLocalDataSourceImpl(),
     );
-    sl.registerLazySingleton(() => InternetConnectionChecker());
   }
 }
