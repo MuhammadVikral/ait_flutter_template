@@ -8,6 +8,9 @@ abstract class AuthRemoteDataSource {
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
+  final ApiService service;
+
+  AuthRemoteDataSourceImpl(this.service);
   @override
   Future<Either<Failure, Unit>> getInitialToken() {
     // TODO: implement getInitialToken

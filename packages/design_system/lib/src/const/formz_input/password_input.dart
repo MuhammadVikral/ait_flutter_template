@@ -39,6 +39,10 @@ class PasswordInput extends FormzInput<String, String> {
 
   @override
   validator(value) {
-    return value.length < 8 ? 'password minimal 8 character' : null;
+    return value.isEmpty
+        ? 'password tidak boleh kosong'
+        : value.length < 8
+            ? 'password minimal 8 character'
+            : null;
   }
 }
