@@ -32,6 +32,10 @@ void main() {
   test(
     'auth remote ds should return nothing when success',
     () async {
+      var tokenModel = TokenModel(
+        accessToken: 'abc',
+        refreshToken: 'abc',
+      );
       when(
         () => service.setData<TokenModel>(
           endpoint: any(named: 'endpoint'),
@@ -40,13 +44,12 @@ void main() {
           requiresAuthToken: any(named: 'requiresAuthToken'),
         ),
       ).thenAnswer(
-        (_) async => Future.value(TokenModel(
-          accessToken: 'abc',
-          refreshToken: 'abc',
-        )),
+        (_) {
+          return Future.value(tokenModel);
+        },
       );
       final res = await sut.getInitialToken();
-      expect(res, null);
+      expect(res, tokenModel);
     },
   );
   test(

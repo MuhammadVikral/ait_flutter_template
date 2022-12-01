@@ -54,10 +54,10 @@ void main() {
           _haveInternetConnection(networkInfo);
           when(
             () => memory.setTokens(),
-          ).thenAnswer((_) async => Left(CacheFailure()));
+          ).thenAnswer((_) async => throw Exception());
           when(
             () => service.getInitialToken(),
-          ).thenAnswer((_) async => const Right(unit));
+          ).thenAnswer((_) async => Future.value(TokenModel()));
           final res = await sut.getInitialToken();
           verify(() => service.getInitialToken()).called(1);
           verify(() => memory.setTokens()).called(1);

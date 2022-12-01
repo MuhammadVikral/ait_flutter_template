@@ -18,6 +18,11 @@ class AuthRepositoriesImpl implements AuthRepositories {
     if (await networkInfo.isConnected) {
       try {
         await service.getInitialToken();
+        try {
+          await memory.setTokens();
+        } catch (e) {
+          return Left(CacheFailure());
+        }
         return const Right(unit);
       } catch (e) {
         return Left(NetworkFailure());
