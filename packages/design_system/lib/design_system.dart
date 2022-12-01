@@ -5,3 +5,4 @@ export './src/const/const.dart';
 export './src/widgets/widgets.dart';
 export './src/utils/utils.dart';
 export './src/api/api.dart';
+export 'design_system_module.dart';

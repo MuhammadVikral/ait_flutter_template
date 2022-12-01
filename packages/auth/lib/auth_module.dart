@@ -7,7 +7,7 @@ import 'package:auth/src/domain/repositories/auth_repositories.dart';
 import 'package:auth/src/domain/use_case/login_use_case.dart';
 import 'package:common_dependency/common_dependency.dart';
 
-final sl = GetIt.instance;
+// final sl = GetIt.instance;
 
 class AuthModule {
   static Future<void> init() async {

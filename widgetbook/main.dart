@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'widgetbook.dart';
 
 void main() async {
-  AuthModule.init();
   WidgetsFlutterBinding.ensureInitialized();
+  await DesignSystemModule.init();
+  await AuthModule.init();
   runApp(
     ScreenUtilInit(
       designSize: const Size(375, 667),
