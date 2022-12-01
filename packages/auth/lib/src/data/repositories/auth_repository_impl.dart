@@ -17,9 +17,9 @@ class AuthRepositoriesImpl implements AuthRepositories {
   Future<Either<Failure, Unit>> getInitialToken() async {
     if (await networkInfo.isConnected) {
       try {
-        await service.getInitialToken();
+        final token = await service.getInitialToken();
         try {
-          await memory.setTokens();
+          await memory.setTokens(token);
         } catch (e) {
           return Left(CacheFailure());
         }

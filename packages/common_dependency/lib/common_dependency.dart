@@ -12,3 +12,4 @@ export 'package:extended_image/extended_image.dart';
 export 'package:boxy/boxy.dart';
 export 'package:internet_connection_checker/internet_connection_checker.dart';
 export 'package:dio/dio.dart' hide MultipartFile;
+export 'package:flutter_secure_storage/flutter_secure_storage.dart';

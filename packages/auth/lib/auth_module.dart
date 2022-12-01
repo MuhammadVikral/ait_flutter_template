@@ -25,7 +25,7 @@ class AuthModule {
       () => AuthRemoteDataSourceImpl(sl()),
     );
     sl.registerLazySingleton<AuthLocalDataSource>(
-      () => AuthLocalDataSourceImpl(),
+      () => AuthLocalDataSourceImpl(sl()),
     );
   }
 }

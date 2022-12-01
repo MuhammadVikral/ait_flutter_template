@@ -53,14 +53,14 @@ void main() {
         (tester) async {
           _haveInternetConnection(networkInfo);
           when(
-            () => memory.setTokens(),
+            () => memory.setTokens(TokenModel()),
           ).thenAnswer((_) async => throw Exception());
           when(
             () => service.getInitialToken(),
           ).thenAnswer((_) async => Future.value(TokenModel()));
           final res = await sut.getInitialToken();
           verify(() => service.getInitialToken()).called(1);
-          verify(() => memory.setTokens()).called(1);
+          verify(() => memory.setTokens(TokenModel())).called(1);
           expect(res, equals(Left(CacheFailure())));
         },
       );
