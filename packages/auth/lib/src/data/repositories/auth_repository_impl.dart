@@ -33,17 +33,23 @@ class AuthRepositoriesImpl implements AuthRepositories {
   }
 
   @override
-  Future<Either<Failure, Unit>> login(LoginEntity body) async {
-    return Left(NetworkFailure());
-  }
-
-  @override
-  Future<Either<Failure, bool>> hasToken() {
-    throw UnimplementedError();
+  Future<Either<Failure, bool>> hasToken() async {
+    try {
+      final token = await memory.getTokens();
+      bool hasToken = token != null;
+      return Right(hasToken);
+    } catch (e) {
+      return Left(CacheFailure());
+    }
   }
 
   @override
   Future<Either<Failure, Unit>> refreshToken() {
     throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, Unit>> login(LoginEntity body) async {
+    return Left(NetworkFailure());
   }
 }

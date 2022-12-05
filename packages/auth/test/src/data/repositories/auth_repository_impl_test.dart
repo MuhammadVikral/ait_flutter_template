@@ -66,6 +66,40 @@ void main() {
       );
     },
   );
+
+  group(
+    'has Token',
+    () {
+      test(
+        'should return false when get token is success but the return is null',
+        () async {
+          when(() => memory.getTokens()).thenAnswer((invocation) async => null);
+          final res = await sut.hasToken();
+          verify(() => memory.getTokens()).called(1);
+          expect(res, const Right(false));
+        },
+      );
+      test(
+        'should return true when get token is success and return a token model',
+        () async {
+          when(() => memory.getTokens())
+              .thenAnswer((invocation) async => TokenModel());
+          final res = await sut.hasToken();
+          verify(() => memory.getTokens()).called(1);
+          expect(res, const Right(true));
+        },
+      );
+      test(
+        'should return failure when memory get token throwing exception',
+        () async {
+          when(() => memory.getTokens()).thenThrow(Exception());
+          final res = await sut.hasToken();
+          verify(() => memory.getTokens()).called(1);
+          expect(res, Left(CacheFailure()));
+        },
+      );
+    },
+  );
 }
 
 void _noInternetConnection(MockNetworkInfo networkInfo) {

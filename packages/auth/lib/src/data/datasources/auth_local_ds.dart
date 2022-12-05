@@ -4,7 +4,7 @@ import 'package:common_dependency/common_dependency.dart';
 
 abstract class AuthLocalDataSource {
   Future<void> setTokens(TokenModel token);
-  Future<Either<Failure, Unit>> getTokens();
+  Future<TokenModel?> getTokens();
 }
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
@@ -12,7 +12,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
 
   AuthLocalDataSourceImpl(this.storage);
   @override
-  Future<Either<Failure, Unit>> getTokens() async {
+  Future<TokenModel?> getTokens() async {
     bool hasToken = await storage.containsKey(key: 'token');
     throw UnimplementedError();
   }
