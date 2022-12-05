@@ -36,4 +36,9 @@ class AuthRepositoriesImpl implements AuthRepositories {
   Future<Either<Failure, Unit>> login(LoginEntity body) async {
     return Left(NetworkFailure());
   }
+
+  @override
+  Future<Either<Failure, bool>> checkLoggedIn() {
+    throw UnimplementedError();
+  }
 }
