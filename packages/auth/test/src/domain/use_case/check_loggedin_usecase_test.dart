@@ -18,10 +18,14 @@ void main() {
   group(
     'have access token',
     () {
+      setUp(
+        () {
+          _callHasToken(repository, true);
+        },
+      );
       test(
         'check loggedin usecase return true when has token and refresh token success',
         () async {
-          _callHasToken(repository, true);
           when(() => repository.refreshToken())
               .thenAnswer((invocation) async => const Right(unit));
           final res = await sut();
@@ -32,7 +36,6 @@ void main() {
       test(
         'check loggedin usecase return false when has token and refresh token return unAuthorized Exception',
         () async {
-          _callHasToken(repository, true);
           when(() => repository.refreshToken())
               .thenAnswer((invocation) async => Left(UnAuthorizedFailure()));
           final res = await sut();
@@ -43,11 +46,40 @@ void main() {
       test(
         'check loggedin usecase return Left when refreshToken return failed and not UnAuthorized Failure',
         () async {
-          _callHasToken(repository, true);
           when(() => repository.refreshToken())
               .thenAnswer((invocation) async => Left(NetworkFailure()));
           final res = await sut();
           verify(() => repository.refreshToken()).called(1);
+          expect(res, Left(NetworkFailure()));
+        },
+      );
+    },
+  );
+  group(
+    'doesnt have access token',
+    () {
+      setUp(
+        () {
+          _callHasToken(repository, false);
+        },
+      );
+      test(
+        'check loggedin usecase return false when has token is false',
+        () async {
+          when(() => repository.getInitialToken())
+              .thenAnswer((invocation) async => const Right(unit));
+          final res = await sut();
+          verify(() => repository.getInitialToken()).called(1);
+          expect(res, const Right(false));
+        },
+      );
+      test(
+        'check loggedin usecase return failure when getToken is success but get initial token is failed',
+        () async {
+          when(() => repository.getInitialToken())
+              .thenAnswer((invocation) async => Left(NetworkFailure()));
+          final res = await sut();
+          verify(() => repository.getInitialToken()).called(1);
           expect(res, Left(NetworkFailure()));
         },
       );
