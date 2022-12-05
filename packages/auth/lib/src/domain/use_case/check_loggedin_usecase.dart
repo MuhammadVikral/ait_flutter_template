@@ -6,12 +6,18 @@ class CheckLoggedInUseCase {
 
   CheckLoggedInUseCase(this.repositories);
   Future<Either<Failure, bool>> call() async {
-    final isLoggedIn = await repositories.checkLoggedIn();
-    return isLoggedIn.fold(
+    final hasToken = await repositories.hasToken();
+    return hasToken.fold(
       (l) => Left(CacheFailure()),
       (r) async {
         if (r) {
-          return const Right(true);
+          final refreshToken = await repositories.refreshToken();
+          return refreshToken.fold(
+            (l) {
+              return l == UnAuthorizedFailure() ? const Right(false) : Left(l);
+            },
+            (r) => const Right(true),
+          );
         } else {
           final getInitialToken = await repositories.getInitialToken();
           return getInitialToken.fold(

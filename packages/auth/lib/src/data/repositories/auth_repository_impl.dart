@@ -38,7 +38,12 @@ class AuthRepositoriesImpl implements AuthRepositories {
   }
 
   @override
-  Future<Either<Failure, bool>> checkLoggedIn() {
+  Future<Either<Failure, bool>> hasToken() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, Unit>> refreshToken() {
     throw UnimplementedError();
   }
 }

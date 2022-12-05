@@ -28,3 +28,8 @@ class CacheFailure extends Failure {
   @override
   List<Object?> get props => [];
 }
+
+class UnAuthorizedFailure extends Failure {
+  @override
+  List<Object?> get props => [];
+}
