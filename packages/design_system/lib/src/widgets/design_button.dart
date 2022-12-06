@@ -60,7 +60,7 @@ class DesignButton extends StatelessWidget {
           alignment: Alignment.center,
           child: FittedBox(
             child: isLoading
-                ? CircularProgressIndicator()
+                ? const CircularProgressIndicator()
                 : Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

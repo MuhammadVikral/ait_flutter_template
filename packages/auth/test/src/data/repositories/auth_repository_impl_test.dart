@@ -110,6 +110,7 @@ void main() {
           when(() => service.refreshToken()).thenAnswer(
             (invocation) async => TokenModel(),
           );
+          await sut.refreshToken();
           verify(() => memory.setTokens(TokenModel())).called(1);
         },
       );

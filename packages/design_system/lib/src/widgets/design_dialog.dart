@@ -49,7 +49,7 @@ class DesignDialog extends StatelessWidget {
     return Visibility(
       visible: body.isNotEmpty,
       child: Container(
-        margin: EdgeInsets.only(top: 12),
+        margin: const EdgeInsets.only(top: 12),
         child: DesignText.body2(body),
       ),
     );
@@ -79,8 +79,8 @@ class _DialogImage extends StatelessWidget {
     return Visibility(
       visible: image != null,
       child: Container(
-        margin: EdgeInsets.only(bottom: 12),
-        child: image ?? SizedBox(),
+        margin: const EdgeInsets.only(bottom: 12),
+        child: image ?? const SizedBox(),
       ),
     );
   }
@@ -104,7 +104,7 @@ class _DialogButtons extends StatelessWidget {
     return Visibility(
       visible: onPositive != null || onNegative != null,
       child: Container(
-        margin: EdgeInsets.only(top: 24),
+        margin: const EdgeInsets.only(top: 24),
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           children: [

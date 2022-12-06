@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: constant_identifier_names, library_private_types_in_public_api
 import 'package:common_dependency/common_dependency.dart';
-import 'package:dio/dio.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
 /// An enum that holds names for our custom exceptions.
@@ -155,7 +153,6 @@ class CustomException extends Equatable implements Exception {
   }
 
   factory CustomException.fromParsingException(Exception error) {
-    // TODO(arafaysaleem): add logging to print stack trace
     debugPrint('$error');
     return CustomException(
       exceptionType: _ExceptionType.SerializationException,
@@ -164,7 +161,6 @@ class CustomException extends Equatable implements Exception {
   }
 
   @override
-  // TODO: implement props
   List<Object> get props => [exceptionType, message];
 
   @override

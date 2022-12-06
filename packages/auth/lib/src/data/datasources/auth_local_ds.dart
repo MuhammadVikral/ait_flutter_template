@@ -13,7 +13,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   AuthLocalDataSourceImpl(this.storage);
   @override
   Future<TokenModel?> getTokens() async {
-    bool hasToken = await storage.containsKey(key: 'token');
+    await storage.containsKey(key: 'token');
     throw UnimplementedError();
   }
 
