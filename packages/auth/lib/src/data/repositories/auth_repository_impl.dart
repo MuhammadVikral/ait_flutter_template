@@ -44,8 +44,24 @@ class AuthRepositoriesImpl implements AuthRepositories {
   }
 
   @override
-  Future<Either<Failure, Unit>> refreshToken() {
-    throw UnimplementedError();
+  Future<Either<Failure, Unit>> refreshToken() async {
+    if (await networkInfo.isConnected == false) {
+      return Left(NetworkFailure());
+    } else {
+      try {
+        final res = await service.refreshToken();
+        if (res != null) {
+          await memory.setTokens(res);
+        }
+        return const Right(unit);
+      } catch (e) {
+        if (e is CustomException) {
+          return Left(e.failure);
+        } else {
+          return Left(ServerFailure());
+        }
+      }
+    }
   }
 
   @override

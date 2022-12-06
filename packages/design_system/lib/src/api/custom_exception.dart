@@ -47,15 +47,18 @@ class CustomException extends Equatable implements Exception {
   final String name, message;
   final String? code;
   final int? statusCode;
+  final Failure failure;
   final _ExceptionType exceptionType;
 
   CustomException({
     this.code,
     int? statusCode,
     required this.message,
+    Failure? failureType,
     this.exceptionType = _ExceptionType.ApiException,
   })  : statusCode = statusCode ?? 500,
-        name = exceptionType.name;
+        name = exceptionType.name,
+        failure = failureType ?? UnRecognizedFailure();
 
   factory CustomException.fromDioException(Exception error) {
     try {
@@ -72,18 +75,21 @@ class CustomException extends Equatable implements Exception {
               exceptionType: _ExceptionType.ConnectTimeoutException,
               statusCode: error.response?.statusCode,
               message: 'Connection not established',
+              failureType: NetworkFailure(),
             );
           case DioErrorType.sendTimeout:
             return CustomException(
               exceptionType: _ExceptionType.SendTimeoutException,
               statusCode: error.response?.statusCode,
               message: 'Failed to send',
+              failureType: NetworkFailure(),
             );
           case DioErrorType.receiveTimeout:
             return CustomException(
               exceptionType: _ExceptionType.ReceiveTimeoutException,
               statusCode: error.response?.statusCode,
               message: 'Failed to receive',
+              failureType: NetworkFailure(),
             );
           case DioErrorType.response:
           case DioErrorType.other:
@@ -92,6 +98,7 @@ class CustomException extends Equatable implements Exception {
                 exceptionType: _ExceptionType.FetchDataException,
                 statusCode: error.response?.statusCode,
                 message: 'No internet connectivity',
+                failureType: NetworkFailure(),
               );
             }
             if (error.response?.data['meta']['code'] == null) {
@@ -99,6 +106,7 @@ class CustomException extends Equatable implements Exception {
                 exceptionType: _ExceptionType.UnrecognizedException,
                 statusCode: error.response?.statusCode,
                 message: error.response?.statusMessage ?? 'Unknown',
+                failureType: UnRecognizedFailure(),
               );
             }
             final name = error.response?.data['meta']['code'] as int;
@@ -109,6 +117,7 @@ class CustomException extends Equatable implements Exception {
                 code: name.toString(),
                 statusCode: error.response?.statusCode,
                 message: message,
+                failureType: UnAuthorizedFailure(),
               );
             }
             if (message == 'Unauthorized.') {
@@ -116,6 +125,7 @@ class CustomException extends Equatable implements Exception {
                 exceptionType: _ExceptionType.Unauthorized,
                 statusCode: error.response?.statusCode,
                 message: 'Unauthorized user',
+                failureType: UnAuthorizedFailure(),
               );
             }
             return CustomException(
@@ -134,6 +144,7 @@ class CustomException extends Equatable implements Exception {
       return CustomException(
         exceptionType: _ExceptionType.FormatException,
         message: e.message,
+        failureType: FormatFailure(),
       );
     } on Exception catch (_) {
       return CustomException(

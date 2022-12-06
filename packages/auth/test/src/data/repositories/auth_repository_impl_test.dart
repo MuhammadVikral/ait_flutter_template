@@ -100,6 +100,33 @@ void main() {
       );
     },
   );
+  group(
+    "refresh token",
+    () {
+      test(
+        'refresh token should called memory set token when refresh token is sucess',
+        () async {
+          _haveInternetConnection(networkInfo);
+          when(() => service.refreshToken()).thenAnswer(
+            (invocation) async => TokenModel(),
+          );
+          verify(() => memory.setTokens(TokenModel())).called(1);
+        },
+      );
+      test(
+        'refresh token should return correct failure from exception',
+        () async {
+          _haveInternetConnection(networkInfo);
+          when(() => service.refreshToken()).thenThrow(CustomException(
+            message: '',
+            failureType: UnAuthorizedFailure(),
+          ));
+          final res = await sut.refreshToken();
+          expect(res, Left(UnAuthorizedFailure()));
+        },
+      );
+    },
+  );
 }
 
 void _noInternetConnection(MockNetworkInfo networkInfo) {

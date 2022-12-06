@@ -33,3 +33,13 @@ class UnAuthorizedFailure extends Failure {
   @override
   List<Object?> get props => [];
 }
+
+class UnRecognizedFailure extends Failure {
+  @override
+  List<Object?> get props => [];
+}
+
+class FormatFailure extends Failure {
+  @override
+  List<Object?> get props => [];
+}
