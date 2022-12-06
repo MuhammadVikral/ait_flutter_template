@@ -14,6 +14,7 @@ class CheckLoggedInUseCase {
           final refreshToken = await repositories.refreshToken();
           return refreshToken.fold(
             (l) {
+              print(l);
               return l == UnAuthorizedFailure() ? const Right(false) : Left(l);
             },
             (r) => const Right(true),

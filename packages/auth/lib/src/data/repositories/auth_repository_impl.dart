@@ -68,4 +68,14 @@ class AuthRepositoriesImpl implements AuthRepositories {
   Future<Either<Failure, Unit>> login(LoginEntity body) async {
     return Left(NetworkFailure());
   }
+
+  @override
+  Future<Either<Failure, TokenModel?>> getToken() async {
+    try {
+      TokenModel? token = await memory.getTokens();
+      return Right(token);
+    } catch (e) {
+      return Left(CacheFailure());
+    }
+  }
 }

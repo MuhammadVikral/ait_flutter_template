@@ -18,6 +18,7 @@ class AuthModule {
     //UseCase
     sl.registerLazySingleton(() => LoginUseCase(sl()));
     sl.registerLazySingleton(() => CheckLoggedInUseCase(sl()));
+    sl.registerLazySingleton(() => GetTokenUseCase(sl()));
     //Repository
     sl.registerLazySingleton<AuthRepositories>(
       () => AuthRepositoriesImpl(

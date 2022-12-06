@@ -1,10 +1,10 @@
-import 'package:dio/dio.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'dart:convert';
+
+import 'package:common_dependency/common_dependency.dart';
 
 class ApiInterceptor extends Interceptor {
-  ApiInterceptor() : super();
-  final FlutterSecureStorage storage = const FlutterSecureStorage();
-
+  ApiInterceptor(this.storage) : super();
+  final FlutterSecureStorage storage;
   @override
   Future<void> onRequest(
     RequestOptions options,
@@ -12,9 +12,13 @@ class ApiInterceptor extends Interceptor {
   ) async {
     if (options.extra.containsKey('requiresAuthToken')) {
       if (options.extra['requiresAuthToken'] == true) {
-        const String token = '';
+        String hasToken = await storage.read(key: 'token') ?? '';
+        TokenModel token = TokenModel();
+        if (hasToken.isNotEmpty) {
+          token = TokenModel.fromJson(jsonDecode(hasToken));
+        }
         options.headers.addAll(
-          <String, Object?>{'Authorization': 'Bearer $token'},
+          <String, Object?>{'Authorization': 'Bearer ${token.accessToken}'},
         );
       }
       options.extra.remove('requiresAuthToken');
@@ -23,27 +27,11 @@ class ApiInterceptor extends Interceptor {
   }
 
   @override
-  void onResponse(
-    Response response,
-    ResponseInterceptorHandler handler,
-  ) async {
-    final int status = response.data['meta']['code'];
-    final bool success = status == 200;
-
-    if (success) {
-      return handler.next(response);
-    } else {
-      if (status == 401) {
-        final hasRefreshToken = await storage.containsKey(key: 'refresh_token');
-        if (hasRefreshToken) {}
-      } else {
-        return handler.reject(
-          DioError(
-            requestOptions: response.requestOptions,
-            response: response,
-          ),
-        );
-      }
-    }
+  void onError(
+    DioError err,
+    ErrorInterceptorHandler handler,
+  ) {
+    print(err);
+    handler.reject(err);
   }
 }

@@ -13,9 +13,9 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   AuthLocalDataSourceImpl(this.storage);
   @override
   Future<TokenModel?> getTokens() async {
-    bool hasToken = await storage.containsKey(key: 'token');
-    if (hasToken) {
-      await storage.read(key: 'token');
+    String hasToken = await storage.read(key: 'token') ?? '';
+    if (hasToken.isNotEmpty) {
+      return TokenModel.fromJson(jsonDecode(hasToken));
     } else {
       return null;
     }

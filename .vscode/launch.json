@@ -16,6 +16,7 @@
         {
             "name": "ait_flutter_template",
             "request": "launch",
+            "program": "lib/main.dart",
             "type": "dart"
         },
         {

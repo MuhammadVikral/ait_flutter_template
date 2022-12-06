@@ -7,6 +7,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DesignSystemModule.init();
   await AuthModule.init();
+  await GetIt.I.allReady();
   runApp(const MyApp());
 }
 

@@ -1,7 +1,6 @@
-import 'package:design_system/design_system.dart';
+import 'package:common_dependency/common_dependency.dart';
 import 'package:design_system/src/api/api_interceptor.dart';
 import 'package:design_system/src/config/config.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -9,17 +8,21 @@ class MockDioService extends Mock implements DioService {}
 
 class MockResponModel extends Mock implements ResponseModel {}
 
+class MockStorage extends Mock implements FlutterSecureStorage {}
+
 void main() {
   late ApiService sut;
   late DioService dioService;
   late MockDioService mockDioService;
   late ApiInterceptor interceptor;
+  late MockStorage storage;
   setUp(
     () {},
   );
   setUpAll(
     () {
-      interceptor = ApiInterceptor();
+      storage = MockStorage();
+      interceptor = ApiInterceptor(storage);
       final baseOptions = BaseOptions(
         baseUrl: Config.baseUrl,
       );

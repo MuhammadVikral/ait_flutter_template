@@ -90,6 +90,21 @@ class CustomException extends Equatable implements Exception {
               failureType: NetworkFailure(),
             );
           case DioErrorType.response:
+            if (error.response?.statusCode == 401) {
+              return CustomException(
+                exceptionType: _ExceptionType.Unauthorized,
+                statusCode: error.response?.statusCode,
+                message: 'Unauthorized user',
+                failureType: UnAuthorizedFailure(),
+              );
+            } else {
+              return CustomException(
+                exceptionType: _ExceptionType.Unauthorized,
+                statusCode: error.response?.statusCode,
+                message: 'Unauthorized user',
+                failureType: UnAuthorizedFailure(),
+              );
+            }
           case DioErrorType.other:
             if (error.message.contains(_ExceptionType.SocketException.name)) {
               return CustomException(
@@ -99,7 +114,7 @@ class CustomException extends Equatable implements Exception {
                 failureType: NetworkFailure(),
               );
             }
-            if (error.response?.data['meta']['code'] == null) {
+            if (error.response?.statusCode == null) {
               return CustomException(
                 exceptionType: _ExceptionType.UnrecognizedException,
                 statusCode: error.response?.statusCode,
