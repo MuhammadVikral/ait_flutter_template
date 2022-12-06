@@ -36,25 +36,5 @@
             "type": "dart",
             "flutterMode": "release"
         },
-        {
-            "name": "ait_const",
-            "cwd": "packages\\ait_const",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "ait_const (profile mode)",
-            "cwd": "packages\\ait_const",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
-        },
-        {
-            "name": "ait_const (release mode)",
-            "cwd": "packages\\ait_const",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "release"
-        }
     ]
 }

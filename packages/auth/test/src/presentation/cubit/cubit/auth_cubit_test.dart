@@ -1,5 +1,4 @@
 import 'package:auth/src/domain/use_case/check_loggedin_usecase.dart';
-import 'package:auth/src/presentation/cubit/cubit/auth_cubit.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

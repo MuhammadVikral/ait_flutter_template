@@ -1,5 +1,6 @@
 import 'package:common_dependency/common_dependency.dart';
 import 'package:design_system/src/api/api_interceptor.dart';
+import 'package:design_system/src/api/logging_interceptor.dart';
 import 'package:design_system/src/config/config.dart';
 
 final sl = GetIt.instance;
@@ -11,9 +12,7 @@ class DesignSystemModule {
     sl.registerLazySingleton(
       () => DioService(
         dioClient: sl(),
-        interceptors: [
-          ApiInterceptor(),
-        ],
+        interceptors: [ApiInterceptor(), LoggingInterceptor()],
       ),
     );
 
