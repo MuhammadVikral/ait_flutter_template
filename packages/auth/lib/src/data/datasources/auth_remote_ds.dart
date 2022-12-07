@@ -37,7 +37,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<TokenModel?> refreshToken() async {
     return await service.setData<TokenModel>(
-      endpoint: '/user/auth/refresh',
+      endpoint: AuthEndpoint.refreshGuessToken,
       data: {},
       converter: (response) {
         return TokenModel.fromJson(response.data ?? {});

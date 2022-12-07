@@ -1,5 +1,6 @@
 import 'package:common_dependency/common_dependency.dart';
 import 'package:design_system/src/api/api_interceptor.dart';
+import 'package:design_system/src/api/token_key_value.dart';
 import 'package:design_system/src/config/config.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -8,7 +9,7 @@ class MockDioService extends Mock implements DioService {}
 
 class MockResponModel extends Mock implements ResponseModel {}
 
-class MockStorage extends Mock implements FlutterSecureStorage {}
+class MockStorage extends Mock implements TokenKeyValue {}
 
 void main() {
   late ApiService sut;
