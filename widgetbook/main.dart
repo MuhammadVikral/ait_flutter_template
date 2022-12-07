@@ -5,7 +5,7 @@ import 'widgetbook.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DesignSystemModule.init();
+  await ApiModule.init();
   await AuthModule.init();
   runApp(
     ScreenUtilInit(

@@ -1,24 +1,28 @@
-name: design_system
+name: api
 description: A new Flutter package project.
 version: 0.0.1
 publish_to: none
 
 environment:
-  sdk: ">=2.17.6 <3.0.0"
+  sdk: ">=2.18.4 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  email_validator: ^2.1.17
-  flutter_secure_storage: ^6.1.0
-
   common_dependency:
-    path: "../../utils/common_dependency"
+    path: "../common_dependency"
+  dio: ^4.0.6
+  freezed_annotation: ^2.1.0
+  json_annotation: ^4.7.0
+  mocktail: ^0.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  build_runner: 2.3.0
+  json_serializable: ^6.5.0
+  freezed: ^2.1.1
 
 flutter:

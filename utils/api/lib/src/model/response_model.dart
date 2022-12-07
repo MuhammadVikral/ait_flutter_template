@@ -1,6 +1,5 @@
 import 'package:common_dependency/common_dependency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'response_model.freezed.dart';
 part 'response_model.g.dart';
 

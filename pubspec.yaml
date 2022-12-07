@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   common_dependency:
-    path: "packages/common_dependency"
+    path: "utils/common_dependency"
   freezed_annotation: ^2.1.0
 
   widgetbook: ^2.4.1

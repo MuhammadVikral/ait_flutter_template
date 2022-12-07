@@ -2,6 +2,7 @@ name: ait_flutter_template
 
 packages:
   - packages/**
+  - utils/**
 command:
   bootstrap:
     usePubspecOverrides: true

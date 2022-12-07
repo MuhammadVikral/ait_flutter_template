@@ -11,9 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
   design_system:
-    path: "../design_system"
+    path: "../../packages/design_system"
   auth:
-    path: "../auth"
+    path: "../../packages/auth"
+  api:
+    path: "../api"
   flutter_hooks: ^0.18.5+1
   equatable: ^2.0.5
   flutter_screenutil: ^5.5.4
