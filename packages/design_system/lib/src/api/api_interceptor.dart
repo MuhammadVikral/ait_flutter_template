@@ -1,24 +1,22 @@
 import 'dart:convert';
 
 import 'package:common_dependency/common_dependency.dart';
-import 'package:design_system/src/api/endpoint/auth_endpoint.dart';
-import 'package:design_system/src/api/model/token_key_model.dart';
-import 'package:design_system/src/api/token_key_value.dart';
 
 class ApiInterceptor extends Interceptor {
   ApiInterceptor(this.keyValue, this.dio) : super();
   final TokenKeyValue keyValue;
   final Dio dio;
   String accessToken = '';
+  bool isRefreshingToken = false;
 
   @override
   Future<void> onRequest(
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
+    TokenKeyModel? token = await keyValue.getToken();
     if (options.extra.containsKey('requiresAuthToken')) {
       if (options.extra['requiresAuthToken'] == true) {
-        TokenKeyModel? token = await keyValue.getToken();
         if (token != null) {
           accessToken = token.token.accessToken!;
           options.headers.addAll(
@@ -26,7 +24,17 @@ class ApiInterceptor extends Interceptor {
           );
         }
       }
-      options.extra.remove('requiresAuthToken');
+    }
+    if (options.extra.containsKey('requiresRefreshToken')) {
+      if (options.extra['requiresRefreshToken'] == true) {
+        if (token != null) {
+          accessToken = token.token.refreshToken!;
+          isRefreshingToken = true;
+          options.headers.addAll(
+            <String, Object?>{'Authorization': 'Bearer $accessToken'},
+          );
+        }
+      }
     }
     return handler.next(options);
   }
@@ -44,9 +52,11 @@ class ApiInterceptor extends Interceptor {
       );
       if (refreshingTokenSuccess) {
         return handler.resolve(await _retry(err.requestOptions));
+      } else {
+        return handler.reject(err);
       }
     }
-    return handler.next(err);
+    return handler.reject(err);
   }
 
   Future<bool> refreshToken(
@@ -54,17 +64,26 @@ class ApiInterceptor extends Interceptor {
     final String uri = whichToken == WhichToken.guess
         ? AuthEndpoint.refreshGuessToken
         : AuthEndpoint.refreshUserToken;
-    final response = await dio.post(
-      uri,
-      data: {'refreshToken': token.refreshToken},
-    );
-    if (response.statusCode == 201) {
-      keyValue.setToken(whichToken: whichToken, token: token);
-      TokenModel newToken = TokenModel.fromJson(jsonDecode(response.data));
-      accessToken = newToken.accessToken!;
-      return true;
-    } else {
+    try {
       keyValue.deleteToken();
+      final response = await dio.post(
+        uri,
+        options: Options(
+          headers: <String, Object?>{'Authorization': 'Bearer $accessToken'},
+        ),
+      );
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        keyValue.setToken(whichToken: whichToken, token: token);
+        TokenModel newToken = TokenModel.fromJson(jsonDecode(response.data));
+        accessToken =
+            isRefreshingToken ? newToken.refreshToken! : newToken.accessToken!;
+        return true;
+      } else {
+        keyValue.deleteToken();
+        return false;
+      }
+    } catch (e) {
       return false;
     }
   }

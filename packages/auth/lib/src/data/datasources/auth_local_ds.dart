@@ -1,38 +1,30 @@
-import 'dart:convert';
-
 import 'package:common_dependency/common_dependency.dart';
 
 abstract class AuthLocalDataSource {
-  Future<void> setTokens(TokenModel token);
+  Future<void> setTokens(
+      {required WhichToken whichToken, required TokenModel token});
   Future<void> deleteTokens();
-  Future<TokenModel?> getTokens();
+  Future<TokenKeyModel?> getTokens();
 }
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
-  final FlutterSecureStorage storage;
+  final TokenKeyValue storage;
 
   AuthLocalDataSourceImpl(this.storage);
   @override
-  Future<TokenModel?> getTokens() async {
-    String hasToken = await storage.read(key: 'token') ?? '';
-    if (hasToken.isNotEmpty) {
-      return TokenModel.fromJson(jsonDecode(hasToken));
-    } else {
-      return null;
-    }
+  Future<TokenKeyModel?> getTokens() async {
+    final token = await storage.getToken();
+    return token;
   }
 
   @override
-  Future<void> setTokens(TokenModel token) async {
-    var encodedToken = jsonEncode(token.toJson());
-    return await storage.write(
-      key: 'token',
-      value: encodedToken,
-    );
+  Future<void> setTokens(
+      {required WhichToken whichToken, required TokenModel token}) async {
+    return await storage.setToken(whichToken: whichToken, token: token);
   }
 
   @override
   Future<void> deleteTokens() async {
-    await storage.deleteAll();
+    await storage.deleteToken();
   }
 }

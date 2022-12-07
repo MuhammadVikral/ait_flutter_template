@@ -13,13 +13,49 @@ class AuthRepositoriesImpl implements AuthRepositories {
     required this.memory,
     required this.service,
   });
+
   @override
+  Future<Either<Failure, bool>> checkLoggedIn() async {
+    final hasToken = await memory.getTokens();
+    if (hasToken != null) {
+      final callRefreshToken = await refreshToken(hasToken.whichToken);
+      return callRefreshToken.fold(
+        (l) => Left(l),
+        (r) async {
+          if (r) {
+            if (hasToken.whichToken == WhichToken.user) {
+              return const Right(true);
+            }
+            return const Right(false);
+          } else {
+            final callGetInitialToken = await getInitialToken();
+            return callGetInitialToken.fold(
+              (l) => Left(l),
+              (r) => const Right(false),
+            );
+          }
+        },
+      );
+    } else {
+      final callGetInitialToken = await getInitialToken();
+      return callGetInitialToken.fold(
+        (l) => Left(l),
+        (r) => const Right(false),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> login(LoginEntity body) async {
+    return Left(NetworkFailure());
+  }
+
   Future<Either<Failure, Unit>> getInitialToken() async {
     if (await networkInfo.isConnected) {
       try {
         final token = await service.getInitialToken();
         try {
-          await memory.setTokens(token);
+          await memory.setTokens(whichToken: WhichToken.guess, token: token);
         } catch (e) {
           return Left(CacheFailure());
         }
@@ -32,51 +68,26 @@ class AuthRepositoriesImpl implements AuthRepositories {
     }
   }
 
-  @override
-  Future<Either<Failure, bool>> hasToken() async {
-    try {
-      final token = await memory.getTokens();
-      bool hasToken = token != null;
-      return Right(hasToken);
-    } catch (e) {
-      return Left(CacheFailure());
-    }
-  }
-
-  @override
-  Future<Either<Failure, Unit>> refreshToken() async {
+  Future<Either<Failure, bool>> refreshToken(WhichToken whichToken) async {
     if (await networkInfo.isConnected == false) {
       return Left(NetworkFailure());
     } else {
       try {
-        final res = await service.refreshToken();
+        final res = await service.refreshUserToken(whichToken);
         if (res != null) {
-          await memory.setTokens(res);
+          await memory.setTokens(whichToken: whichToken, token: res);
         }
-        return const Right(unit);
+        return const Right(true);
       } catch (e) {
         if (e is CustomException) {
-          if (e.failure == UnAuthorizedFailure()) {}
+          if (e.failure == UnAuthorizedFailure()) {
+            return const Right(false);
+          }
           return Left(e.failure);
         } else {
           return Left(ServerFailure());
         }
       }
-    }
-  }
-
-  @override
-  Future<Either<Failure, Unit>> login(LoginEntity body) async {
-    return Left(NetworkFailure());
-  }
-
-  @override
-  Future<Either<Failure, TokenModel?>> getToken() async {
-    try {
-      TokenModel? token = await memory.getTokens();
-      return Right(token);
-    } catch (e) {
-      return Left(CacheFailure());
     }
   }
 }

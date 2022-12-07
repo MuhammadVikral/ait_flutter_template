@@ -9,6 +9,7 @@ class ApiService {
     required String endpoint,
     required JSON data,
     bool requiresAuthToken = false,
+    bool requiresRefreshToken = false,
     required T Function(ResponseModel response) converter,
   }) async {
     ResponseModel response;
@@ -21,6 +22,7 @@ class ApiService {
         options: Options(
           extra: <String, Object?>{
             'requiresAuthToken': requiresAuthToken,
+            'requiresRefreshToken': requiresRefreshToken,
           },
         ),
       );

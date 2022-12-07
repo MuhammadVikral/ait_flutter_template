@@ -1,6 +1,5 @@
 import 'package:common_dependency/common_dependency.dart';
 import 'package:design_system/src/api/api_interceptor.dart';
-import 'package:design_system/src/api/token_key_value.dart';
 import 'package:design_system/src/config/config.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

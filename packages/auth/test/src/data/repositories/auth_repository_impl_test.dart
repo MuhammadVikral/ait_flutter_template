@@ -107,7 +107,7 @@ void main() {
         'refresh token should called memory set token when refresh token is sucess',
         () async {
           _haveInternetConnection(networkInfo);
-          when(() => service.refreshToken()).thenAnswer(
+          when(() => service.refreshUserToken()).thenAnswer(
             (invocation) async => TokenModel(),
           );
           await sut.refreshToken();
@@ -118,7 +118,7 @@ void main() {
         'refresh token should return correct failure from exception',
         () async {
           _haveInternetConnection(networkInfo);
-          when(() => service.refreshToken()).thenThrow(CustomException(
+          when(() => service.refreshUserToken()).thenThrow(CustomException(
             message: '',
             failureType: UnAuthorizedFailure(),
           ));

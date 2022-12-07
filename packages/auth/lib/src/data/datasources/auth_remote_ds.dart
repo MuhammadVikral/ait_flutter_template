@@ -2,7 +2,7 @@ import 'package:common_dependency/common_dependency.dart';
 
 abstract class AuthRemoteDataSource {
   Future<TokenModel> getInitialToken();
-  Future<TokenModel?> refreshToken();
+  Future<TokenModel?> refreshUserToken(WhichToken whichToken);
   Future<Either<Failure, Unit>> login();
   Future<Either<Failure, Unit>> logout();
 }
@@ -35,9 +35,13 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<TokenModel?> refreshToken() async {
+  Future<TokenModel?> refreshUserToken(WhichToken whichToken) async {
+    final uri = whichToken == WhichToken.guess
+        ? AuthEndpoint.refreshGuessToken
+        : AuthEndpoint.refreshUserToken;
     return await service.setData<TokenModel>(
-      endpoint: AuthEndpoint.refreshGuessToken,
+      endpoint: uri,
+      requiresRefreshToken: true,
       data: {},
       converter: (response) {
         return TokenModel.fromJson(response.data ?? {});
