@@ -53,14 +53,18 @@ void main() {
         (tester) async {
           _haveInternetConnection(networkInfo);
           when(
-            () => memory.setTokens(TokenModel()),
+            () => memory.setTokens(
+                whichToken: WhichToken.guess, token: TokenModel()),
           ).thenAnswer((_) async => throw Exception());
           when(
             () => service.getInitialToken(),
           ).thenAnswer((_) async => Future.value(TokenModel()));
           final res = await sut.getInitialToken();
           verify(() => service.getInitialToken()).called(1);
-          verify(() => memory.setTokens(TokenModel())).called(1);
+          verify(() => memory.setTokens(
+                whichToken: WhichToken.guess,
+                token: TokenModel(),
+              )).called(1);
           expect(res, equals(Left(CacheFailure())));
         },
       );
@@ -68,62 +72,31 @@ void main() {
   );
 
   group(
-    'has Token',
-    () {
-      test(
-        'should return false when get token is success but the return is null',
-        () async {
-          when(() => memory.getTokens()).thenAnswer((invocation) async => null);
-          final res = await sut.hasToken();
-          verify(() => memory.getTokens()).called(1);
-          expect(res, const Right(false));
-        },
-      );
-      test(
-        'should return true when get token is success and return a token model',
-        () async {
-          when(() => memory.getTokens())
-              .thenAnswer((invocation) async => TokenModel());
-          final res = await sut.hasToken();
-          verify(() => memory.getTokens()).called(1);
-          expect(res, const Right(true));
-        },
-      );
-      test(
-        'should return failure when memory get token throwing exception',
-        () async {
-          when(() => memory.getTokens()).thenThrow(Exception());
-          final res = await sut.hasToken();
-          verify(() => memory.getTokens()).called(1);
-          expect(res, Left(CacheFailure()));
-        },
-      );
-    },
-  );
-  group(
     "refresh token",
     () {
       test(
         'refresh token should called memory set token when refresh token is sucess',
         () async {
           _haveInternetConnection(networkInfo);
-          when(() => service.refreshUserToken()).thenAnswer(
+          when(() => service.refreshUserToken(WhichToken.guess)).thenAnswer(
             (invocation) async => TokenModel(),
           );
-          await sut.refreshToken();
-          verify(() => memory.setTokens(TokenModel())).called(1);
+          await sut.refreshToken(WhichToken.guess);
+          verify(() => memory.setTokens(
+              whichToken: WhichToken.guess, token: TokenModel())).called(1);
         },
       );
       test(
-        'refresh token should return correct failure from exception',
+        'refresh token should return right(false) when refresh token is failed but unAutorizedFailed',
         () async {
           _haveInternetConnection(networkInfo);
-          when(() => service.refreshUserToken()).thenThrow(CustomException(
+          when(() => service.refreshUserToken(WhichToken.guess))
+              .thenThrow(CustomException(
             message: '',
             failureType: UnAuthorizedFailure(),
           ));
-          final res = await sut.refreshToken();
-          expect(res, Left(UnAuthorizedFailure()));
+          final res = await sut.refreshToken(WhichToken.guess);
+          expect(res, const Right(false));
         },
       );
     },

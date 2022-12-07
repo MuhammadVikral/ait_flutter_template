@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:common_dependency/common_dependency.dart';
-import 'package:design_system/src/api/model/token_key_model.dart';
 
 abstract class TokenKeyValue {
   Future<TokenKeyModel?> getToken();

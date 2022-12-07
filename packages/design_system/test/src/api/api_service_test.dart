@@ -1,6 +1,4 @@
 import 'package:common_dependency/common_dependency.dart';
-import 'package:design_system/src/api/api_interceptor.dart';
-import 'package:design_system/src/config/config.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -8,52 +6,16 @@ class MockDioService extends Mock implements DioService {}
 
 class MockResponModel extends Mock implements ResponseModel {}
 
-class MockStorage extends Mock implements TokenKeyValue {}
-
 void main() {
   late ApiService sut;
-  late DioService dioService;
   late MockDioService mockDioService;
-  late ApiInterceptor interceptor;
-  late MockStorage storage;
   setUp(
     () {},
   );
   setUpAll(
     () {
-      storage = MockStorage();
-      interceptor = ApiInterceptor(storage, Dio());
-      final baseOptions = BaseOptions(
-        baseUrl: Config.baseUrl,
-      );
-      dioService = DioService(
-        dioClient: Dio(baseOptions),
-        interceptors: [interceptor],
-      );
       mockDioService = MockDioService();
       registerFallbackValue(MockResponModel());
-    },
-  );
-  group(
-    'real api call test',
-    () {
-      setUp(
-        () {
-          sut = ApiService(dioService);
-        },
-      );
-      test(
-        'api service should call url auth succesfully',
-        () async {
-          await sut.setData<TokenModel>(
-            endpoint: '/oauth/auth',
-            data: {"app": "test", "key": "oJi1WeLsmh7nVily0MrB"},
-            converter: (response) {
-              return TokenModel.fromJson(response.data ?? {});
-            },
-          );
-        },
-      );
     },
   );
   group(

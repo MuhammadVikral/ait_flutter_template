@@ -72,7 +72,6 @@ class ApiInterceptor extends Interceptor {
           headers: <String, Object?>{'Authorization': 'Bearer $accessToken'},
         ),
       );
-      print(response.statusCode);
       if (response.statusCode == 200) {
         keyValue.setToken(whichToken: whichToken, token: token);
         TokenModel newToken = TokenModel.fromJson(jsonDecode(response.data));
