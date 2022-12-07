@@ -56,6 +56,7 @@ class AuthRepositoriesImpl implements AuthRepositories {
         return const Right(unit);
       } catch (e) {
         if (e is CustomException) {
+          if (e.failure == UnAuthorizedFailure()) {}
           return Left(e.failure);
         } else {
           return Left(ServerFailure());

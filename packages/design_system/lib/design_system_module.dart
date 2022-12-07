@@ -12,7 +12,7 @@ class DesignSystemModule {
     sl.registerLazySingleton(
       () => DioService(
         dioClient: sl(),
-        interceptors: [ApiInterceptor(sl()), LoggingInterceptor()],
+        interceptors: [ApiInterceptor(sl(),sl()), LoggingInterceptor()],
       ),
     );
 

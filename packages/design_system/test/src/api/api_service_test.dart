@@ -22,7 +22,7 @@ void main() {
   setUpAll(
     () {
       storage = MockStorage();
-      interceptor = ApiInterceptor(storage);
+      interceptor = ApiInterceptor(storage, Dio());
       final baseOptions = BaseOptions(
         baseUrl: Config.baseUrl,
       );

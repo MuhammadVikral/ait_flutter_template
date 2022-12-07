@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'package:common_dependency/common_dependency.dart';
 
 class ApiInterceptor extends Interceptor {
-  ApiInterceptor(this.storage) : super();
+  ApiInterceptor(this.storage, this.dio) : super();
   final FlutterSecureStorage storage;
+  final Dio dio;
+
   @override
   Future<void> onRequest(
     RequestOptions options,
@@ -30,8 +32,20 @@ class ApiInterceptor extends Interceptor {
   void onError(
     DioError err,
     ErrorInterceptorHandler handler,
-  ) {
-    print(err);
-    handler.reject(err);
+  ) async {
+    String hasToken = await storage.read(key: 'token') ?? '';
+    if (err.response?.statusCode == 401 && hasToken.isNotEmpty) {
+      TokenModel token = TokenModel.fromJson(jsonDecode(hasToken));
+      await storage.delete(key: 'token');
+      handler.resolve(
+        await dio.post(
+          err.requestOptions.path,
+          options: Options(
+              headers: {'Authorization': 'Bearer ${token.refreshToken}'}),
+        ),
+      );
+    } else {
+      handler.reject(err);
+    }
   }
 }

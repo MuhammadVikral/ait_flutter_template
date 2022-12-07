@@ -4,6 +4,7 @@ import 'package:common_dependency/common_dependency.dart';
 
 abstract class AuthLocalDataSource {
   Future<void> setTokens(TokenModel token);
+  Future<void> deleteTokens();
   Future<TokenModel?> getTokens();
 }
 
@@ -28,5 +29,10 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
       key: 'token',
       value: encodedToken,
     );
+  }
+
+  @override
+  Future<void> deleteTokens() async {
+    await storage.deleteAll();
   }
 }
