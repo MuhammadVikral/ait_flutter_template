@@ -42,7 +42,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     return await service.setData<TokenModel>(
       endpoint: uri,
       requiresRefreshToken: true,
-      data: {},
       converter: (response) {
         return TokenModel.fromJson(response.data ?? {});
       },

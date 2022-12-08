@@ -7,7 +7,7 @@ class ApiService {
 
   Future<T> setData<T>({
     required String endpoint,
-    required JSON data,
+    JSON? data,
     bool requiresAuthToken = false,
     bool requiresRefreshToken = false,
     required T Function(ResponseModel response) converter,

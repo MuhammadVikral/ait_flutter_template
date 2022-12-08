@@ -22,3 +22,7 @@ scripts:
     select-package:
       dir-exists:
         - test
+  test:all:
+    run: melos run test --no-select
+    description: Run `flutter test` for a specific package.
+  gen_coverage: melos exec -- "E:\study\flutter\ait_flutter_template\ait_flutter_template\combine_coverage.sh"
