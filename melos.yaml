@@ -25,4 +25,14 @@ scripts:
   test:all:
     run: melos run test --no-select
     description: Run `flutter test` for a specific package.
+  coverage:
+    run: |
+      melos exec -c 6 --fail-fast -- \
+        "flutter test --coverage --no-test-assets"
+    description: Run `flutter test coverage` for a specific package.
+      - test
+  coverage:all: melos run coverage --no-select
   gen_coverage: melos exec -- "E:\study\flutter\ait_flutter_template\ait_flutter_template\combine_coverage.sh"
+  # gen_coverage:
+  # exec: echo $MELOS_ROOT_PATH"
+  # exec: echo $MELOS_ROOT_PATH"
