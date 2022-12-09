@@ -21,9 +21,9 @@ LoginModel _$LoginModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$LoginModel {
   @JsonKey(name: 'email')
-  String get email => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   @JsonKey(name: 'password')
-  String get password => throw _privateConstructorUsedError;
+  String? get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,8 +38,8 @@ abstract class $LoginModelCopyWith<$Res> {
       _$LoginModelCopyWithImpl<$Res, LoginModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'email') String email,
-      @JsonKey(name: 'password') String password});
+      {@JsonKey(name: 'email') String? email,
+      @JsonKey(name: 'password') String? password});
 }
 
 /// @nodoc
@@ -55,18 +55,18 @@ class _$LoginModelCopyWithImpl<$Res, $Val extends LoginModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? password = null,
+    Object? email = freezed,
+    Object? password = freezed,
   }) {
     return _then(_value.copyWith(
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
+              as String?,
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -80,8 +80,8 @@ abstract class _$$_LoginModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'email') String email,
-      @JsonKey(name: 'password') String password});
+      {@JsonKey(name: 'email') String? email,
+      @JsonKey(name: 'password') String? password});
 }
 
 /// @nodoc
@@ -95,18 +95,18 @@ class __$$_LoginModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? password = null,
+    Object? email = freezed,
+    Object? password = freezed,
   }) {
     return _then(_$_LoginModel(
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
+              as String?,
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -115,8 +115,8 @@ class __$$_LoginModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_LoginModel extends _LoginModel {
   const _$_LoginModel(
-      {@JsonKey(name: 'email') required this.email,
-      @JsonKey(name: 'password') required this.password})
+      {@JsonKey(name: 'email') this.email,
+      @JsonKey(name: 'password') this.password})
       : super._();
 
   factory _$_LoginModel.fromJson(Map<String, dynamic> json) =>
@@ -124,10 +124,10 @@ class _$_LoginModel extends _LoginModel {
 
   @override
   @JsonKey(name: 'email')
-  final String email;
+  final String? email;
   @override
   @JsonKey(name: 'password')
-  final String password;
+  final String? password;
 
   @override
   String toString() {
@@ -162,11 +162,10 @@ class _$_LoginModel extends _LoginModel {
   }
 }
 
-abstract class _LoginModel extends LoginModel implements LoginEntity {
+abstract class _LoginModel extends LoginModel {
   const factory _LoginModel(
-          {@JsonKey(name: 'email') required final String email,
-          @JsonKey(name: 'password') required final String password}) =
-      _$_LoginModel;
+      {@JsonKey(name: 'email') final String? email,
+      @JsonKey(name: 'password') final String? password}) = _$_LoginModel;
   const _LoginModel._() : super._();
 
   factory _LoginModel.fromJson(Map<String, dynamic> json) =
@@ -174,10 +173,10 @@ abstract class _LoginModel extends LoginModel implements LoginEntity {
 
   @override
   @JsonKey(name: 'email')
-  String get email;
+  String? get email;
   @override
   @JsonKey(name: 'password')
-  String get password;
+  String? get password;
   @override
   @JsonKey(ignore: true)
   _$$_LoginModelCopyWith<_$_LoginModel> get copyWith =>

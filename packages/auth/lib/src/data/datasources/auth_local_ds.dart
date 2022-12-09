@@ -20,7 +20,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   @override
   Future<void> setTokens(
       {required WhichToken whichToken, required TokenModel token}) async {
-    return await storage.setToken(whichToken: whichToken, token: token);
+    await storage.setToken(whichToken: whichToken, token: token);
   }
 
   @override

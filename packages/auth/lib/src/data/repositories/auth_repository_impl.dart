@@ -1,5 +1,6 @@
 import 'package:auth/src/data/datasources/auth_local_ds.dart';
 import 'package:auth/src/data/datasources/auth_remote_ds.dart';
+import 'package:auth/src/data/model/login_model.dart';
 import 'package:auth/src/domain/repositories/auth_repositories.dart';
 import 'package:common_dependency/common_dependency.dart';
 
@@ -47,7 +48,25 @@ class AuthRepositoriesImpl implements AuthRepositories {
 
   @override
   Future<Either<Failure, Unit>> login(LoginEntity body) async {
-    return Left(NetworkFailure());
+    if (await networkInfo.isConnected == false) {
+      return Left(NetworkFailure());
+    } else {
+      try {
+        final res = await service.login(LoginModel.fromEntity(body));
+        try {
+          await memory.setTokens(whichToken: WhichToken.user, token: res);
+        } catch (e) {
+          return Left(CacheFailure());
+        }
+        return const Right(unit);
+      } catch (e) {
+        if (e is CustomException) {
+          return Left(e.failure);
+        } else {
+          return Left(UnRecognizedFailure());
+        }
+      }
+    }
   }
 
   Future<Either<Failure, Unit>> getInitialToken() async {

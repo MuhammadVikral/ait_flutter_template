@@ -1,9 +1,10 @@
+import 'package:auth/src/data/model/login_model.dart';
 import 'package:common_dependency/common_dependency.dart';
 
 abstract class AuthRemoteDataSource {
   Future<TokenModel> getInitialToken();
   Future<TokenModel?> refreshUserToken(WhichToken whichToken);
-  Future<Either<Failure, Unit>> login();
+  Future<TokenModel> login(LoginModel body);
   Future<Either<Failure, Unit>> logout();
 }
 
@@ -23,7 +24,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<Either<Failure, Unit>> login() {
+  Future<TokenModel> login(LoginModel body) {
     // TODO: implement login
     throw UnimplementedError();
   }

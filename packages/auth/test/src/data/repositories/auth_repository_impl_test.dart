@@ -1,5 +1,6 @@
 import 'package:auth/src/data/datasources/auth_local_ds.dart';
 import 'package:auth/src/data/datasources/auth_remote_ds.dart';
+import 'package:auth/src/data/model/login_model.dart';
 import 'package:auth/src/data/repositories/auth_repository_impl.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,12 +12,23 @@ class MockAuthRemoteDataSource extends Mock implements AuthRemoteDataSource {}
 
 class MockAuthLocalDataSource extends Mock implements AuthLocalDataSource {}
 
+class MockTokenModel extends Mock implements TokenModel {}
+
+class MockLoginModel extends Mock implements LoginModel {}
+
 void main() {
   late MockNetworkInfo networkInfo;
   late MockAuthRemoteDataSource service;
   late MockAuthLocalDataSource memory;
   late AuthRepositoriesImpl sut;
 
+  setUpAll(
+    () {
+      registerFallbackValue(WhichToken.user);
+      registerFallbackValue(MockTokenModel());
+      registerFallbackValue(MockLoginModel());
+    },
+  );
   setUp(
     () {
       networkInfo = MockNetworkInfo();
@@ -97,6 +109,91 @@ void main() {
           ));
           final res = await sut.refreshToken(WhichToken.guess);
           expect(res, const Right(false));
+        },
+      );
+    },
+  );
+  group(
+    'login use case',
+    () {
+      var loginEntity = LoginEntity(
+        email: '123',
+        password: '123',
+      );
+      var tokenModel = TokenModel(accessToken: '123', refreshToken: '123');
+      test(
+        'login should return token model when success',
+        () async {
+          _haveInternetConnection(networkInfo);
+          when(
+            () => memory.setTokens(
+              whichToken: any(named: 'whichToken'),
+              token: any(named: 'token'),
+            ),
+          ).thenAnswer((invocation) async => Null);
+          when(() => service.login(any()))
+              .thenAnswer((invocation) async => tokenModel);
+          final res = await sut.login(loginEntity);
+          verify(
+            () => memory.setTokens(
+              whichToken: any(named: 'whichToken'),
+              token: any(named: 'token'),
+            ),
+          ).called(1);
+          expect(res, const Right(unit));
+        },
+      );
+      test(
+        'login should return cache failure when service is succes but caching is failed',
+        () async {
+          _haveInternetConnection(networkInfo);
+          when(
+            () => memory.setTokens(
+              whichToken: any(named: 'whichToken'),
+              token: any(named: 'token'),
+            ),
+          ).thenThrow(Exception());
+          when(() => service.login(any()))
+              .thenAnswer((invocation) async => tokenModel);
+          final res = await sut.login(loginEntity);
+          verify(
+            () => memory.setTokens(
+              whichToken: any(named: 'whichToken'),
+              token: any(named: 'token'),
+            ),
+          ).called(1);
+          expect(res, Left(CacheFailure()));
+        },
+      );
+      test(
+        'login should return UnAuthorizedFailure and not called set memory when service is failed because unAuthorized',
+        () async {
+          _haveInternetConnection(networkInfo);
+          when(() => service.login(any())).thenThrow(
+              CustomException(message: '', failureType: UnAuthorizedFailure()));
+          final res = await sut.login(loginEntity);
+          verifyNever(
+            () => memory.setTokens(
+              whichToken: any(named: 'whichToken'),
+              token: any(named: 'token'),
+            ),
+          );
+          expect(res, Left(UnAuthorizedFailure()));
+        },
+      );
+      test(
+        'login should return UnrecognizedFailure and not called set memory when service is failed but undetected',
+        () async {
+          _haveInternetConnection(networkInfo);
+          when(() => service.login(any())).thenThrow(Exception());
+          final res = await sut.login(loginEntity);
+          verifyNever(
+            () => memory.setTokens(
+              whichToken: any(named: 'whichToken'),
+              token: any(named: 'token'),
+            ),
+          );
+          expect(res, Left(UnRecognizedFailure()));
         },
       );
     },
