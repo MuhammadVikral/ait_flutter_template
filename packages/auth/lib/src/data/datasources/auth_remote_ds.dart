@@ -15,7 +15,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<TokenModel> getInitialToken() async {
     return await service.setData<TokenModel>(
-      endpoint: '/oauth/auth',
+      endpoint: AuthEndpoint.getInitialToken,
       data: {"app": "test", "key": "oJi1WeLsmh7nVily0MrB"},
       converter: (response) {
         return TokenModel.fromJson(response.data ?? {});
@@ -24,9 +24,15 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<TokenModel> login(LoginModel body) {
-    // TODO: implement login
-    throw UnimplementedError();
+  Future<TokenModel> login(LoginModel body) async {
+    return await service.setData<TokenModel>(
+      endpoint: AuthEndpoint.login,
+      requiresAuthToken: true,
+      data: body.toJson(),
+      converter: (response) {
+        return TokenModel.fromJson(response.data ?? {});
+      },
+    );
   }
 
   @override
