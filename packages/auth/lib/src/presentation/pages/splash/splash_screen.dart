@@ -6,12 +6,12 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthCubit, AuthState>(
-      builder: (context, state) {
-        Widget child = Container();
+    Widget child = const LoadingScreen();
+    return BlocListener<AuthCubit, AuthState>(
+      listener: (context, state) {
         switch (state.status) {
           case FormzStatus.submissionInProgress:
-            child = LoadingScreen();
+            child = const LoadingScreen();
             break;
           case FormzStatus.submissionFailure:
             child = Scaffold(
@@ -21,14 +21,13 @@ class SplashScreen extends StatelessWidget {
             );
             break;
           case FormzStatus.submissionSuccess:
-            child = Login();
+            child = const Login();
             break;
           default:
-            child = Container();
             break;
         }
-        return child;
       },
+      child: child,
     );
   }
 }
@@ -40,7 +39,7 @@ class LoadingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: CircularProgressIndicator(),
       ),

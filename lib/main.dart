@@ -1,6 +1,7 @@
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:navigation/navigation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _router = MainNavigation();
     return ScreenUtilInit(
       designSize: const Size(375, 667),
       minTextAdapt: true,
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
             )
           ],
           child: MaterialApp.router(
+            routerConfig: _router,
             scrollBehavior: const MaterialScrollBehavior().copyWith(
               dragDevices: {
                 PointerDeviceKind.mouse,

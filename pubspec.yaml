@@ -13,6 +13,8 @@ dependencies:
     sdk: flutter
   common_dependency:
     path: "utils/common_dependency"
+  navigation:
+    path: "utils/navigation"
   freezed_annotation: ^2.1.0
   go_router: ^5.2.4
 
