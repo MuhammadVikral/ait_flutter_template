@@ -23,7 +23,7 @@
             "name": "ait_flutter_template_storybook",
             "request": "launch",
             "type": "dart",
-            "program": "widgetbook/main.dart",
+            "program": "utils/story_book/lib/main.dart",
         },
         {
             "name": "ait_flutter_template (profile mode)",

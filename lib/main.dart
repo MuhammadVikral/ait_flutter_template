@@ -1,4 +1,3 @@
-import 'package:ait_flutter_template/presentation/pages/splash_screen.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
               create: (context) => GetIt.I<AuthCubit>()..initApp(),
             )
           ],
-          child: MaterialApp(
+          child: MaterialApp.router(
             scrollBehavior: const MaterialScrollBehavior().copyWith(
               dragDevices: {
                 PointerDeviceKind.mouse,
@@ -39,7 +38,6 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home: SplashScreen(),
           ),
         );
       },
