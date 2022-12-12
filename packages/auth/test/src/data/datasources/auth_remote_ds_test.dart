@@ -1,4 +1,3 @@
-import 'package:auth/src/data/datasources/auth_remote_ds.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

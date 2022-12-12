@@ -1,4 +1,3 @@
-import 'package:auth/src/domain/use_case/login_use_case.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -20,7 +19,6 @@ void main() {
     () {
       registerFallbackValue(MockLoginInput());
       registerFallbackValue(MockPasswordInput());
-      sl.registerFactory(() => loginCubit);
     },
   );
   setUp(

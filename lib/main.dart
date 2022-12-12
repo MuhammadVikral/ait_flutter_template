@@ -1,12 +1,13 @@
 import 'package:common_dependency/common_dependency.dart';
+import 'package:di/di.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:navigation/navigation.dart';
 
 void main() async {
+  MainDI di = MainDI();
   WidgetsFlutterBinding.ensureInitialized();
-  await ApiModule.init();
-  await AuthModule.init();
+  await di();
   await GetIt.I.allReady();
   runApp(const MyApp());
 }

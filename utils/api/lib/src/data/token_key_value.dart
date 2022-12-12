@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:common_dependency/common_dependency.dart';
+import 'package:api/api.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 abstract class TokenKeyValue {
   Future<TokenKeyModel?> getToken();

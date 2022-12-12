@@ -1,4 +1,4 @@
-name: api
+name: di
 description: A new Flutter package project.
 version: 0.0.1
 publish_to: none
@@ -10,12 +10,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  common_dependency:
-    path: "../common_dependency"
+  get_it: ^7.2.0
+  api:
+    path: "../api"
+  auth:
+    path: "../../packages/auth"
   dio: ^4.0.6
-  freezed_annotation: ^2.1.0
-  json_annotation: ^4.7.0
-  mocktail: ^0.3.0
   flutter_secure_storage: ^6.1.0
   internet_connection_checker: ^1.0.0+1
 
@@ -23,8 +23,5 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  build_runner: 2.3.0
-  json_serializable: ^6.5.0
-  freezed: ^2.1.1
 
 flutter:

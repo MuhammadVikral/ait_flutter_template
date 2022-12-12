@@ -1,4 +1,3 @@
-import 'package:auth/src/domain/repositories/auth_repositories.dart';
 import 'package:common_dependency/common_dependency.dart';
 
 class CheckLoggedInUseCase {
