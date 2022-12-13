@@ -1,5 +1,4 @@
 import 'package:common_dependency/common_dependency.dart';
-import 'package:dio/dio.dart';
 
 class ApiService {
   final DioService dioService;

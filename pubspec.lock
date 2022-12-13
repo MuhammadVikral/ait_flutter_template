@@ -204,13 +204,6 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
-  di:
-    dependency: "direct main"
-    description:
-      path: "utils/di"
-      relative: true
-    source: path
-    version: "0.0.1"
   dio:
     dependency: transitive
     description:

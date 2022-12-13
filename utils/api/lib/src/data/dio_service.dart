@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:common_dependency/common_dependency.dart';
-import 'package:dio/dio.dart';
 
 class DioService {
   /// An instance of [Dio] for executing network requests.

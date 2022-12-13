@@ -1,4 +1,4 @@
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:common_dependency/common_dependency.dart';
 
 abstract class NetworkInfo {
   Future<bool> get isConnected;

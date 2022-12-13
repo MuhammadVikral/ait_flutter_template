@@ -1,3 +1,4 @@
+import 'package:auth/src/domain/use_case/check_loggedin_usecase.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

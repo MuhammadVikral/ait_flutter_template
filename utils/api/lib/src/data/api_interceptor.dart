@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:common_dependency/common_dependency.dart';
-import 'package:dio/dio.dart';
 
 class ApiInterceptor extends Interceptor {
   ApiInterceptor(this.keyValue, this.dio) : super();

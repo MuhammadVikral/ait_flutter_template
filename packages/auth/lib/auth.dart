@@ -1,3 +1,5 @@
 export './src/presentation/presentation.dart';
-export './src/domain/auth_domain.dart';
-export './src/data/auth_data.dart';
+
+export './auth_module.dart';
+
+export './src/domain/entities/entities.dart';
