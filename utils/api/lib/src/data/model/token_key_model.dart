@@ -1,4 +1,5 @@
 import 'package:api/api.dart';
+import 'package:api/src/data/model/token_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'token_key_model.freezed.dart';

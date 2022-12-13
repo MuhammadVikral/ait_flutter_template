@@ -1,12 +1,22 @@
 import 'package:api/api.dart';
+import 'package:api/src/data/data_source/dio_service.dart';
 import 'package:design_system/design_system.dart';
 import 'package:dio/dio.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
-class ApiService {
+class ApiRepositoyImpl implements ApiRepository {
   final DioService dioService;
+  final InternetConnectionChecker connectionChecker;
 
-  ApiService(this.dioService);
+  ApiRepositoyImpl({
+    required this.dioService,
+    required this.connectionChecker,
+  });
 
+  @override
+  Future<bool> get isConnected async => await connectionChecker.hasConnection;
+
+  @override
   Future<T> setData<T>({
     required String endpoint,
     JSON? data,
