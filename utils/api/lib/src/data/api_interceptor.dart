@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:api/api.dart';
-import 'package:api/src/data/token_key_value.dart';
 import 'package:dio/dio.dart';
 
 class ApiInterceptor extends Interceptor {
