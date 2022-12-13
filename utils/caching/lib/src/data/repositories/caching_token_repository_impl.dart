@@ -29,17 +29,21 @@ class CachingTokenRepositoryImpl implements CachingTokenRepository {
   @override
   Future<void> setToken({
     required WhichToken whichToken,
-    required String token,
+    required TokenModel token,
   }) async {
     if (whichToken == WhichToken.guess) {
-      await storage.write(key: 'guess_token', value: token);
+      await storage.write(key: 'guess_token', value: encodeToken(token));
     } else {
-      await storage.write(key: 'token', value: token);
+      await storage.write(key: 'token', value: encodeToken(token));
     }
   }
 
-  Map<String, String> decodeToken(String token) {
-    return jsonDecode(token);
+  TokenModel decodeToken(String token) {
+    return TokenModel.fromJson(jsonDecode(token));
+  }
+
+  String encodeToken(TokenModel token) {
+    return jsonEncode(token);
   }
 
   @override

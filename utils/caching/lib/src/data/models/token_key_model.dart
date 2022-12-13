@@ -1,3 +1,4 @@
+import 'package:caching/src/data/models/token_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'token_key_model.freezed.dart';
@@ -8,6 +9,6 @@ enum WhichToken { guess, user }
 class TokenKeyModel with _$TokenKeyModel {
   factory TokenKeyModel({
     required WhichToken whichToken,
-    required Map<String, String> token,
+    required TokenModel token,
   }) = _TokenKeyModel;
 }

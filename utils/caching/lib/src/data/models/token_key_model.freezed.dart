@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TokenKeyModel {
   WhichToken get whichToken => throw _privateConstructorUsedError;
-  Map<String, String> get token => throw _privateConstructorUsedError;
+  TokenModel get token => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TokenKeyModelCopyWith<TokenKeyModel> get copyWith =>
@@ -30,7 +30,9 @@ abstract class $TokenKeyModelCopyWith<$Res> {
           TokenKeyModel value, $Res Function(TokenKeyModel) then) =
       _$TokenKeyModelCopyWithImpl<$Res, TokenKeyModel>;
   @useResult
-  $Res call({WhichToken whichToken, Map<String, String> token});
+  $Res call({WhichToken whichToken, TokenModel token});
+
+  $TokenModelCopyWith<$Res> get token;
 }
 
 /// @nodoc
@@ -57,8 +59,16 @@ class _$TokenKeyModelCopyWithImpl<$Res, $Val extends TokenKeyModel>
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+              as TokenModel,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TokenModelCopyWith<$Res> get token {
+    return $TokenModelCopyWith<$Res>(_value.token, (value) {
+      return _then(_value.copyWith(token: value) as $Val);
+    });
   }
 }
 
@@ -70,7 +80,10 @@ abstract class _$$_TokenKeyModelCopyWith<$Res>
       __$$_TokenKeyModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({WhichToken whichToken, Map<String, String> token});
+  $Res call({WhichToken whichToken, TokenModel token});
+
+  @override
+  $TokenModelCopyWith<$Res> get token;
 }
 
 /// @nodoc
@@ -93,9 +106,9 @@ class __$$_TokenKeyModelCopyWithImpl<$Res>
           : whichToken // ignore: cast_nullable_to_non_nullable
               as WhichToken,
       token: null == token
-          ? _value._token
+          ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+              as TokenModel,
     ));
   }
 }
@@ -103,18 +116,12 @@ class __$$_TokenKeyModelCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TokenKeyModel implements _TokenKeyModel {
-  _$_TokenKeyModel(
-      {required this.whichToken, required final Map<String, String> token})
-      : _token = token;
+  _$_TokenKeyModel({required this.whichToken, required this.token});
 
   @override
   final WhichToken whichToken;
-  final Map<String, String> _token;
   @override
-  Map<String, String> get token {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_token);
-  }
+  final TokenModel token;
 
   @override
   String toString() {
@@ -128,12 +135,11 @@ class _$_TokenKeyModel implements _TokenKeyModel {
             other is _$_TokenKeyModel &&
             (identical(other.whichToken, whichToken) ||
                 other.whichToken == whichToken) &&
-            const DeepCollectionEquality().equals(other._token, _token));
+            (identical(other.token, token) || other.token == token));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, whichToken, const DeepCollectionEquality().hash(_token));
+  int get hashCode => Object.hash(runtimeType, whichToken, token);
 
   @JsonKey(ignore: true)
   @override
@@ -145,12 +151,12 @@ class _$_TokenKeyModel implements _TokenKeyModel {
 abstract class _TokenKeyModel implements TokenKeyModel {
   factory _TokenKeyModel(
       {required final WhichToken whichToken,
-      required final Map<String, String> token}) = _$_TokenKeyModel;
+      required final TokenModel token}) = _$_TokenKeyModel;
 
   @override
   WhichToken get whichToken;
   @override
-  Map<String, String> get token;
+  TokenModel get token;
   @override
   @JsonKey(ignore: true)
   _$$_TokenKeyModelCopyWith<_$_TokenKeyModel> get copyWith =>
