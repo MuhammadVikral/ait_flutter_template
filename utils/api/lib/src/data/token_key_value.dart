@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:api/api.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-abstract class CachingTokenRepository {
+abstract class TokenKeyValue {
   Future<TokenKeyModel?> getToken();
   Future<void> setToken({
     required WhichToken whichToken,
@@ -12,10 +12,10 @@ abstract class CachingTokenRepository {
   Future<void> deleteToken();
 }
 
-class CachingTokenRepositoryImpl implements CachingTokenRepository {
+class TokenkeyValueImpl implements TokenKeyValue {
   final FlutterSecureStorage storage;
 
-  CachingTokenRepositoryImpl(this.storage);
+  TokenkeyValueImpl(this.storage);
 
   @override
   Future<TokenKeyModel?> getToken() async {
