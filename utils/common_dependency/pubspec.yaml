@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   design_system:
-    path: "../../system/design_system"
+    path: "../../packages/design_system"
   auth:
     path: "../../packages/auth"
   api:

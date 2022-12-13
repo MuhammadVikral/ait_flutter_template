@@ -1,5 +1,4 @@
-import 'package:api/api.dart';
-import 'package:design_system/design_system.dart';
+import 'package:common_dependency/common_dependency.dart';
 import 'package:dio/dio.dart';
 
 class ApiService {

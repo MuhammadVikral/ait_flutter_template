@@ -1,3 +1,4 @@
+import 'package:common_dependency/common_dependency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'token_model.freezed.dart';
 part 'token_model.g.dart';
