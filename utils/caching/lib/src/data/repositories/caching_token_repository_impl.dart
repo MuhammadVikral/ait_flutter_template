@@ -1,16 +1,8 @@
 import 'dart:convert';
 
-import 'package:api/api.dart';
+import 'package:caching/src/data/models/models.dart';
+import 'package:caching/src/domain/repository/caching_token_repository.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
-abstract class CachingTokenRepository {
-  Future<TokenKeyModel?> getToken();
-  Future<void> setToken({
-    required WhichToken whichToken,
-    required TokenModel token,
-  });
-  Future<void> deleteToken();
-}
 
 class CachingTokenRepositoryImpl implements CachingTokenRepository {
   final FlutterSecureStorage storage;

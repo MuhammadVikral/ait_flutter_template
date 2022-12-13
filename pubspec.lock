@@ -200,7 +200,7 @@ packages:
   design_system:
     dependency: transitive
     description:
-      path: "packages/design_system"
+      path: "system/design_system"
       relative: true
     source: path
     version: "0.0.1"

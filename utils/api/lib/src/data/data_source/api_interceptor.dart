@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 
 class ApiInterceptor extends Interceptor {
   ApiInterceptor(this.keyValue, this.dio) : super();
-  final TokenKeyValue keyValue;
+  final CachingTokenRepository keyValue;
   final Dio dio;
   String accessToken = '';
   bool isRefreshingToken = false;
