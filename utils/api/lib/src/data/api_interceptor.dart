@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:common_dependency/common_dependency.dart';
+import 'package:api/api.dart';
 import 'package:dio/dio.dart';
 
 class ApiInterceptor extends Interceptor {

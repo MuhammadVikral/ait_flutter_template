@@ -14,7 +14,7 @@ dependencies:
   auth:
     path: "../../packages/auth"
   design_system:
-    path: "../../packages/design_system"
+    path: "../../system/design_system"
   api:
     path: "../api"
   di:

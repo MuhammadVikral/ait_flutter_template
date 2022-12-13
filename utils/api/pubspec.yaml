@@ -10,14 +10,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  common_dependency:
-    path: "../common_dependency"
   dio: ^4.0.6
   freezed_annotation: ^2.1.0
   json_annotation: ^4.7.0
-  mocktail: ^0.3.0
   flutter_secure_storage: ^6.1.0
   internet_connection_checker: ^1.0.0+1
+  design_system:
+    path: "../../system/design_system"
 
 dev_dependencies:
   flutter_test:
@@ -26,5 +25,6 @@ dev_dependencies:
   build_runner: 2.3.0
   json_serializable: ^6.5.0
   freezed: ^2.1.1
+  mocktail: ^0.3.0
 
 flutter:
