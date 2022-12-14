@@ -1,13 +1,16 @@
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:navigation/navigation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ApiModule.init();
+  await AppLocalizationModule.init();
   await AuthModule.init();
   await GetIt.I.allReady();
+  await GetIt.I.getAsync<LocaleSwitchNotifier>();
   runApp(const MyApp());
 }
 
@@ -27,21 +30,31 @@ class MyApp extends StatelessWidget {
               create: (context) => GetIt.I<AuthCubit>()..initApp(),
             )
           ],
-          child: MaterialApp.router(
-            routerConfig: _router,
-            scrollBehavior: const MaterialScrollBehavior().copyWith(
-              dragDevices: {
-                PointerDeviceKind.mouse,
-                PointerDeviceKind.touch,
-                PointerDeviceKind.stylus,
-                PointerDeviceKind.unknown
-              },
-            ),
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
-          ),
+          child: LocaleSwitchApp(
+              listenable: GetIt.I<LocaleSwitchNotifier>(),
+              builder: (_, locale, __) => MaterialApp.router(
+                    routerConfig: _router,
+                    scrollBehavior: const MaterialScrollBehavior().copyWith(
+                      dragDevices: {
+                        PointerDeviceKind.mouse,
+                        PointerDeviceKind.touch,
+                        PointerDeviceKind.stylus,
+                        PointerDeviceKind.unknown
+                      },
+                    ),
+                    locale: locale,
+                    localizationsDelegates: [
+                      SharedStr.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                    ],
+                    supportedLocales: SharedStr.delegate.supportedLocales,
+                    title: 'Flutter Demo',
+                    theme: ThemeData(
+                      primarySwatch: Colors.blue,
+                    ),
+                  )),
         );
       },
     );

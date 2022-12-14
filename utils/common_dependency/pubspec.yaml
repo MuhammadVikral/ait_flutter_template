@@ -16,6 +16,10 @@ dependencies:
     path: "../../packages/auth"
   api:
     path: "../api"
+  locale_switch:
+    path: "../locale_switch"
+  app_localization:
+    path: "../app_localization"
   flutter_hooks: ^0.18.5+1
   equatable: ^2.0.5
   flutter_screenutil: ^5.5.4
