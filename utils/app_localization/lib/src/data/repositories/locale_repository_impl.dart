@@ -8,18 +8,15 @@ class LocaleRepositoryImpl implements LocaleRepository {
   final String key;
   final String initial;
   Locale? current;
-  bool init = false;
 
   LocaleRepositoryImpl(this.storage,
       {this.initial = 'en-US', this.key = 'app_language'});
 
   @override
   Future<Locale> load() async {
-    if (!init) {
-      final localeStr = await storage.read(key: key) ?? initial;
-      final split = localeStr.split('-');
-      current = Locale(split[0], split[1]);
-    }
+    final localeStr = await storage.read(key: key) ?? initial;
+    final split = localeStr.split('-');
+    current = Locale(split[0], split[1]);
     return current!;
   }
 
