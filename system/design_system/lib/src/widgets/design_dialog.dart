@@ -1,5 +1,9 @@
-import 'package:common_dependency/common_dependency.dart';
+import 'package:boxy/boxy.dart';
+import 'package:design_system/src/const/colors/colors.dart';
+import 'package:design_system/src/const/typography/design_typography.dart';
+import 'package:design_system/src/widgets/design_button.dart';
 import 'package:design_system/src/widgets/design_dialog_boxy.dart';
+import 'package:design_system/src/widgets/design_image.dart';
 import 'package:flutter/material.dart';
 
 class DesignDialog extends StatelessWidget {

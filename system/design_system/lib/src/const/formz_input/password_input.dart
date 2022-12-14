@@ -1,5 +1,5 @@
-import 'package:common_dependency/common_dependency.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:formz/formz.dart';
 
 class LoginInput extends FormzInput<String, String> {
   LoginInput.pure() : super.pure('');

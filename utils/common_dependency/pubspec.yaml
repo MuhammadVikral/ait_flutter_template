@@ -23,10 +23,8 @@ dependencies:
   flutter_screenutil: ^5.5.4
   formz: ^0.4.1
   flutter_bloc: ^8.1.1
-  extended_image: ^6.3.2
   dartz: ^0.10.1
   get_it: ^7.2.0
-  boxy: ^2.0.6+2
 
 dev_dependencies:
   freezed: ^2.1.1

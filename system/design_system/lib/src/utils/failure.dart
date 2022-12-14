@@ -1,4 +1,4 @@
-import 'package:common_dependency/common_dependency.dart';
+import 'package:equatable/equatable.dart';
 
 abstract class Failure extends Equatable {
   const Failure([List properties = const <dynamic>[]]);

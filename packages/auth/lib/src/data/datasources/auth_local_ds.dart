@@ -8,7 +8,7 @@ abstract class AuthLocalDataSource {
 }
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
-  final TokenKeyValue storage;
+  final CachingTokenRepository storage;
 
   AuthLocalDataSourceImpl(this.storage);
   @override

@@ -1,4 +1,4 @@
-import 'package:common_dependency/common_dependency.dart';
+import 'package:boxy/boxy.dart';
 import 'package:flutter/material.dart';
 
 class DesignDialogBoxy extends BoxyDelegate {
