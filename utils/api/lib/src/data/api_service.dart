@@ -1,4 +1,8 @@
-import 'package:common_dependency/common_dependency.dart';
+import 'package:api/src/data/custom_exception.dart';
+import 'package:api/src/data/dio_service.dart';
+import 'package:api/src/model/response_model.dart';
+import 'package:design_system/design_system.dart';
+import 'package:dio/dio.dart';
 
 class ApiService {
   final DioService dioService;

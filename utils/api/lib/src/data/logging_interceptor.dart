@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:common_dependency/common_dependency.dart';
+import 'package:design_system/design_system.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
 //helpers

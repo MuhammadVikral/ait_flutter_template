@@ -1,6 +1,9 @@
 import 'dart:convert';
 
-import 'package:common_dependency/common_dependency.dart';
+import 'package:api/src/data/token_key_value.dart';
+import 'package:api/src/endpoint/auth_endpoint.dart';
+import 'package:caching/caching.dart';
+import 'package:dio/dio.dart';
 
 class ApiInterceptor extends Interceptor {
   ApiInterceptor(this.keyValue, this.dio) : super();

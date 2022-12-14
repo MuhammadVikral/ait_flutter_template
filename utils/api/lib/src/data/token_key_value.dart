@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:common_dependency/common_dependency.dart';
+import 'package:caching/caching.dart';
 
 abstract class TokenKeyValue {
   Future<TokenKeyModel?> getToken();

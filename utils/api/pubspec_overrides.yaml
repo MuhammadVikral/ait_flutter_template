@@ -1,8 +1,4 @@
-# melos_managed_dependency_overrides: auth,common_dependency,design_system
+# melos_managed_dependency_overrides: caching
 dependency_overrides:
-  auth:
-    path: ..\\..\\packages\\auth
-  common_dependency:
-    path: ..\\common_dependency
-  design_system:
-    path: ..\\..\\packages\\design_system
+  caching:
+    path: ..\\caching

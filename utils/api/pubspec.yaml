@@ -10,12 +10,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  common_dependency:
-    path: "../common_dependency"
   dio: ^4.0.6
   freezed_annotation: ^2.1.0
   json_annotation: ^4.7.0
   mocktail: ^0.3.0
+  get_it: ^7.2.0
+  internet_connection_checker: ^1.0.0+1
+  equatable: ^2.0.5
+  design_system:
+    path: "../../system/design_system"
+  caching:
+    path: "../caching"
 
 dev_dependencies:
   flutter_test:

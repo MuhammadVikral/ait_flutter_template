@@ -1,4 +1,8 @@
-import 'package:common_dependency/common_dependency.dart';
+import 'package:api/src/data/api_service.dart';
+import 'package:api/src/data/dio_service.dart';
+import 'package:api/src/model/response_model.dart';
+import 'package:caching/caching.dart';
+import 'package:design_system/design_system.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

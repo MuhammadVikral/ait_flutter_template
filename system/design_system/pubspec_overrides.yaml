@@ -1,0 +1,11 @@
+# melos_managed_dependency_overrides: caching
+# melos_managed_dependency_overrides: api,auth,common_dependency
+dependency_overrides:
+  api:
+    path: ..\\..\\utils\\api
+  auth:
+    path: ..\\auth
+  caching:
+    path: ..\\..\\utils\\caching
+  common_dependency:
+    path: ..\\..\\utils\\common_dependency
