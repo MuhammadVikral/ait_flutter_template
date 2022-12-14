@@ -2,6 +2,7 @@ import 'package:auth/src/data/datasources/auth_local_ds.dart';
 import 'package:auth/src/data/datasources/auth_remote_ds.dart';
 import 'package:auth/src/data/model/login_model.dart';
 import 'package:auth/src/data/repositories/auth_repository_impl.dart';
+import 'package:auth/src/domain/entities/login_entity.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

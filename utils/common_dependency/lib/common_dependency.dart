@@ -1,4 +1,3 @@
-export 'package:auth/auth.dart';
 //utils
 export 'package:design_system/design_system.dart';
 export 'package:api/api.dart';

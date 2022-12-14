@@ -1,3 +1,4 @@
+import 'package:auth/auth.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:dependency_injection/dependency_injection.dart';
 import 'package:flutter/gestures.dart';

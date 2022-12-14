@@ -1,3 +1,4 @@
+import 'package:auth/auth_module.dart';
 import 'package:common_dependency/common_dependency.dart';
 export 'package:dependency_injection/dependency_injection.dart';
 

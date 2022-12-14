@@ -1,5 +1,6 @@
 library login;
 
+import 'package:auth/src/presentation/pages/login/cubit/login_cubit.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
 export './cubit/login_cubit.dart';
