@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
                     ),
                     locale: locale,
                     localizationsDelegates: [
-                      SharedStr.delegate,
+                      ...DependencyInjector().getTranslations(),
                       GlobalMaterialLocalizations.delegate,
                       GlobalWidgetsLocalizations.delegate,
                       GlobalCupertinoLocalizations.delegate,
