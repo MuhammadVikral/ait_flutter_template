@@ -9,7 +9,7 @@ import 'package:dio/dio.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class ApiModule {
-  static Future<void> init() async {
+  static Future<void> call() async {
     di.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(di()));
     di.registerLazySingleton<ApiRepository>(() => ApiRepositoryImpl(di()));
     di.registerLazySingleton(

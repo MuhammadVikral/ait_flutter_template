@@ -11,7 +11,7 @@ import 'package:common_dependency/common_dependency.dart';
 // final sl = GetIt.instance;
 
 class AuthModule {
-  static Future<void> init() async {
+  static Future<void> call() async {
     //Cubit
     di.registerFactory(() => AuthCubit(di()));
     //UseCase

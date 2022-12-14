@@ -1,6 +1,7 @@
 name: dependency_injection
 description: A new Flutter package project.
 version: 0.0.1
+publish_to: none
 
 environment:
   sdk: ">=2.18.4 <3.0.0"
@@ -9,6 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  common_dependency:
+    path: "../../utils/common_dependency"
+  auth:
+    path: "../auth"
 
 dev_dependencies:
   flutter_test:

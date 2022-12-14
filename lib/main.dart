@@ -1,13 +1,12 @@
 import 'package:common_dependency/common_dependency.dart';
+import 'package:dependency_injection/dependency_injection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:navigation/navigation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await ApiModule.init();
-  await AuthModule.init();
-  await di.allReady();
+  await DependencyInjector().injectApp();
   runApp(const MyApp());
 }
 
