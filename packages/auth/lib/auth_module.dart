@@ -13,25 +13,24 @@ import 'package:common_dependency/common_dependency.dart';
 class AuthModule {
   static Future<void> init() async {
     //Cubit
-    sl.registerFactory(() => LoginCubit(loginClient: sl()));
-    sl.registerFactory(() => AuthCubit(sl()));
+    di.registerFactory(() => AuthCubit(di()));
     //UseCase
-    sl.registerLazySingleton(() => LoginUseCase(sl()));
-    sl.registerLazySingleton(() => CheckLoggedInUseCase(sl()));
+    di.registerLazySingleton(() => LoginUseCase(di()));
+    di.registerLazySingleton(() => CheckLoggedInUseCase(di()));
     //Repository
-    sl.registerLazySingleton<AuthRepositories>(
+    di.registerLazySingleton<AuthRepositories>(
       () => AuthRepositoriesImpl(
-        networkInfo: sl(),
-        memory: sl(),
-        service: sl(),
+        networkInfo: di(),
+        memory: di(),
+        service: di(),
       ),
     );
     //DataSource
-    sl.registerLazySingleton<AuthRemoteDataSource>(
-      () => AuthRemoteDataSourceImpl(sl()),
+    di.registerLazySingleton<AuthRemoteDataSource>(
+      () => AuthRemoteDataSourceImpl(di()),
     );
-    sl.registerLazySingleton<AuthLocalDataSource>(
-      () => AuthLocalDataSourceImpl(sl()),
+    di.registerLazySingleton<AuthLocalDataSource>(
+      () => AuthLocalDataSourceImpl(di()),
     );
   }
 }

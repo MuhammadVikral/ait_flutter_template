@@ -1,21 +1,14 @@
-name: design_system
+name: dependency_injection
 description: A new Flutter package project.
 version: 0.0.1
-publish_to: none
 
 environment:
-  sdk: ">=2.17.6 <3.0.0"
+  sdk: ">=2.18.4 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  email_validator: ^2.1.17
-  boxy: ^2.0.6+2
-  formz: ^0.4.1
-  equatable: ^2.0.5
-  extended_image: ^6.3.2
-  get_it: ^7.2.0
 
 dev_dependencies:
   flutter_test:

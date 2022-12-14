@@ -7,7 +7,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ApiModule.init();
   await AuthModule.init();
-  await GetIt.I.allReady();
+  await di.allReady();
   runApp(const MyApp());
 }
 
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (context) => GetIt.I<AuthCubit>()..initApp(),
+              create: (context) => di<AuthCubit>()..initApp(),
             )
           ],
           child: MaterialApp.router(

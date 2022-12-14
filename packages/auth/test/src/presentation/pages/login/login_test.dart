@@ -20,7 +20,7 @@ void main() {
     () {
       registerFallbackValue(MockLoginInput());
       registerFallbackValue(MockPasswordInput());
-      sl.registerFactory(() => loginCubit);
+      di.registerFactory(() => loginCubit);
     },
   );
   setUp(

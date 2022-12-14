@@ -15,7 +15,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GetIt.I<LoginCubit>(),
+      create: (context) => di<LoginCubit>(),
       child: const LoginPage(
         key: Key('login page'),
       ),
