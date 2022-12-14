@@ -1,4 +1,6 @@
+import 'package:auth/auth.dart';
 import 'package:common_dependency/common_dependency.dart';
+import 'package:dependency_injection/dependency_injection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -6,11 +8,7 @@ import 'package:navigation/navigation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await ApiModule.init();
-  await AppLocalizationModule.init();
-  await AuthModule.init();
-  await GetIt.I.allReady();
-  await GetIt.I.getAsync<LocaleSwitchNotifier>();
+  await DependencyInjector().injectApp();
   runApp(const MyApp());
 }
 
@@ -27,7 +25,7 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (context) => GetIt.I<AuthCubit>()..initApp(),
+              create: (context) => di<AuthCubit>()..initApp(),
             )
           ],
           child: LocaleSwitchApp(

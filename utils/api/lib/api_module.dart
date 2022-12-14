@@ -1,24 +1,26 @@
 import 'package:api/src/data/api_interceptor.dart';
+import 'package:api/src/repository/api_repository.dart';
+import 'package:api/src/repository/api_repository_impl.dart';
+import 'package:api/src/data/dio_service.dart';
 import 'package:api/src/data/logging_interceptor.dart';
-import 'package:common_dependency/common_dependency.dart';
-
-final sl = GetIt.instance;
+import 'package:api/src/data/network_info.dart';
+import 'package:design_system/design_system.dart';
+import 'package:dio/dio.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class ApiModule {
-  static Future<void> init() async {
-    sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
-    sl.registerLazySingleton(() => ApiService(sl()));
-    sl.registerLazySingleton(
+  static Future<void> call() async {
+    di.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(di()));
+    di.registerLazySingleton<ApiRepository>(() => ApiRepositoryImpl(di()));
+    di.registerLazySingleton(
       () => DioService(
-        dioClient: sl(),
-        interceptors: [ApiInterceptor(sl(), sl()), LoggingInterceptor()],
+        dioClient: di(),
+        interceptors: [ApiInterceptor(di(), di()), LoggingInterceptor()],
       ),
     );
-    sl.registerLazySingleton<TokenKeyValue>(() => TokenkeyValueImpl(sl()));
 
     //third party dependency
-    sl.registerLazySingleton(() => InternetConnectionChecker());
-    sl.registerLazySingleton(() => Dio(BaseOptions(baseUrl: Config.baseUrl)));
-    sl.registerLazySingleton(() => const FlutterSecureStorage());
+    di.registerLazySingleton(() => InternetConnectionChecker());
+    di.registerLazySingleton(() => Dio(BaseOptions(baseUrl: Config.baseUrl)));
   }
 }

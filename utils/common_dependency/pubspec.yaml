@@ -11,27 +11,21 @@ dependencies:
   flutter:
     sdk: flutter
   design_system:
-    path: "../../packages/design_system"
-  auth:
-    path: "../../packages/auth"
+    path: "../../system/design_system"
   api:
     path: "../api"
   locale_switch:
     path: "../locale_switch"
   app_localization:
     path: "../app_localization"
+  caching:
+    path: "../caching"
   flutter_hooks: ^0.18.5+1
   equatable: ^2.0.5
   flutter_screenutil: ^5.5.4
   formz: ^0.4.1
   flutter_bloc: ^8.1.1
-  extended_image: ^6.3.2
   dartz: ^0.10.1
-  get_it: ^7.2.0
-  boxy: ^2.0.6+2
-  dio: ^4.0.6
-  flutter_secure_storage: ^6.1.0
-  internet_connection_checker: ^1.0.0+1
 
 dev_dependencies:
   freezed: ^2.1.1

@@ -16,9 +16,9 @@ dependencies:
   auth:
     path: "../../packages/auth"
   design_system:
-    path: "../../packages/design_system"
-  api:
-    path: "../api"
+    path: "../../system/design_system"
+  dependency_injection:
+    path: "../../packages/dependency_injection"
   app_localization:
     path: "../app_localization"
   flutter_screenutil: ^5.5.4

@@ -6,32 +6,32 @@ import 'package:auth/src/data/repositories/auth_repository_impl.dart';
 import 'package:auth/src/domain/repositories/auth_repositories.dart';
 import 'package:auth/src/domain/use_case/check_loggedin_usecase.dart';
 import 'package:auth/src/domain/use_case/login_use_case.dart';
+import 'package:auth/src/presentation/cubit/auth/auth_cubit.dart';
 import 'package:common_dependency/common_dependency.dart';
 
 // final sl = GetIt.instance;
 
 class AuthModule {
-  static Future<void> init() async {
+  static Future<void> call() async {
     //Cubit
-    sl.registerFactory(() => LoginCubit(loginClient: sl()));
-    sl.registerFactory(() => AuthCubit(sl()));
+    di.registerFactory(() => AuthCubit(di()));
     //UseCase
-    sl.registerLazySingleton(() => LoginUseCase(sl()));
-    sl.registerLazySingleton(() => CheckLoggedInUseCase(sl()));
+    di.registerLazySingleton(() => LoginUseCase(di()));
+    di.registerLazySingleton(() => CheckLoggedInUseCase(di()));
     //Repository
-    sl.registerLazySingleton<AuthRepositories>(
+    di.registerLazySingleton<AuthRepositories>(
       () => AuthRepositoriesImpl(
-        networkInfo: sl(),
-        memory: sl(),
-        service: sl(),
+        networkInfo: di(),
+        memory: di(),
+        service: di(),
       ),
     );
     //DataSource
-    sl.registerLazySingleton<AuthRemoteDataSource>(
-      () => AuthRemoteDataSourceImpl(sl()),
+    di.registerLazySingleton<AuthRemoteDataSource>(
+      () => AuthRemoteDataSourceImpl(di()),
     );
-    sl.registerLazySingleton<AuthLocalDataSource>(
-      () => AuthLocalDataSourceImpl(sl()),
+    di.registerLazySingleton<AuthLocalDataSource>(
+      () => AuthLocalDataSourceImpl(di()),
     );
   }
 }

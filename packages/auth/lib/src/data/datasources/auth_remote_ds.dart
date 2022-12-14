@@ -9,7 +9,7 @@ abstract class AuthRemoteDataSource {
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  final ApiService service;
+  final ApiRepository service;
 
   AuthRemoteDataSourceImpl(this.service);
   @override

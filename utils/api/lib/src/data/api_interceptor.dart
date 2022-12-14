@@ -1,10 +1,12 @@
 import 'dart:convert';
 
-import 'package:common_dependency/common_dependency.dart';
+import 'package:api/src/endpoint/auth_endpoint.dart';
+import 'package:caching/caching.dart';
+import 'package:dio/dio.dart';
 
 class ApiInterceptor extends Interceptor {
-  ApiInterceptor(this.keyValue, this.dio) : super();
-  final TokenKeyValue keyValue;
+  ApiInterceptor(this.cachingToken, this.dio) : super();
+  final CachingTokenRepository cachingToken;
   final Dio dio;
   String accessToken = '';
   bool isRefreshingToken = false;
@@ -14,7 +16,7 @@ class ApiInterceptor extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    TokenKeyModel? token = await keyValue.getToken();
+    TokenKeyModel? token = await cachingToken.getToken();
     if (options.extra.containsKey('requiresAuthToken')) {
       if (options.extra['requiresAuthToken'] == true) {
         if (token != null) {
@@ -44,7 +46,7 @@ class ApiInterceptor extends Interceptor {
     DioError err,
     ErrorInterceptorHandler handler,
   ) async {
-    TokenKeyModel? token = await keyValue.getToken();
+    TokenKeyModel? token = await cachingToken.getToken();
     if (err.response?.statusCode == 401 && token != null) {
       bool refreshingTokenSuccess = await refreshToken(
         whichToken: token.whichToken,
@@ -65,7 +67,7 @@ class ApiInterceptor extends Interceptor {
         ? AuthEndpoint.refreshGuessToken
         : AuthEndpoint.refreshUserToken;
     try {
-      keyValue.deleteToken();
+      cachingToken.deleteToken();
       final response = await dio.post(
         uri,
         options: Options(
@@ -73,13 +75,13 @@ class ApiInterceptor extends Interceptor {
         ),
       );
       if (response.statusCode == 200) {
-        keyValue.setToken(whichToken: whichToken, token: token);
+        cachingToken.setToken(whichToken: whichToken, token: token);
         TokenModel newToken = TokenModel.fromJson(jsonDecode(response.data));
         accessToken =
             isRefreshingToken ? newToken.refreshToken! : newToken.accessToken!;
         return true;
       } else {
-        keyValue.deleteToken();
+        cachingToken.deleteToken();
         return false;
       }
     } catch (e) {

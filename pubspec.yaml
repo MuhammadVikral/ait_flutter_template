@@ -15,6 +15,10 @@ dependencies:
     sdk: flutter
   common_dependency:
     path: "utils/common_dependency"
+  dependency_injection:
+    path: "packages/dependency_injection"
+  auth:
+    path: "packages/auth"
   navigation:
     path: "utils/navigation"
   freezed_annotation: ^2.1.0

@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: constant_identifier_names, library_private_types_in_public_api
-import 'package:common_dependency/common_dependency.dart';
+import 'package:design_system/design_system.dart';
+import 'package:dio/dio.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
 /// An enum that holds names for our custom exceptions.

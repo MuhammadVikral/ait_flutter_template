@@ -1,5 +1,4 @@
-import 'package:api/api.dart';
-import 'package:auth/auth.dart';
+import 'package:dependency_injection/dependency_injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,8 +6,7 @@ import 'widgetbook.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await ApiModule.init();
-  await AuthModule.init();
+  await DependencyInjector().injectApp();
   runApp(
     ScreenUtilInit(
       designSize: const Size(375, 667),

@@ -1,5 +1,6 @@
 library login;
 
+import 'package:auth/src/presentation/pages/login/cubit/login_cubit.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
 export './cubit/login_cubit.dart';
@@ -15,7 +16,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GetIt.I<LoginCubit>(),
+      create: (context) => di<LoginCubit>(),
       child: const LoginPage(
         key: Key('login page'),
       ),
