@@ -1,4 +1,4 @@
-import 'package:api/src/data/api_service.dart';
+import 'package:api/src/repository/api_repository_impl.dart';
 import 'package:api/src/data/dio_service.dart';
 import 'package:api/src/model/response_model.dart';
 import 'package:caching/caching.dart';
@@ -11,7 +11,7 @@ class MockDioService extends Mock implements DioService {}
 class MockResponModel extends Mock implements ResponseModel {}
 
 void main() {
-  late ApiService sut;
+  late ApiRepositoryImpl sut;
   late MockDioService mockDioService;
   setUp(
     () {},
@@ -27,7 +27,7 @@ void main() {
     () {
       setUp(
         () {
-          sut = ApiService(mockDioService);
+          sut = ApiRepositoryImpl(mockDioService);
         },
       );
       test(

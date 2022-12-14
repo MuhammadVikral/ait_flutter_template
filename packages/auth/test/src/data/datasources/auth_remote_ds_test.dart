@@ -3,7 +3,7 @@ import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockApiService extends Mock implements ApiService {}
+class MockApiService extends Mock implements ApiRepository {}
 
 class MockTokenModel extends Mock implements TokenModel {}
 

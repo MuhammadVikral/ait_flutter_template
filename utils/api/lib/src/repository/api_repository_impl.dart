@@ -1,14 +1,16 @@
 import 'package:api/src/data/custom_exception.dart';
 import 'package:api/src/data/dio_service.dart';
 import 'package:api/src/model/response_model.dart';
+import 'package:api/src/repository/api_repository.dart';
 import 'package:design_system/design_system.dart';
 import 'package:dio/dio.dart';
 
-class ApiService {
+class ApiRepositoryImpl implements ApiRepository {
   final DioService dioService;
 
-  ApiService(this.dioService);
+  ApiRepositoryImpl(this.dioService);
 
+  @override
   Future<T> setData<T>({
     required String endpoint,
     JSON? data,
