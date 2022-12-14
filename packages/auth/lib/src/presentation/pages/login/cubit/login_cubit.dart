@@ -2,9 +2,8 @@ import 'package:auth/src/domain/use_case/login_use_case.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'login_state.dart';
-
 part 'login_cubit.freezed.dart';
+part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit({required this.loginClient}) : super(LoginState.initial());

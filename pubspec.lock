@@ -44,7 +44,7 @@ packages:
     source: hosted
     version: "2.9.0"
   auth:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "packages/auth"
       relative: true

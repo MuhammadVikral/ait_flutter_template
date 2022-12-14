@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             )
           ],
           child: LocaleSwitchApp(
-              listenable: GetIt.I<LocaleSwitchNotifier>(),
+              listenable: di<LocaleSwitchNotifier>(),
               builder: (_, locale, __) => MaterialApp.router(
                     routerConfig: _router,
                     scrollBehavior: const MaterialScrollBehavior().copyWith(

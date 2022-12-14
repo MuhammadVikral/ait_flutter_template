@@ -15,8 +15,6 @@ dependencies:
   widgetbook: ^2.4.1
   auth:
     path: "../../packages/auth"
-  design_system:
-    path: "../../system/design_system"
   dependency_injection:
     path: "../../packages/dependency_injection"
   app_localization:

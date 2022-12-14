@@ -16,6 +16,8 @@ dependencies:
   intl: ^0.17.0
   locale_switch:
     path: '../locale_switch'
+  design_system:
+    path: "../../system/design_system"
 
 dev_dependencies:
   flutter_test:
