@@ -219,7 +219,7 @@ packages:
     source: path
     version: "0.0.1"
   design_system:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       path: "system/design_system"
       relative: true

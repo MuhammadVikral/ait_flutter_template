@@ -3,6 +3,7 @@ name: ait_flutter_template
 packages:
   - packages/**
   - utils/**
+  - system/**
   - pubspec.yaml
 command:
   bootstrap:
