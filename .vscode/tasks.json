@@ -22,6 +22,12 @@
             "problemMatcher": []
         },
         {
+            "label": "commit chores",
+            "type": "shell",
+            "command": "git commit --m 'chores(${input:comit feature}) : ${input:comit}'",
+            "problemMatcher": []
+        },
+        {
             "label": "commit feature",
             "type": "shell",
             "command": "git commit --m 'feature(${input:comit feature}) : ${input:comit}'",
