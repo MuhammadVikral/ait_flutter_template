@@ -15,7 +15,7 @@ scripts:
         "flutter pub run build_runner build --delete-conflicting-outputs"
     description: Run a build_runner build in the ODM example app.
     select-package:
-      depends-on: "freezed"
+      depends-on: "build_runner"
   translate:
     run: |
       melos exec -c 6 --fail-fast -- \
