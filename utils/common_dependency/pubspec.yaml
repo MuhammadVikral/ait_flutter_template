@@ -14,6 +14,10 @@ dependencies:
     path: "../../system/design_system"
   api:
     path: "../api"
+  locale_switch:
+    path: "../locale_switch"
+  app_localization:
+    path: "../app_localization"
   caching:
     path: "../caching"
   flutter_hooks: ^0.18.5+1

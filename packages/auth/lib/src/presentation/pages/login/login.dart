@@ -3,12 +3,13 @@ library login;
 import 'package:auth/src/presentation/pages/login/cubit/login_cubit.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
+
 export './cubit/login_cubit.dart';
 
-part './widgets/username_input.dart';
-part './widgets/login_button.dart';
 part './widgets/input_password.dart';
+part './widgets/login_button.dart';
 part './widgets/login_error_dialog.dart';
+part './widgets/username_input.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -74,7 +75,7 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text: 'Register here',
+                        text: SharedStr.of(context).register_here,
                         style: DesignTextStyle.body2.copyWith(
                           color: DesignColors.primaryBase,
                           fontWeight: boldFont,

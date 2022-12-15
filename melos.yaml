@@ -14,6 +14,13 @@ scripts:
     description: Run a build_runner build in the ODM example app.
     select-package:
       depends-on: "freezed"
+  translate:
+    run: |
+      melos exec -c 6 --fail-fast -- \
+        "flutter pub run intl_utils:generate"
+    description: Run a build_runner build in the ODM example app.
+    select-package:
+      depends-on: "intl_utils"
   test:
     run: |
       melos exec -c 6 --fail-fast -- \

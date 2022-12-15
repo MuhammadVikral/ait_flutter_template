@@ -3,6 +3,7 @@ import 'package:common_dependency/common_dependency.dart';
 import 'package:dependency_injection/dependency_injection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:navigation/navigation.dart';
 
 void main() async {
@@ -27,21 +28,31 @@ class MyApp extends StatelessWidget {
               create: (context) => di<AuthCubit>()..initApp(),
             )
           ],
-          child: MaterialApp.router(
-            routerConfig: _router,
-            scrollBehavior: const MaterialScrollBehavior().copyWith(
-              dragDevices: {
-                PointerDeviceKind.mouse,
-                PointerDeviceKind.touch,
-                PointerDeviceKind.stylus,
-                PointerDeviceKind.unknown
-              },
-            ),
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
-          ),
+          child: LocaleSwitchApp(
+              listenable: di<LocaleSwitchNotifier>(),
+              builder: (_, locale, __) => MaterialApp.router(
+                    routerConfig: _router,
+                    scrollBehavior: const MaterialScrollBehavior().copyWith(
+                      dragDevices: {
+                        PointerDeviceKind.mouse,
+                        PointerDeviceKind.touch,
+                        PointerDeviceKind.stylus,
+                        PointerDeviceKind.unknown
+                      },
+                    ),
+                    locale: locale,
+                    localizationsDelegates: [
+                      ...DependencyInjector().getTranslations(),
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                    ],
+                    supportedLocales: SharedStr.delegate.supportedLocales,
+                    title: 'Flutter Demo',
+                    theme: ThemeData(
+                      primarySwatch: Colors.blue,
+                    ),
+                  )),
         );
       },
     );

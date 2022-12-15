@@ -1,8 +1,12 @@
-# melos_managed_dependency_overrides: api,caching,common_dependency
+# melos_managed_dependency_overrides: api,app_localization,caching,common_dependency,locale_switch
 dependency_overrides:
   api:
     path: ..\\..\\utils\\api
+  app_localization:
+    path: ..\\..\\utils\\app_localization
   caching:
     path: ..\\..\\utils\\caching
   common_dependency:
     path: ..\\..\\utils\\common_dependency
+  locale_switch:
+    path: ..\\..\\utils\\locale_switch

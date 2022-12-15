@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: locale_switch
+dependency_overrides:
+  locale_switch:
+    path: ..\\locale_switch

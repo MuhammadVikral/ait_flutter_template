@@ -10,13 +10,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   widgetbook: ^2.4.1
   auth:
     path: "../../packages/auth"
-  design_system:
-    path: "../../system/design_system"
   dependency_injection:
     path: "../../packages/dependency_injection"
+  app_localization:
+    path: "../app_localization"
   flutter_screenutil: ^5.5.4
 
 dev_dependencies:
