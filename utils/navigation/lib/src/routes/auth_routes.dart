@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 class AuthRoutes extends GoRoute {
   AuthRoutes()
       : super(
-          path: '/auth',
+          path: '/',
           builder: (context, state) => const SplashScreen(),
           routes: [
             GoRoute(

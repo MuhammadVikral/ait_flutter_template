@@ -1,5 +1,6 @@
 library login;
 
+import 'package:auth/src/domain/repositories/auth_navigation_repository.dart';
 import 'package:auth/src/presentation/pages/login/cubit/login_cubit.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
@@ -35,11 +36,7 @@ class LoginPage extends StatelessWidget {
           previous.formStatus == FormzStatus.submissionInProgress,
       listener: (context, state) {
         if (state.formStatus == FormzStatus.submissionSuccess) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const Scaffold(),
-            ),
-          );
+          di<AuthNavigationRepository>().navigateToHome(context);
         }
         if (state.formStatus == FormzStatus.submissionFailure) {
           showDialog(

@@ -1,9 +1,9 @@
 import 'package:auth/src/domain/entities/login_entity.dart';
-import 'package:auth/src/domain/repositories/auth_repositories.dart';
+import 'package:auth/src/domain/repositories/auth_repository.dart';
 import 'package:common_dependency/common_dependency.dart';
 
 class LoginUseCase {
-  final AuthRepositories repository;
+  final AuthRepository repository;
 
   LoginUseCase(this.repository);
   Future<Either<Failure, Unit>> call({

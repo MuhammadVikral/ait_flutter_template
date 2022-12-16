@@ -1,12 +1,8 @@
+import 'package:auth/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
-abstract class AuthNavigation {
-  void navigateToLogin(BuildContext context);
-  void navigateToHome(BuildContext context);
-}
-
-class AuthNavigationImpl implements AuthNavigation {
+class AuthNavigationImpl implements AuthNavigationRepository {
   @override
   void navigateToHome(BuildContext context) {
     context.go('/login');

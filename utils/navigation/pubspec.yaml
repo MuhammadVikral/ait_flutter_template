@@ -11,10 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
   go_router: ^5.2.4
-  common_dependency:
-    path: "../common_dependency"
   auth:
     path: "../../packages/auth"
+  design_system:
+    path: "../../system/design_system"
 
 dev_dependencies:
   flutter_test:

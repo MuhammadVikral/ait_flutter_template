@@ -176,6 +176,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.17"
+  env:
+    dependency: "direct overridden"
+    description:
+      path: "../../system/env"
+      relative: true
+    source: path
+    version: "0.0.1"
+  envied:
+    dependency: transitive
+    description:
+      name: envied
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.0"
   equatable:
     dependency: transitive
     description:

@@ -1,7 +1,2 @@
-import 'package:auth/src/domain/entities/login_entity.dart';
-import 'package:common_dependency/common_dependency.dart';
-
-abstract class AuthRepositories {
-  Future<Either<Failure, bool>> checkLoggedIn();
-  Future<Either<Failure, Unit>> login(LoginEntity body);
-}
+export 'auth_navigation_repository.dart';
+export 'auth_repository.dart';
