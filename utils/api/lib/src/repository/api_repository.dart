@@ -9,4 +9,10 @@ abstract class ApiRepository {
     bool requiresRefreshToken = false,
     required T Function(ResponseModel response) converter,
   });
+  Future<T> getData<T>({
+    required String endpoint,
+    bool requiresAuthToken = false,
+    bool requiresRefreshToken = false,
+    required T Function(ResponseModel response) converter,
+  });
 }

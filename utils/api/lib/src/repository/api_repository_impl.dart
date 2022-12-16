@@ -42,4 +42,33 @@ class ApiRepositoryImpl implements ApiRepository {
       throw CustomException.fromParsingException(ex);
     }
   }
+
+  @override
+  Future<T> getData<T>(
+      {required String endpoint,
+      bool requiresAuthToken = false,
+      bool requiresRefreshToken = false,
+      required T Function(ResponseModel response) converter}) async {
+    ResponseModel response;
+    try {
+      // Entire map of response
+      response = await dioService.get<JSON>(
+        endpoint: endpoint,
+        options: Options(
+          extra: <String, Object?>{
+            'requiresAuthToken': requiresAuthToken,
+            'requiresRefreshToken': requiresRefreshToken,
+          },
+        ),
+      );
+    } on Exception catch (ex) {
+      throw CustomException.fromDioException(ex);
+    }
+    try {
+      // Returning the serialized object
+      return converter(response);
+    } on Exception catch (ex) {
+      throw CustomException.fromParsingException(ex);
+    }
+  }
 }

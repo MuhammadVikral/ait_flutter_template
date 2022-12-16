@@ -35,4 +35,16 @@ class DioService {
     );
     return ResponseModel.fromJson(response.data!);
   }
+
+  Future<ResponseModel> get<R>({
+    required String endpoint,
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
+    final response = await _dio.get<JSON>(
+      endpoint,
+      options: options,
+    );
+    return ResponseModel.fromJson(response.data!);
+  }
 }
