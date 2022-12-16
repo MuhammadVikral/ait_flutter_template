@@ -5,6 +5,7 @@ abstract class AuthRemoteDataSource {
   Future<TokenModel> getInitialToken();
   Future<TokenModel?> refreshUserToken(WhichToken whichToken);
   Future<TokenModel> login(LoginModel body);
+  Future<void> getProfile();
   Future<Either<Failure, Unit>> logout();
 }
 
@@ -37,7 +38,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<Either<Failure, Unit>> logout() {
-    // TODO: implement logout
     throw UnimplementedError();
   }
 
@@ -52,6 +52,15 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       converter: (response) {
         return TokenModel.fromJson(response.data ?? {});
       },
+    );
+  }
+
+  @override
+  Future<void> getProfile() async {
+    return await service.getData(
+      endpoint: AuthEndpoint.getProfile,
+      requiresAuthToken: true,
+      converter: (response) {},
     );
   }
 }

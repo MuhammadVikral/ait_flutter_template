@@ -20,24 +20,20 @@ class AuthRepositoriesImpl implements AuthRepository {
   Future<Either<Failure, bool>> checkLoggedIn() async {
     final hasToken = await memory.getTokens();
     if (hasToken != null) {
-      final callRefreshToken = await refreshToken(hasToken.whichToken);
-      return callRefreshToken.fold(
-        (l) => Left(l),
-        (r) async {
-          if (r) {
-            if (hasToken.whichToken == WhichToken.user) {
-              return const Right(true);
-            }
-            return const Right(false);
+      if (hasToken.whichToken == WhichToken.guess) {
+        return const Right(false);
+      } else {
+        try {
+          await service.getProfile();
+          return const Right(true);
+        } catch (e) {
+          if (e is CustomException) {
+            return Left(e.failure);
           } else {
-            final callGetInitialToken = await getInitialToken();
-            return callGetInitialToken.fold(
-              (l) => Left(l),
-              (r) => const Right(false),
-            );
+            return Left(UnRecognizedFailure());
           }
-        },
-      );
+        }
+      }
     } else {
       final callGetInitialToken = await getInitialToken();
       return callGetInitialToken.fold(

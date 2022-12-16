@@ -1,5 +1,4 @@
-import 'package:auth/src/presentation/cubit/auth/auth_cubit.dart';
-import 'package:auth/src/presentation/pages/login/login.dart';
+import 'package:auth/auth.dart';
 import 'package:common_dependency/common_dependency.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +10,7 @@ class SplashScreen extends StatelessWidget {
     Widget child = const LoadingScreen();
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
+        print(state);
         switch (state.status) {
           case FormzStatus.submissionInProgress:
             child = const LoadingScreen();
@@ -23,7 +23,11 @@ class SplashScreen extends StatelessWidget {
             );
             break;
           case FormzStatus.submissionSuccess:
-            child = const Login();
+            if (state.loggedin == true) {
+              di<AuthNavigationRepository>().navigateToHome(context);
+            } else {
+              di<AuthNavigationRepository>().navigateToLogin(context);
+            }
             break;
           default:
             break;

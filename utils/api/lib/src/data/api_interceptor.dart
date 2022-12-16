@@ -21,21 +21,11 @@ class ApiInterceptor extends Interceptor {
       if (options.extra['requiresAuthToken'] == true) {
         if (token != null) {
           accessToken = token.token.accessToken!;
-          options.headers.addAll(
-            <String, Object?>{'Authorization': 'Bearer $accessToken'},
-          );
+          // options.extra.clear();
         }
-      }
-    }
-    if (options.extra.containsKey('requiresRefreshToken')) {
-      if (options.extra['requiresRefreshToken'] == true) {
-        if (token != null) {
-          accessToken = token.token.refreshToken!;
-          isRefreshingToken = true;
-          options.headers.addAll(
-            <String, Object?>{'Authorization': 'Bearer $accessToken'},
-          );
-        }
+        options.headers.addAll(
+          <String, Object?>{'Authorization': 'Bearer $accessToken'},
+        );
       }
     }
     return handler.next(options);
@@ -71,14 +61,15 @@ class ApiInterceptor extends Interceptor {
       final response = await dio.post(
         uri,
         options: Options(
-          headers: <String, Object?>{'Authorization': 'Bearer $accessToken'},
+          headers: <String, Object?>{
+            'Authorization': 'Bearer ${token.refreshToken}'
+          },
         ),
       );
       if (response.statusCode == 200) {
         cachingToken.setToken(whichToken: whichToken, token: token);
         TokenModel newToken = TokenModel.fromJson(jsonDecode(response.data));
-        accessToken =
-            isRefreshingToken ? newToken.refreshToken! : newToken.accessToken!;
+        accessToken = newToken.accessToken!;
         return true;
       } else {
         cachingToken.deleteToken();
@@ -92,7 +83,7 @@ class ApiInterceptor extends Interceptor {
   Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
     final options = Options(
       method: requestOptions.method,
-      headers: requestOptions.headers,
+      headers: <String, Object?>{'Authorization': 'Bearer $accessToken'},
     );
     return dio.request<dynamic>(
       requestOptions.path,
