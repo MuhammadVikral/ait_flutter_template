@@ -13,13 +13,17 @@ class SplashScreen extends StatelessWidget {
         print(state);
         switch (state.status) {
           case FormzStatus.submissionInProgress:
-            child = const LoadingScreen();
             break;
           case FormzStatus.submissionFailure:
-            child = Scaffold(
-              body: Center(
-                child: DesignText.h1('error').bold,
-              ),
+            showDialog(
+              context: context,
+              builder: (context) {
+                return DesignDialog(
+                  body: 'Terjadi kesalahan',
+                  positiveButtonTitle: 'muat Ulang',
+                  onPositive: () {},
+                );
+              },
             );
             break;
           case FormzStatus.submissionSuccess:

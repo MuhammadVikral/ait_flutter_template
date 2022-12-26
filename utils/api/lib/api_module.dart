@@ -15,7 +15,10 @@ class ApiModule {
     di.registerLazySingleton(
       () => DioService(
         dioClient: di(),
-        interceptors: [ApiInterceptor(di(), di()), LoggingInterceptor()],
+        interceptors: [
+          ApiInterceptor(di(), di()),
+          LoggingInterceptor(),
+        ],
       ),
     );
 

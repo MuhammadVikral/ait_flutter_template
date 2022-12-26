@@ -27,7 +27,7 @@ class LoginPasswordInput extends StatelessWidget {
               .overideColor(DesignColors.primaryBase),
           suffixIcon: const Icon(Icons.remove_red_eye),
           alwaysShowLabel: true,
-          initialText: '',
+          initialText: state.value,
           onChanged: (value) =>
               context.read<LoginCubit>().onChangePassword(value ?? ''),
         );

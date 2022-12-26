@@ -85,36 +85,6 @@ void main() {
   );
 
   group(
-    "refresh token",
-    () {
-      test(
-        'refresh token should called memory set token when refresh token is sucess',
-        () async {
-          _haveInternetConnection(networkInfo);
-          when(() => service.refreshUserToken(WhichToken.guess)).thenAnswer(
-            (invocation) async => TokenModel(),
-          );
-          await sut.refreshToken(WhichToken.guess);
-          verify(() => memory.setTokens(
-              whichToken: WhichToken.guess, token: TokenModel())).called(1);
-        },
-      );
-      test(
-        'refresh token should return right(false) when refresh token is failed but unAutorizedFailed',
-        () async {
-          _haveInternetConnection(networkInfo);
-          when(() => service.refreshUserToken(WhichToken.guess))
-              .thenThrow(CustomException(
-            message: '',
-            failureType: UnAuthorizedFailure(),
-          ));
-          final res = await sut.refreshToken(WhichToken.guess);
-          expect(res, const Right(false));
-        },
-      );
-    },
-  );
-  group(
     'login use case',
     () {
       var loginEntity = LoginEntity(

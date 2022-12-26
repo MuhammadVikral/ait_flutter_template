@@ -8,8 +8,6 @@ class ApiInterceptor extends Interceptor {
   ApiInterceptor(this.cachingToken, this.dio) : super();
   final CachingTokenRepository cachingToken;
   final Dio dio;
-  String accessToken = '';
-  bool isRefreshingToken = false;
 
   @override
   Future<void> onRequest(
@@ -20,15 +18,15 @@ class ApiInterceptor extends Interceptor {
     if (options.extra.containsKey('requiresAuthToken')) {
       if (options.extra['requiresAuthToken'] == true) {
         if (token != null) {
-          accessToken = token.token.accessToken!;
-          // options.extra.clear();
+          options.headers.addAll(
+            <String, Object?>{
+              'Authorization': 'Bearer ${token.token.accessToken}'
+            },
+          );
         }
-        options.headers.addAll(
-          <String, Object?>{'Authorization': 'Bearer $accessToken'},
-        );
       }
     }
-    return handler.next(options);
+    return super.onRequest(options, handler);
   }
 
   @override
@@ -38,26 +36,32 @@ class ApiInterceptor extends Interceptor {
   ) async {
     TokenKeyModel? token = await cachingToken.getToken();
     if (err.response?.statusCode == 401 && token != null) {
-      bool refreshingTokenSuccess = await refreshToken(
-        whichToken: token.whichToken,
-        token: token.token,
-      );
-      if (refreshingTokenSuccess) {
-        return handler.resolve(await _retry(err.requestOptions));
-      } else {
-        return handler.reject(err);
+      await cachingToken.deleteToken();
+      try {
+        TokenModel newToken = await refreshToken(
+          whichToken: token.whichToken,
+          token: token.token,
+        );
+        await cachingToken.setToken(
+            whichToken: token.whichToken, token: newToken);
+        handler.resolve(await _retry(
+          err.requestOptions,
+          newToken.accessToken ?? '',
+        ));
+      } catch (e) {
+        handler.next(err);
       }
+    } else {
+      return handler.next(err);
     }
-    return handler.reject(err);
   }
 
-  Future<bool> refreshToken(
+  Future<TokenModel> refreshToken(
       {required WhichToken whichToken, required TokenModel token}) async {
     final String uri = whichToken == WhichToken.guess
         ? AuthEndpoint.refreshGuessToken
         : AuthEndpoint.refreshUserToken;
     try {
-      cachingToken.deleteToken();
       final response = await dio.post(
         uri,
         options: Options(
@@ -66,21 +70,14 @@ class ApiInterceptor extends Interceptor {
           },
         ),
       );
-      if (response.statusCode == 200) {
-        cachingToken.setToken(whichToken: whichToken, token: token);
-        TokenModel newToken = TokenModel.fromJson(jsonDecode(response.data));
-        accessToken = newToken.accessToken!;
-        return true;
-      } else {
-        cachingToken.deleteToken();
-        return false;
-      }
+      return TokenModel.fromJson(response.data['data']);
     } catch (e) {
-      return false;
+      rethrow;
     }
   }
 
-  Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
+  Future<Response<dynamic>> _retry(
+      RequestOptions requestOptions, String accessToken) async {
     final options = Options(
       method: requestOptions.method,
       headers: <String, Object?>{'Authorization': 'Bearer $accessToken'},

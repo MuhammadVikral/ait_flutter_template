@@ -83,27 +83,4 @@ class AuthRepositoriesImpl implements AuthRepository {
       return Left(NetworkFailure());
     }
   }
-
-  Future<Either<Failure, bool>> refreshToken(WhichToken whichToken) async {
-    if (await networkInfo.isConnected == false) {
-      return Left(NetworkFailure());
-    } else {
-      try {
-        final res = await service.refreshUserToken(whichToken);
-        if (res != null) {
-          await memory.setTokens(whichToken: whichToken, token: res);
-        }
-        return const Right(true);
-      } catch (e) {
-        if (e is CustomException) {
-          if (e.failure == UnAuthorizedFailure()) {
-            return const Right(false);
-          }
-          return Left(e.failure);
-        } else {
-          return Left(ServerFailure());
-        }
-      }
-    }
-  }
 }

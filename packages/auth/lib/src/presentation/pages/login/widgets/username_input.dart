@@ -23,7 +23,7 @@ class LoginUsernameInput extends StatelessWidget {
           showHint: false,
           errorText: showErrorMessage ? state.error : null,
           alwaysShowLabel: true,
-          initialText: '',
+          initialText: state.value,
           onChanged: (value) {
             context.read<LoginCubit>().onChangeUsername(value ?? '');
           },

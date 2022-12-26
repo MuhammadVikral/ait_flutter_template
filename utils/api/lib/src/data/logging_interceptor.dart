@@ -133,10 +133,9 @@ class LoggingInterceptor extends Interceptor {
     if (dioError.response != null) {
       debugPrint('\tStatus code: ${dioError.response!.statusCode}');
       if (dioError.response!.data != null) {
-        final headers =
-            dioError.response!.data['headers'] as JSON; //API Dependant
+        final headers = dioError.response!.data['meta'] as JSON; //API Dependant
         final message = headers['message'] as String; //API Dependant
-        final code = headers['code'] as String; //API Dependant
+        final code = headers['code'] as int; //API Dependant
         debugPrint('\tException: $code');
         debugPrint('\tMessage: $message');
         if (headers.containsKey('data')) {
